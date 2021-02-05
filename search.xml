@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>试一下</title>
+      <link href="/2021/02/05/shi-yi-xia/"/>
+      <url>/2021/02/05/shi-yi-xia/</url>
+      
+        <content type="html"><![CDATA[<h1 id="这个是一个测试文章"><a href="#这个是一个测试文章" class="headerlink" title="这个是一个测试文章"></a>这个是一个测试文章</h1><p>$a_{i,j}=\alpha + w^3$<br>$$<br>a^2 = i_1+i_2<br>$$</p><pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>博客开源</title>
       <link href="/2019/08/27/blog-open-source/"/>
       <url>/2019/08/27/blog-open-source/</url>

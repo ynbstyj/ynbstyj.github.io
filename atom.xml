@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://ynbstyj.github.io/"/>
-  <updated>2021-02-05T04:25:37.672Z</updated>
+  <updated>2021-02-05T15:51:17.250Z</updated>
   <id>https://ynbstyj.github.io/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>试一下</title>
+    <link href="https://ynbstyj.github.io/2021/02/05/shi-yi-xia/"/>
+    <id>https://ynbstyj.github.io/2021/02/05/shi-yi-xia/</id>
+    <published>2021-02-05T15:48:37.000Z</published>
+    <updated>2021-02-05T15:51:17.250Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;这个是一个测试文章&quot;&gt;&lt;a href=&quot;#这个是一个测试文章&quot; class=&quot;headerlink&quot; title=&quot;这个是一个测试文章&quot;&gt;&lt;/a&gt;这个是一个测试文章&lt;/h1&gt;&lt;p&gt;$a_{i,j}=\alpha + w^3$&lt;br&gt;$$&lt;br&gt;a^2 =
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>博客开源</title>
