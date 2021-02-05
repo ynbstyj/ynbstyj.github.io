@@ -642,11 +642,10 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                                     <h2 id="畅所欲言"><a href="#畅所欲言" class="headerlink" title="畅所欲言"></a>畅所欲言</h2><hr>
 <p>在这里可以留下你的足迹，欢迎在下方留言，欢迎交换友链，一起交流学习！</p>
 <h2 id="友链"><a href="#友链" class="headerlink" title="友链"></a>友链</h2><hr>
-<p>洪卫の友链信息</p>
-<p>博客名称: 洪卫の博客</p>
-<p>博客网址: <a href="https://sunhwee.com" target="_blank" rel="noopener">https://sunhwee.com</a></p>
-<p>博客头像: <a href="http://sunhwee.com/hwsun.jpg" target="_blank" rel="noopener">http://sunhwee.com/hwsun.jpg</a></p>
-<p>博客介绍: UESTC  CVer！</p>
+<p>田纳尔多の友链信息</p>
+<p>博客名称: Tim Jack的小破栈</p>
+<p>博客网址: <a href="https://ynbstyj.github.io">https://ynbstyj.github.io</a></p>
+<p>博客介绍: DLUT  NLPer！</p>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -897,34 +896,34 @@ $(function () {
         
             <script src="//code.tidio.co/xxxxxxxxxxxxxxxxxxxxxxxxxxx.js"></script>
             <!--  在线聊天位置自定义  洪卫 shw2018 add 2019.09.13  -->
-            <script> 
+            <script>
                 $(document).ready(function () {
 
-                    setInterval(change_Tidio, 50);  
-                    function change_Tidio() { 
+                    setInterval(change_Tidio, 50);
+                    function change_Tidio() {
 
                         var tidio=$("#tidio-chat iframe");
                         if(tidio.css("display")=="block"&& $(window).width()>977 ){
-                            document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" &&$(window).width()>977)>0? "-40px" : ($("div.toc-title").length&&$(window).width()>977)>0?"80px":"20px";   
-                            document.getElementById("tidio-chat-iframe").style.right="-15px";   
+                            document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" &&$(window).width()>977)>0? "-40px" : ($("div.toc-title").length&&$(window).width()>977)>0?"80px":"20px";
+                            document.getElementById("tidio-chat-iframe").style.right="-15px";
                             document.getElementById("tidio-chat-iframe").style.height=parseInt(tidio.css("height"))>=520?"520px":tidio.css("height");
                             document.getElementById("tidio-chat-iframe").style.zIndex="997";
-                        } 
+                        }
                         else if(tidio.css("display")=="block"&&$(window).width()>601 &&$(window).width()<992 ){
-                            document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" && 601< $(window).width()<992)>0? "-40px":"20px" ;   
-                            document.getElementById("tidio-chat-iframe").style.right="-15px"; 
+                            document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" && 601< $(window).width()<992)>0? "-40px":"20px" ;
+                            document.getElementById("tidio-chat-iframe").style.right="-15px";
                             document.getElementById("tidio-chat-iframe").style.zIndex="997";
                         }
                         else if(tidio.css("display")=="block"&&$(window).width()<601 && parseInt(tidio.css("height"))<230){
-                            document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" && $(window).width()<601)>0? "-10px":"45px" ;   
+                            document.getElementById("tidio-chat-iframe").style.bottom= ($("div#backTop.top-scroll").css("display")=="none" && $(window).width()<601)>0? "-10px":"45px" ;
                             document.getElementById("tidio-chat-iframe").style.zIndex="997";
                         }
 
                         if( tidio.css("display")=="block"&&$(window).width()<601 && parseInt(tidio.css("height"))>=230){
                             document.getElementById("tidio-chat-iframe").style.zIndex="998";
                         }
-                    } 
-                }); 
+                    }
+                });
             </script>
         
 
@@ -950,6 +949,23 @@ $(function () {
             }
             </script>
         
+
+        <div id="tp-weather-widget"></div>
+        <script>
+          (function(a,h,g,f,e,d,c,b){b=function(){d=h.createElement(g);c=h.getElementsByTagName(g)[0];d.src=e;d.charset="utf-8";d.async=1;c.parentNode.insertBefore(d,c)};a["SeniverseWeatherWidgetObject"]=f;a[f]||(a[f]=function(){(a[f].q=a[f].q||[]).push(arguments)});a[f].l=+new Date();if(a.attachEvent){a.attachEvent("onload",b)}else{a.addEventListener("load",b,false)}}(window,document,"script","SeniverseWeatherWidget","//cdn.sencdn.com/widget2/static/js/bundle.js?t="+parseInt((new Date().getTime() / 100000000).toString(),10)));
+          window.SeniverseWeatherWidget('show', {
+            flavor: "bubble",
+            location: "WHQWBSVQS7RS",
+            geolocation: true,
+            language: "zh-Hans",
+            unit: "c",
+            theme: "auto",
+            token: "afe783aa-2307-4afb-8721-b263bc542360",
+            hover: "enabled",
+            container: "tp-weather-widget"
+          })
+        </script>
+
 
     <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":false},"react":{"opacity":0.7}});</script><script>!function(e){var r=Array.prototype.slice.call(document.querySelectorAll("img[data-original]"));function t(){for(var c=0;c<r.length;c++)t=r[c],void 0,0<=(n=t.getBoundingClientRect()).top&&0<=n.left&&n.top<=(e.innerHeight||document.documentElement.clientHeight)&&function(){var t,n,e,i,o=r[c];t=o,n=function(){r=r.filter(function(t){return o!==t})},e=new Image,i=t.getAttribute("data-original"),e.onload=function(){t.src=i,n&&n()},e.src=i}();var t,n}t(),e.addEventListener("scroll",function(){!function(t,n){clearTimeout(t.tId),t.tId=setTimeout(function(){t.call(n)},500)}(t,e)})}(this);</script></body>
 </html>
