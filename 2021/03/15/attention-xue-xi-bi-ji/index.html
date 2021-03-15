@@ -801,16 +801,16 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="Attention学习笔记"><a href="#Attention学习笔记" class="headerlink" title="Attention学习笔记"></a>Attention学习笔记</h1><p> 解决Seq2Seq模型遗忘问题最有效的方法是Attention(注意力机制)，decoder每一次更新状态的时候都会再看一边encoder所有状态，这样就不会遗忘，attention还可以告诉decoder应该重点关注encoder哪个状态，可以大幅度提高准确率，缺点是计算量非常大。</p>
-<h2 id="SimpleRNN-Attention"><a href="#SimpleRNN-Attention" class="headerlink" title="SimpleRNN + Attention"></a>SimpleRNN + Attention</h2><p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="C:%5CUsers%5C86187%5CDesktop%5CBlog_document%5C%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87%5C20210315144917.png" alt=""></p>
+<h2 id="SimpleRNN-Attention"><a href="#SimpleRNN-Attention" class="headerlink" title="SimpleRNN + Attention"></a>SimpleRNN + Attention</h2><p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://blog-pic-1300161219.cos.ap-chengdu.myqcloud.com/img/20210315161231.png" alt=""></p>
 <p>decoder的初始状态$s_0$是encoder的最后一个状态$h_m$，encoder的所有状态$h_1, h_2, h_3, … , h_m$都要保存下来，这里需要计算$s_0$与每一个$h$的相关性，用公式$Weight: \alpha_i = align(h_i, s_0)$来计算相关性，可以算出m个权重$\alpha$，所有$\alpha$加起来等于1。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="C:%5CUsers%5C86187%5CDesktop%5CBlog_document%5C%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87%5C20210315145702.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://blog-pic-1300161219.cos.ap-chengdu.myqcloud.com/img/20210315161226.png" alt=""></p>
 <h3 id="计算-s-0-与-h-i-的相关性"><a href="#计算-s-0-与-h-i-的相关性" class="headerlink" title="计算$s_0$与$h_i$的相关性"></a>计算$s_0$与$h_i$的相关性</h3><p>第一种方法，把$h_i$与$s_0$作concat得到更高的向量，然后求这个向量与矩阵$W$的乘积得到一个向量，再把双曲正切函数应用到向量的每一个元素上，把每一个元素都压到-1与+1之间，双曲正切函数的输出还是一个向量$output$，最后计算$outpit$与向量$V$的内积，求得的结果是一个实数$\hat{\alpha_i}$，这里的$W$与$V$都是参数，需要从训练数据中学习。算出[$\hat{\alpha_1}, … ,\hat{\alpha_m}$]这m个实数之后，对它们作一个softmax变换，把输出结果记为[$\alpha_1, … ,\alpha_m$]，每个$\alpha$都大于0且相加等于1。</p>
 <p>第二种方法，输入还是$h_i$和$s_0$这两个向量，第一步是分别用两个参数矩阵$W_K$与$W_Q$这两个矩阵对两个输入向量作线性变换，得到$k_i$与$q_0$这两个向量，两个参数矩阵要从训练数据中学习；第二步是计算$k_i$与$q_0$这两个向量的内积，结果记为$\hat{\alpha_i}$，因此得到m个$\hat{\alpha}$；第三步是对这m个实数作softmax变换，把输出结果记为[$\alpha_1, … ,\alpha_m$]，每个$\alpha$都大于0且相加等于1，这种方法被Transformer模型采用。</p>
 <p>利用这m个权重$\alpha$，我们可以对这m个状态向量$h_i$作加权平均，公式为$Context \quad vector: c_0=\alpha_1h_1+…+\alpha_mh_m$，结果是一个向量$c_0$，每一个context vector都会对应一个decoder状态$s$。</p>
 <p>假如不用attention，decoder是这样更新状态的，SimpleRNN：$\mathbf{s}<em>{1}=\tanh \left(\mathbf{A}^{\prime} \cdot\left[\begin{array}{l}<br>\mathbf{x}</em>{1}^{\prime} \<br>\mathbf{s}<em>{0}<br>\end{array}\right]+\mathbf{b}\right)$，SimpleRNN在更新状态时只需要知道新的输入$x_1^{\prime}$和旧的状态$s_0$，并不会去看encoder的状态。用attention时，更新decoder状态需要用到context vector $c_0$，SimpleRNN + Attention：$$<br>\mathbf{s}</em>{1}=\tanh \left(\mathbf{A}^{\prime} \cdot\left[\begin{array}{l}<br>\mathbf{x}<em>{1}^{\prime} \<br>\mathbf{s}</em>{0} \<br>c_{0}<br>\end{array}\right]+\mathbf{b}\right)<br>$$，所以$c_0$知道encoder状态$h_0,…,h_m$的完整信息，于是RNN遗忘的问题就解决了。</p>
 <p>下一步要计算context vector $c_1$，把$s_1$与m个encoder的状态$h_i$进行比较，计算出m个权重，进而计算出$c_1=\alpha_1h_1+…+\alpha_mh_m$。</p>
-<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="C:%5CUsers%5C86187%5CDesktop%5CBlog_document%5C%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87%5C20210315155222.png" alt=""></p>
-<p>decoder接受新的输入$x_2^{\prime}$，把状态更新到$s_2$，还是用上面的公式来计算<br>$$<br>\mathbf{s}<em>{2}=\tanh \left(\mathbf{A}^{\prime} \cdot\left[\begin{array}{l}<br>\mathbf{x}</em>{2}^{\prime} \<br>\mathbf{s}<em>{1} \<br>c</em>{1}<br>\end{array}\right]+\mathbf{b}\right)<br>$$<br><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="C:%5CUsers%5C86187%5CDesktop%5CBlog_document%5C%E5%8D%9A%E5%AE%A2%E5%9B%BE%E7%89%87%5Cimage-20210315155958651.png" alt=""></p>
+<p><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://blog-pic-1300161219.cos.ap-chengdu.myqcloud.com/img/20210315161211.png" alt=""></p>
+<p>decoder接受新的输入$x_2^{\prime}$，把状态更新到$s_2$，还是用上面的公式来计算<br>$$<br>\mathbf{s}<em>{2}=\tanh \left(\mathbf{A}^{\prime} \cdot\left[\begin{array}{l}<br>\mathbf{x}</em>{2}^{\prime} \<br>\mathbf{s}<em>{1} \<br>c</em>{1}<br>\end{array}\right]+\mathbf{b}\right)<br>$$<br><img src="https://cdn.jsdelivr.net/gh/shw2018/cdn@1.0/sakura/img/loader/orange.progress-bar-stripe-loader.svg" data-original="https://blog-pic-1300161219.cos.ap-chengdu.myqcloud.com/img/20210315161200.png" alt=""></p>
 <p>使用attention可以提高准确率，但是需要付出更多的计算代价。</p>
 <h2 id="参考内容"><a href="#参考内容" class="headerlink" title="参考内容"></a>参考内容</h2><p><a href="https://www.youtube.com/watch?v=XhWdv7ghmQQ&amp;list=PLvOO0btloRnuTUGN4XqO85eKPeFSZsEqK&amp;index=8" target="_blank" rel="noopener">Attention（注意力机制）</a></p>
 <script>
@@ -1156,6 +1156,13 @@
 
 </main>
 
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
 
 
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
