@@ -1,59 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<search> 
-  
-  
-    
-    <entry>
-      <title>abc</title>
-      <link href="/2023/01/26/abc/"/>
-      <url>/2023/01/26/abc/</url>
-      
-        <content type="html"><![CDATA[<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>设a、b、c均是0到9之间的数字，abc、bcc是两个三位数，且有：abc+bcc&#x3D;532。求满足条件的所有a、b、c的值。</p><h2 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h2><p>题目没有任何输入。</p><h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><p>请输出所有满足题目条件的a、b、c的值。 a、b、c之间用空格隔开。 每个输出占一行。</p><p><a href="http://t.cn/E9WMRTE">地址</a></p><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span><span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>    <span class="token keyword">int</span> i<span class="token punctuation">,</span>bcc<span class="token punctuation">,</span>a<span class="token punctuation">,</span>b<span class="token punctuation">,</span>c<span class="token punctuation">;</span>    <span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span><span class="token number">532</span><span class="token punctuation">;</span><span class="token operator">++</span>i<span class="token punctuation">)</span><span class="token punctuation">{</span>        bcc<span class="token operator">=</span><span class="token number">532</span><span class="token operator">-</span>i<span class="token punctuation">;</span>        <span class="token comment" spellcheck="true">//若十位与个位相同，判断和是否532</span>        <span class="token keyword">if</span><span class="token punctuation">(</span>bcc<span class="token operator">/</span><span class="token number">10</span><span class="token operator">%</span><span class="token number">10</span> <span class="token operator">==</span> bcc<span class="token operator">%</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">{</span>            a<span class="token operator">=</span>i<span class="token operator">/</span><span class="token number">100</span><span class="token punctuation">;</span>            c<span class="token operator">=</span>bcc<span class="token operator">%</span><span class="token number">10</span><span class="token punctuation">;</span>            b<span class="token operator">=</span>bcc<span class="token operator">/</span><span class="token number">100</span><span class="token punctuation">;</span>                        <span class="token keyword">if</span><span class="token punctuation">(</span>a<span class="token operator">*</span><span class="token number">100</span><span class="token operator">+</span>b<span class="token operator">*</span><span class="token number">10</span><span class="token operator">+</span>c <span class="token operator">+</span> bcc<span class="token operator">==</span><span class="token number">532</span><span class="token punctuation">)</span>                <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d %d %d\n"</span><span class="token punctuation">,</span>a<span class="token punctuation">,</span>b<span class="token punctuation">,</span>c<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">}</span>    <span class="token punctuation">}</span>    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
-      
-      
+<search>
+  <entry>
+    <title>abc</title>
+    <url>/2023/01/26/abc/</url>
+    <content><![CDATA[<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>设a、b、c均是0到9之间的数字，abc、bcc是两个三位数，且有：abc+bcc&#x3D;532。求满足条件的所有a、b、c的值。</p>
+<h2 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h2><p>题目没有任何输入。</p>
+<h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><p>请输出所有满足题目条件的a、b、c的值。 a、b、c之间用空格隔开。 每个输出占一行。</p>
+<p><a href="http://t.cn/E9WMRTE">地址</a></p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span>
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">int</span> i<span class="token punctuation">,</span>bcc<span class="token punctuation">,</span>a<span class="token punctuation">,</span>b<span class="token punctuation">,</span>c<span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span><span class="token number">532</span><span class="token punctuation">;</span><span class="token operator">++</span>i<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        bcc<span class="token operator">=</span><span class="token number">532</span><span class="token operator">-</span>i<span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//若十位与个位相同，判断和是否532</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>bcc<span class="token operator">/</span><span class="token number">10</span><span class="token operator">%</span><span class="token number">10</span> <span class="token operator">==</span> bcc<span class="token operator">%</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            a<span class="token operator">=</span>i<span class="token operator">/</span><span class="token number">100</span><span class="token punctuation">;</span>
+            c<span class="token operator">=</span>bcc<span class="token operator">%</span><span class="token number">10</span><span class="token punctuation">;</span>
+            b<span class="token operator">=</span>bcc<span class="token operator">/</span><span class="token number">100</span><span class="token punctuation">;</span>
+            
+            <span class="token keyword">if</span><span class="token punctuation">(</span>a<span class="token operator">*</span><span class="token number">100</span><span class="token operator">+</span>b<span class="token operator">*</span><span class="token number">10</span><span class="token operator">+</span>c <span class="token operator">+</span> bcc<span class="token operator">==</span><span class="token number">532</span><span class="token punctuation">)</span>
+                <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d %d %d\n"</span><span class="token punctuation">,</span>a<span class="token punctuation">,</span>b<span class="token punctuation">,</span>c<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+]]></content>
       <categories>
-          
-          <category> 考研复试上机 </category>
-          
+        <category>考研复试上机</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 枚举 </tag>
-            
-            <tag> 清华大学 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>A+B</title>
-      <link href="/2023/01/26/A-B/"/>
-      <url>/2023/01/26/A-B/</url>
-      
-        <content type="html"><![CDATA[<h2 id="A-B"><a href="#A-B" class="headerlink" title="A + B"></a>A + B</h2><p>万有引力常数为\(G\),对于质量分别为\(M\)和\(m\)，球心距离为\(r\)的两个正球形天体，两者间相互作用力：<br>$$F&#x3D;\frac{GMm}{r^2}$$</p><pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;cstdio></span></span><span class="token keyword">using</span> namespae std<span class="token punctuation">;</span><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"hello world!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>]]></content>
-      
-      
+      <tags>
+        <tag>枚举</tag>
+        <tag>清华大学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>反序数</title>
+    <url>/2023/01/26/%E5%8F%8D%E5%BA%8F%E6%95%B0/</url>
+    <content><![CDATA[<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>设N是一个四位数，它的9倍恰好是其反序数（例如：1234的反序数是4321）<br>求N的值</p>
+<h3 id="输入描述："><a href="#输入描述：" class="headerlink" title="输入描述："></a>输入描述：</h3><p>程序无任何输入数据。</p>
+<h3 id="输出描述："><a href="#输出描述：" class="headerlink" title="输出描述："></a>输出描述：</h3><p>输出题目要求的四位数，如果结果有多组，则每组结果之间以回车隔开。</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span>
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> <span class="token function">Reverse</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> a <span class="token operator">=</span> x <span class="token operator">%</span> <span class="token number">10</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> b <span class="token operator">=</span> x <span class="token operator">/</span> <span class="token number">10</span> <span class="token operator">%</span> <span class="token number">10</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> c <span class="token operator">=</span> x <span class="token operator">/</span> <span class="token number">100</span> <span class="token operator">%</span> <span class="token number">10</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> d <span class="token operator">=</span> x <span class="token operator">/</span> <span class="token number">1000</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> revx <span class="token operator">=</span> a <span class="token operator">*</span> <span class="token number">1000</span> <span class="token operator">+</span> b <span class="token operator">*</span> <span class="token number">100</span> <span class="token operator">+</span> c <span class="token operator">*</span> <span class="token number">10</span> <span class="token operator">+</span> d<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> revx<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1000</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> <span class="token number">9999</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">*</span> <span class="token number">9</span> <span class="token operator">==</span> <span class="token function">Reverse</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d\n"</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+]]></content>
       <categories>
-          
-          <category> 复试 </category>
-          
+        <category>考研复试上机</category>
       </categories>
-      
-      
-        <tags>
-            
-            <tag> 复试上机 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-  
-  
+      <tags>
+        <tag>枚举</tag>
+        <tag>清华大学</tag>
+      </tags>
+  </entry>
 </search>

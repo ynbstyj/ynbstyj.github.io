@@ -4,7 +4,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="theme-color" content=#58b77a>
-  <title>A+B | 田纳尔多小栈~</title>
+  <title>反序数 | 田纳尔多小栈~</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="author" content="Jack Tim">
   <meta name="keywords" content="C++,Python,算法,AI">
@@ -90,8 +90,8 @@
       <div class="page-title">
         <div class="avatar"><a href="/"><img src="https://cdn.jsdelivr.net/npm/theme-lx@0.4.4/source/dist/images/avatar.min.jpeg" alt="Jack Tim"></a></div>
         <span>2023-01-26</span>
-        <h2>A+B</h2>
-        <div class="tags"><i class="fa fa-tag"></i><a class="tag-none-link" href="/tags/%E5%A4%8D%E8%AF%95%E4%B8%8A%E6%9C%BA/" rel="tag">复试上机</a></div>
+        <h2>反序数</h2>
+        <div class="tags"><i class="fa fa-tag"></i><a class="tag-none-link" href="/tags/%E6%9E%9A%E4%B8%BE/" rel="tag">枚举</a> <i class="fa fa-tag"></i><a class="tag-none-link" href="/tags/%E6%B8%85%E5%8D%8E%E5%A4%A7%E5%AD%A6/" rel="tag">清华大学</a></div>
         <div class="social-links">
     <a href="https://github.com/ynbstyj" target="_blank" title="social-link"><i class="fa fa-github fa-fw"></i></a>
     <a href="ynbstyj@163.com" target="_blank" title="social-link"><i class="fa fa-envelope fa-fw"></i></a>
@@ -104,14 +104,29 @@
   <div class="lx-post">
     <div class="lx-entry padding">
       <div>
-        <h2 id="A-B"><a href="#A-B" class="headerlink" title="A + B"></a>A + B</h2><p>万有引力常数为\(G\),对于质量分别为\(M\)和\(m\)，球心距离为\(r\)的两个正球形天体，两者间相互作用力：<br>$$F&#x3D;\frac{GMm}{r^2}$$</p>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span><span class="token string">&lt;cstdio></span></span>
-<span class="token keyword">using</span> namespae std<span class="token punctuation">;</span>
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"hello world!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>设N是一个四位数，它的9倍恰好是其反序数（例如：1234的反序数是4321）<br>求N的值</p>
+<h3 id="输入描述："><a href="#输入描述：" class="headerlink" title="输入描述："></a>输入描述：</h3><p>程序无任何输入数据。</p>
+<h3 id="输出描述："><a href="#输出描述：" class="headerlink" title="输出描述："></a>输出描述：</h3><p>输出题目要求的四位数，如果结果有多组，则每组结果之间以回车隔开。</p>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span>
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> <span class="token function">Reverse</span><span class="token punctuation">(</span><span class="token keyword">int</span> x<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> a <span class="token operator">=</span> x <span class="token operator">%</span> <span class="token number">10</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> b <span class="token operator">=</span> x <span class="token operator">/</span> <span class="token number">10</span> <span class="token operator">%</span> <span class="token number">10</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> c <span class="token operator">=</span> x <span class="token operator">/</span> <span class="token number">100</span> <span class="token operator">%</span> <span class="token number">10</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> d <span class="token operator">=</span> x <span class="token operator">/</span> <span class="token number">1000</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> revx <span class="token operator">=</span> a <span class="token operator">*</span> <span class="token number">1000</span> <span class="token operator">+</span> b <span class="token operator">*</span> <span class="token number">100</span> <span class="token operator">+</span> c <span class="token operator">*</span> <span class="token number">10</span> <span class="token operator">+</span> d<span class="token punctuation">;</span>
+    <span class="token keyword">return</span> revx<span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1000</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> <span class="token number">9999</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">*</span> <span class="token number">9</span> <span class="token operator">==</span> <span class="token function">Reverse</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d\n"</span><span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
       </div>
     </div>
@@ -120,12 +135,12 @@
 <div class="lx-navigation">
 	<div class="lx-cover next lx-cover-sm" style="background-image: url(https://cdn.jsdelivr.net/npm/theme-lx@0.4.4/source/dist/images/footer-l.min.jpeg)">
 		<div class="overlay"></div>
-		<a class="copy" href="/2023/01/26/abc/">
+		<a class="copy" href="#">
 			<div class="display-t">
 				<div class="display-tc">
 					<div>
 						<span>Next</span>
-						<h3>abc</h3>
+						<h3>No newer post</h3>
 					</div>
 				</div>
 			</div>
@@ -133,12 +148,12 @@
 	</div>
         <div class="lx-cover prev lx-cover-sm" style="background-image: url(https://cdn.jsdelivr.net/npm/theme-lx@0.4.4/source/dist/images/footer-r.min.jpeg)">
 		<div class="overlay"></div>
-		<a class="copy" href="#">
+		<a class="copy" href="/2023/01/26/abc/">
 			<div class="display-t">
 				<div class="display-tc">
 					<div>
 						<span>Prev</span>
-						<h3>没有更早的文章</h3>
+						<h3>abc</h3>
 					</div>
 				</div>
 			</div>
@@ -179,21 +194,20 @@
   </div>
   <nav class="menu-container">
   <ul class="menu-items">
-    <li><a href="/"><i class="fa fa-home fa-fw"></i>首页</a></li>
-    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>Home</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
     <li class="has-sub"><span class="dropdown-heading">
-      <i class="fa fa-th-list fa-fw"></i>分类</span>
-        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%8D%E8%AF%95/">复试</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95%E4%B8%8A%E6%9C%BA/">考研复试上机</a></li></ul>
+      <i class="fa fa-th-list fa-fw"></i>Categories</span>
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95%E4%B8%8A%E6%9C%BA/">考研复试上机</a></li></ul>
     </li>
     <li class="has-sub"><span class="dropdown-heading">
-      <i class="fa fa-bookmark fa-fw"></i>页面</span>
+      <i class="fa fa-bookmark fa-fw"></i>Pages</span>
         <ul>
-          <li><a href="/%E7%95%99%E8%A8%80%E6%9D%BF/">Guestbook</a></li>
-        <li><a href="/about/">About</a></li>
+          <li><a href="/about/">About</a></li>
         </ul>
     </li>
     <li class="has-sub"><span class="dropdown-heading">
-      <i class="fa fa-link fa-fw"></i>友链</span>
+      <i class="fa fa-link fa-fw"></i>Friends</span>
         <ul>
           <li> <a href="https://github.com/ynbstyj" target="_blank">GitHub</a></li>
         <li> <a href="https://blog.csdn.net/qq_42662568?spm=1000.2115.3001.5343" target="_blank">CSDN</a></li>
