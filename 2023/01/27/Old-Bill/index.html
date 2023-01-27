@@ -4,7 +4,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="theme-color" content=#58b77a>
-  <title>abc | 田纳尔多小栈~</title>
+  <title>Old Bill | 田纳尔多小栈~</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="author" content="Jack Tim">
   <meta name="keywords" content="C++,Python,算法,AI">
@@ -89,9 +89,9 @@
       <a href="javascript:;" class="popup-trigger" title="search"><i class="menu-item-icon fa fa-search fa-fw"></i></a>
       <div class="page-title">
         <div class="avatar"><a href="/"><img src="https://cdn.jsdelivr.net/npm/theme-lx@0.4.4/source/dist/images/avatar.min.jpeg" alt="Jack Tim"></a></div>
-        <span>2023-01-26</span>
-        <h2>abc</h2>
-        <div class="tags"><i class="fa fa-tag"></i><a class="tag-none-link" href="/tags/%E6%9E%9A%E4%B8%BE/" rel="tag">枚举</a> <i class="fa fa-tag"></i><a class="tag-none-link" href="/tags/%E6%B8%85%E5%8D%8E%E5%A4%A7%E5%AD%A6/" rel="tag">清华大学</a></div>
+        <span>2023-01-27</span>
+        <h2>Old Bill</h2>
+        <div class="tags"><i class="fa fa-tag"></i><a class="tag-none-link" href="/tags/%E4%B8%8A%E4%BA%A4/" rel="tag">上交</a> <i class="fa fa-tag"></i><a class="tag-none-link" href="/tags/%E6%9E%9A%E4%B8%BE/" rel="tag">枚举</a></div>
         <div class="social-links">
     <a href="https://github.com/ynbstyj" target="_blank" title="social-link"><i class="fa fa-github fa-fw"></i></a>
     <a href="ynbstyj@163.com" target="_blank" title="social-link"><i class="fa fa-envelope fa-fw"></i></a>
@@ -104,30 +104,51 @@
   <div class="lx-post">
     <div class="lx-entry padding">
       <div>
-        <h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>设a、b、c均是0到9之间的数字，abc、bcc是两个三位数，且有：abc+bcc&#x3D;532。求满足条件的所有a、b、c的值。</p>
-<h2 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h2><p>题目没有任何输入。</p>
-<h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><p>请输出所有满足题目条件的a、b、c的值。 a、b、c之间用空格隔开。 每个输出占一行。</p>
-<p><a target="_blank" rel="noopener" href="http://t.cn/E9WMRTE">地址</a></p>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span>
+        <h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>  在祖父的文件中发现了一张账单。72只火鸡$_679_这个数字的第一位和最后一位数字显然代表了这些火鸡的总价，这里用空格(表示_)代替，因为它们已经褪色，难以辨认。那两个褪色的数字是什么一只火鸡的价格是多少?我们想要编写一个程序来解决上述问题的一般版本。N只火鸡的价格为$_XYZ_，火鸡的总数N在1到99之间，包括两者。总价原本是5位数，但我们只能看到中间的3位数。我们假设第一位数字非零，一只火鸡的价格是整数美元，所有火鸡的价格相同。给定N、X、Y和Z，编写一个程序来猜测这两个褪色的数字和原始价格。如果原来的价格有一个以上的候选价格，那么产量应该是最贵的那个。也就是说，该程序将报告两个褪色的数字和每只火鸡的最高价格。<a target="_blank" rel="noopener" href="http://t.cn/E9jqijR">http://t.cn/E9jqijR</a></p>
+<h3 id="输入描述："><a href="#输入描述：" class="headerlink" title="输入描述："></a>输入描述：</h3><p>  输入文件的第一行包含一个整数N (0&lt;N&lt;100)，它表示火鸡的数量。在下一行中，有原始价格$_XYZ_的三位十进制数字X、Y和Z，以空格分隔。</p>
+<h3 id="输出描述："><a href="#输出描述：" class="headerlink" title="输出描述："></a>输出描述：</h3><p>  对于每一种情况，输出两个褪色的数字和每只火鸡的最高价格。</p>
+<h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><p>输入：</p>
+<pre><code>72
+6 7 9
+5
+2 3 7
+78
+0 0 5
+</code></pre>
+<p>输出：</p>
+<pre><code>3 2 511
+9 5 18475
+0
+</code></pre>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">define</span> _CRT_SECURE_NO_WARNINGS 1</span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token keyword">int</span> i<span class="token punctuation">,</span>bcc<span class="token punctuation">,</span>a<span class="token punctuation">,</span>b<span class="token punctuation">,</span>c<span class="token punctuation">;</span>
-    <span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span><span class="token number">532</span><span class="token punctuation">;</span><span class="token operator">++</span>i<span class="token punctuation">)</span><span class="token punctuation">{</span>
-        bcc<span class="token operator">=</span><span class="token number">532</span><span class="token operator">-</span>i<span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//若十位与个位相同，判断和是否532</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>bcc<span class="token operator">/</span><span class="token number">10</span><span class="token operator">%</span><span class="token number">10</span> <span class="token operator">==</span> bcc<span class="token operator">%</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-            a<span class="token operator">=</span>i<span class="token operator">/</span><span class="token number">100</span><span class="token punctuation">;</span>
-            c<span class="token operator">=</span>bcc<span class="token operator">%</span><span class="token number">10</span><span class="token punctuation">;</span>
-            b<span class="token operator">=</span>bcc<span class="token operator">/</span><span class="token number">100</span><span class="token punctuation">;</span>
-            
-            <span class="token keyword">if</span><span class="token punctuation">(</span>a<span class="token operator">*</span><span class="token number">100</span><span class="token operator">+</span>b<span class="token operator">*</span><span class="token number">10</span><span class="token operator">+</span>c <span class="token operator">+</span> bcc<span class="token operator">==</span><span class="token number">532</span><span class="token punctuation">)</span>
-                <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d %d %d\n"</span><span class="token punctuation">,</span>a<span class="token punctuation">,</span>b<span class="token punctuation">,</span>c<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">bool</span> <span class="token function">Function</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">,</span> <span class="token keyword">int</span> x<span class="token punctuation">,</span> <span class="token keyword">int</span> y<span class="token punctuation">,</span> <span class="token keyword">int</span> z<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">9</span><span class="token punctuation">;</span> i <span class="token operator">>=</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token operator">--</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">9</span><span class="token punctuation">;</span> j <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token operator">--</span>j<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">int</span> price <span class="token operator">=</span> i <span class="token operator">*</span> <span class="token number">1e4</span> <span class="token operator">+</span> x <span class="token operator">*</span> <span class="token number">1e3</span> <span class="token operator">+</span> y <span class="token operator">*</span> <span class="token number">1e2</span> <span class="token operator">+</span> z <span class="token operator">*</span> <span class="token number">1e1</span> <span class="token operator">+</span> j<span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>price <span class="token operator">%</span> n <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d %d %d\n"</span><span class="token punctuation">,</span> i<span class="token punctuation">,</span> j<span class="token punctuation">,</span> price <span class="token operator">/</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
         <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> n<span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>cin <span class="token operator">>></span> n<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> z<span class="token punctuation">;</span>
+        cin <span class="token operator">>></span> x <span class="token operator">>></span> y <span class="token operator">>></span> z<span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token function">Function</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> x<span class="token punctuation">,</span> y<span class="token punctuation">,</span> x<span class="token punctuation">)</span><span class="token punctuation">)</span>
+            <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"0\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
       </div>
     </div>
@@ -136,12 +157,12 @@
 <div class="lx-navigation">
 	<div class="lx-cover next lx-cover-sm" style="background-image: url(https://cdn.jsdelivr.net/npm/theme-lx@0.4.4/source/dist/images/footer-l.min.jpeg)">
 		<div class="overlay"></div>
-		<a class="copy" href="/2023/01/26/%E5%8F%8D%E5%BA%8F%E6%95%B0/">
+		<a class="copy" href="#">
 			<div class="display-t">
 				<div class="display-tc">
 					<div>
 						<span>Next</span>
-						<h3>反序数</h3>
+						<h3>No newer post</h3>
 					</div>
 				</div>
 			</div>
@@ -149,12 +170,12 @@
 	</div>
         <div class="lx-cover prev lx-cover-sm" style="background-image: url(https://cdn.jsdelivr.net/npm/theme-lx@0.4.4/source/dist/images/footer-r.min.jpeg)">
 		<div class="overlay"></div>
-		<a class="copy" href="#">
+		<a class="copy" href="/2023/01/27/%E7%99%BE%E9%B8%A1%E9%97%AE%E9%A2%98/">
 			<div class="display-t">
 				<div class="display-tc">
 					<div>
 						<span>Prev</span>
-						<h3>No older post</h3>
+						<h3>百鸡问题</h3>
 					</div>
 				</div>
 			</div>
