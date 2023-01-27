@@ -4,7 +4,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="theme-color" content=#58b77a>
-  <title>今年的第几天？ | 田纳尔多小栈~</title>
+  <title>日期累加 | 田纳尔多小栈~</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="author" content="Jack Tim">
   <meta name="keywords" content="C++,Python,算法,AI">
@@ -90,8 +90,8 @@
       <div class="page-title">
         <div class="avatar"><a href="/"><img src="https://cdn.jsdelivr.net/npm/theme-lx@0.4.4/source/dist/images/avatar.min.jpeg" alt="Jack Tim"></a></div>
         <span>2023-01-27</span>
-        <h2>今年的第几天？</h2>
-        <div class="tags"><i class="fa fa-tag"></i><a class="tag-none-link" href="/tags/%E6%97%A5%E6%9C%9F%E9%97%AE%E9%A2%98/" rel="tag">日期问题</a> <i class="fa fa-tag"></i><a class="tag-none-link" href="/tags/%E6%B8%85%E5%8D%8E/" rel="tag">清华</a></div>
+        <h2>日期累加</h2>
+        <div class="tags"><i class="fa fa-tag"></i><a class="tag-none-link" href="/tags/%E5%8C%97%E7%90%86%E5%B7%A5/" rel="tag">北理工</a> <i class="fa fa-tag"></i><a class="tag-none-link" href="/tags/%E6%97%A5%E6%9C%9F%E9%97%AE%E9%A2%98/" rel="tag">日期问题</a></div>
         <div class="social-links">
     <a href="https://github.com/ynbstyj" target="_blank" title="social-link"><i class="fa fa-github fa-fw"></i></a>
     <a href="ynbstyj@163.com" target="_blank" title="social-link"><i class="fa fa-envelope fa-fw"></i></a>
@@ -104,41 +104,49 @@
   <div class="lx-post">
     <div class="lx-entry padding">
       <div>
-        <h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>输入年、月、日，计算该天是本年的第几天。<a target="_blank" rel="noopener" href="http://t.cn/E9jXK5A">http://t.cn/E9jXK5A</a></p>
-<h3 id="输入描述："><a href="#输入描述：" class="headerlink" title="输入描述："></a>输入描述：</h3><p>包括三个整数年(1&lt;&#x3D;Y&lt;&#x3D;3000)、月(1&lt;&#x3D;M&lt;&#x3D;12)、日(1&lt;&#x3D;D&lt;&#x3D;31)。</p>
-<h3 id="输出描述："><a href="#输出描述：" class="headerlink" title="输出描述："></a>输出描述：</h3><p>输入可能有多组测试数据，对于每一组测试数据， 输出一个整数，代表Input中的年、月、日对应本年的第几天。</p>
+        <p><a target="_blank" rel="noopener" href="http://t.cn/E9Yw0Cr">http://t.cn/E9Yw0Cr</a></p>
+<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>设计一个程序能计算一个日期加上若干天后是什么日期。</p>
+<h3 id="输入描述："><a href="#输入描述：" class="headerlink" title="输入描述："></a>输入描述：</h3><p>输入第一行表示样例个数m，接下来m行每行四个整数分别表示年月日和累加的天数。</p>
+<h3 id="输出描述："><a href="#输出描述：" class="headerlink" title="输出描述："></a>输出描述：</h3><p>输出m行，每行按yyyy-mm-dd的个数输出。</p>
 <h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><p>输入：</p>
-<pre><code>1990 9 20
-2000 5 1
+<pre><code>1
+2008 2 3 100
 </code></pre>
 <p>输出：</p>
-<pre><code>263
-122
+<pre><code>2008-05-13
 </code></pre>
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 
 <span class="token keyword">bool</span> <span class="token function">isLeapYear</span><span class="token punctuation">(</span><span class="token keyword">int</span> year<span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span>year<span class="token operator">%</span><span class="token number">400</span> <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">||</span> <span class="token punctuation">(</span>year<span class="token operator">%</span><span class="token number">4</span> <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> year<span class="token operator">%</span><span class="token number">100</span> <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
-    <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span>year<span class="token operator">%</span><span class="token number">400</span><span class="token operator">==</span><span class="token number">0</span> <span class="token operator">||</span> year<span class="token operator">%</span><span class="token number">4</span><span class="token operator">==</span><span class="token number">0</span> <span class="token operator">&amp;&amp;</span> year<span class="token operator">%</span><span class="token number">100</span><span class="token operator">!=</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token keyword">else</span> <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token keyword">int</span> year<span class="token punctuation">,</span> month<span class="token punctuation">,</span> day<span class="token punctuation">;</span>
-    <span class="token keyword">while</span><span class="token punctuation">(</span>cin <span class="token operator">>></span> year <span class="token operator">>></span> month <span class="token operator">>></span> day<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">int</span> n<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> year<span class="token punctuation">,</span> month<span class="token punctuation">,</span> day<span class="token punctuation">,</span> num<span class="token punctuation">;</span>
+    cin <span class="token operator">>></span> n<span class="token punctuation">;</span>
+    <span class="token keyword">while</span><span class="token punctuation">(</span>n<span class="token operator">--</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
         <span class="token keyword">int</span> month_day<span class="token punctuation">[</span><span class="token number">13</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">31</span><span class="token punctuation">,</span><span class="token number">28</span><span class="token punctuation">,</span><span class="token number">31</span><span class="token punctuation">,</span><span class="token number">30</span><span class="token punctuation">,</span><span class="token number">31</span><span class="token punctuation">,</span><span class="token number">30</span><span class="token punctuation">,</span><span class="token number">31</span><span class="token punctuation">,</span><span class="token number">31</span><span class="token punctuation">,</span><span class="token number">30</span><span class="token punctuation">,</span><span class="token number">31</span><span class="token punctuation">,</span><span class="token number">30</span><span class="token punctuation">,</span><span class="token number">31</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-        <span class="token keyword">int</span> nums <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">isLeapYear</span><span class="token punctuation">(</span>year<span class="token punctuation">)</span><span class="token punctuation">)</span> month_day<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token operator">++</span><span class="token punctuation">;</span>
-        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> month<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-            nums <span class="token operator">+</span><span class="token operator">=</span> month_day<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">isLeapYear</span><span class="token punctuation">(</span>year<span class="token punctuation">)</span><span class="token punctuation">)</span> month_day<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">29</span><span class="token punctuation">;</span>
+        cin <span class="token operator">>></span> year <span class="token operator">>></span> month <span class="token operator">>></span> day <span class="token operator">>></span> num<span class="token punctuation">;</span>
+        <span class="token keyword">int</span> overday <span class="token operator">=</span> num<span class="token operator">+</span>day<span class="token punctuation">;</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token punctuation">(</span>overday<span class="token punctuation">)</span> <span class="token operator">></span> month_day<span class="token punctuation">[</span>month<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            overday <span class="token operator">-</span><span class="token operator">=</span> month_day<span class="token punctuation">[</span>month<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            month<span class="token operator">++</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>month<span class="token operator">></span><span class="token number">12</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                month <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+                year<span class="token operator">++</span><span class="token punctuation">;</span>
+                <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">isLeapYear</span><span class="token punctuation">(</span>year<span class="token punctuation">)</span><span class="token punctuation">)</span> month_day<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">29</span><span class="token punctuation">;</span>
+                <span class="token keyword">else</span> month_day<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">28</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
         <span class="token punctuation">}</span>
-        nums <span class="token operator">+</span><span class="token operator">=</span> day<span class="token punctuation">;</span>
-        cout <span class="token operator">&lt;&lt;</span> nums <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%04d-%02d-%02d\n"</span><span class="token punctuation">,</span> year<span class="token punctuation">,</span> month<span class="token punctuation">,</span> overday<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
       </div>
     </div>
@@ -147,12 +155,12 @@
 <div class="lx-navigation">
 	<div class="lx-cover next lx-cover-sm" style="background-image: url(https://cdn.jsdelivr.net/npm/theme-lx@0.4.4/source/dist/images/footer-l.min.jpeg)">
 		<div class="overlay"></div>
-		<a class="copy" href="/2023/01/27/%E6%89%93%E5%8D%B0%E6%97%A5%E6%9C%9F/">
+		<a class="copy" href="#">
 			<div class="display-t">
 				<div class="display-tc">
 					<div>
 						<span>Next</span>
-						<h3>打印日期</h3>
+						<h3>没有更新的文章</h3>
 					</div>
 				</div>
 			</div>
@@ -160,12 +168,12 @@
 	</div>
         <div class="lx-cover prev lx-cover-sm" style="background-image: url(https://cdn.jsdelivr.net/npm/theme-lx@0.4.4/source/dist/images/footer-r.min.jpeg)">
 		<div class="overlay"></div>
-		<a class="copy" href="/2023/01/27/Old-Bill/">
+		<a class="copy" href="/2023/01/27/%E6%89%93%E5%8D%B0%E6%97%A5%E6%9C%9F/">
 			<div class="display-t">
 				<div class="display-tc">
 					<div>
 						<span>Prev</span>
-						<h3>Old Bill</h3>
+						<h3>打印日期</h3>
 					</div>
 				</div>
 			</div>
