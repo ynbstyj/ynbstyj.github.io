@@ -608,4 +608,56 @@ x=1,y=0,z=99
         <tag>北理工</tag>
       </tags>
   </entry>
+  <entry>
+    <title>剩下的树</title>
+    <url>/2023/01/27/%E5%89%A9%E4%B8%8B%E7%9A%84%E6%A0%91/</url>
+    <content><![CDATA[<p><a href="http://t.cn/E9ufYo5">http://t.cn/E9ufYo5</a></p>
+<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>  有一个长度为整数L(1&lt;&#x3D;L&lt;&#x3D;10000)的马路，可以想象成数轴上长度为L的一个线段，起点是坐标原点，在每个整数坐标点有一棵树，即在0,1,2，…，L共L+1个位置上有L+1棵树。   现在要移走一些树，移走的树的区间用一对数字表示，如 100 200表示移走从100到200之间（包括端点）所有的树。   可能有M(1&lt;&#x3D;M&lt;&#x3D;100)个区间，区间之间可能有重叠。现在要求移走所有区间的树之后剩下的树的个数。</p>
+<h3 id="输入描述："><a href="#输入描述：" class="headerlink" title="输入描述："></a>输入描述：</h3><p>  两个整数L(1&lt;&#x3D;L&lt;&#x3D;10000)和M(1&lt;&#x3D;M&lt;&#x3D;100)。   接下来有M组整数，每组有一对数字。</p>
+<h3 id="输出描述："><a href="#输出描述：" class="headerlink" title="输出描述："></a>输出描述：</h3><p>  可能有多组输入数据，对于每组输入数据，输出一个数，表示移走所有区间的树之后剩下的树的个数。</p>
+<h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><p>输入：</p>
+<pre><code>500 3
+100 200
+150 300
+470 471
+</code></pre>
+<p>输出：</p>
+<pre><code>298
+</code></pre>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span>
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token keyword">int</span> MAXN <span class="token operator">=</span> <span class="token number">1e4</span><span class="token operator">+</span><span class="token number">5</span><span class="token punctuation">;</span>
+<span class="token keyword">bool</span> trees<span class="token punctuation">[</span>MAXN<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> l<span class="token punctuation">,</span> m<span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>cin <span class="token operator">>></span> l <span class="token operator">>></span> m<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> l<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+            trees<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> number <span class="token operator">=</span> l <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//初始化树的数量</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>m<span class="token operator">--</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">int</span> left<span class="token punctuation">,</span> right<span class="token punctuation">;</span>
+            cin <span class="token operator">>></span> left <span class="token operator">>></span> right<span class="token punctuation">;</span>
+            <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> left<span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> right<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token keyword">if</span><span class="token punctuation">(</span>trees<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                    trees<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//移除该树</span>
+                    number<span class="token operator">--</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        cout <span class="token operator">&lt;&lt;</span> number<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+]]></content>
+      <categories>
+        <category>考研复试上机</category>
+      </categories>
+      <tags>
+        <tag>清华</tag>
+        <tag>模拟</tag>
+      </tags>
+  </entry>
 </search>
