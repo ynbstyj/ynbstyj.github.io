@@ -1023,4 +1023,63 @@ Ant ants<span class="token punctuation">[</span>N<span class="token punctuation"
         <tag>排序</tag>
       </tags>
   </entry>
+  <entry>
+    <title>成绩排序</title>
+    <url>/2023/01/28/%E6%88%90%E7%BB%A9%E6%8E%92%E5%BA%8F/</url>
+    <content><![CDATA[<p><a href="http://t.cn/E9d3ysv">http://t.cn/E9d3ysv</a></p>
+<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>用一维数组存储学号和成绩，然后，按成绩排序输出。</p>
+<h3 id="输入描述："><a href="#输入描述：" class="headerlink" title="输入描述："></a>输入描述：</h3><p>输入第一行包括一个整数N(1&lt;&#x3D;N&lt;&#x3D;100)，代表学生的个数。 接下来的N行每行包括两个整数p和q，分别代表每个学生的学号和成绩。</p>
+<h3 id="输出描述："><a href="#输出描述：" class="headerlink" title="输出描述："></a>输出描述：</h3><p>按照学生的成绩从小到大进行排序，并将排序后的学生信息打印出来。 如果学生的成绩相同，则按照学号的大小进行从小到大排序。</p>
+<h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><p>输入：</p>
+<pre><code>3
+1 90
+2 87
+3 92
+</code></pre>
+<p>输出：</p>
+<pre><code>2 87
+1 90
+3 92
+</code></pre>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">define</span> _CRT_SECURE_NO_WARNINGS 1</span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span>
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+
+<span class="token keyword">struct</span> Student
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> number<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//学号</span>
+    <span class="token keyword">int</span> score<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//成绩</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token keyword">int</span> N <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">;</span>
+
+Student arr<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword">bool</span> <span class="token function">Compare</span><span class="token punctuation">(</span>Student x<span class="token punctuation">,</span> Student y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>x<span class="token punctuation">.</span>score <span class="token operator">==</span> y<span class="token punctuation">.</span>score<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> x<span class="token punctuation">.</span>number <span class="token operator">&lt;</span> y<span class="token punctuation">.</span>number<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//成绩相等比较学号</span>
+    <span class="token keyword">else</span>
+        <span class="token keyword">return</span> x<span class="token punctuation">.</span>score <span class="token operator">&lt;</span> y<span class="token punctuation">.</span>score<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//成绩不等比较成绩</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> n<span class="token punctuation">;</span>
+    cin <span class="token operator">>></span> n<span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+        cin <span class="token operator">>></span> arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>number <span class="token operator">>></span> arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>score<span class="token punctuation">;</span>
+    <span class="token function">sort</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> arr <span class="token operator">+</span> n<span class="token punctuation">,</span> Compare<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d %d\n"</span><span class="token punctuation">,</span> arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>number<span class="token punctuation">,</span> arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>score<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+]]></content>
+      <categories>
+        <category>考研复试上机</category>
+      </categories>
+      <tags>
+        <tag>清华</tag>
+        <tag>排序</tag>
+      </tags>
+  </entry>
 </search>
