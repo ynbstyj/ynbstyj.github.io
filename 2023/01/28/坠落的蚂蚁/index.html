@@ -486,7 +486,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    948
+                    949
                 </div>
                 
 
@@ -522,6 +522,9 @@
 <p>输出：</p>
 <pre><code>98
 </code></pre>
+<p>首先，蚂蚁A可能坠落，也可能不坠落。</p>
+<p>其中，不坠落的情况有两种，即A两边的蚂蚁，右边的蚂蚁向右边走，左边的蚂蚁向左边走，则这一类的蚂蚁都不会与A相撞；另一种情况就是存在右边的蚂蚁向左边走，左边的蚂蚁向右边走，但是，这两种蚂蚁的数量是相等的，这样也不会坠落。</p>
+<p>而A坠落的情况，归根结底就是两种，即向右边坠落，或者向左边坠落。这里我们可以先做一下预处理，首先将蚂蚁根据其位置进行排序，对于左边的蚂蚁向左边走，右边的蚂蚁向右边走这种情况，我们可以忽略，然后左边的蚂蚁向右边走归为left数组中，右边的蚂蚁向左边走归为right数组中，left的蚂蚁有n，right的蚂蚁有m，则当n&gt;m时，A向右边坠落，且可以简化认为A是与left中第n-m个蚂蚁（left数组从后往前数）相撞，然后开始向右边移动，并最终移动到100坠落，因此时间为100减去left中第n-m个蚂蚁的位置。当n&lt;m时，A向左边坠落，且可以简化认为A是与right中第m-n个蚂蚁相撞，然后开始向左边移动，并最终移动到0坠落，因此时间为right中第m-n个蚂蚁的位置。</p>
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">define</span> _CRT_SECURE_NO_WARNINGS 1</span>
 <span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
@@ -538,14 +541,6 @@
 <span class="token punctuation">}</span>
 
 Ant ants<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span>
-
-<span class="token comment" spellcheck="true">/*
-首先，蚂蚁A可能坠落，也可能不坠落。
-
-其中，不坠落的情况有两种，即A两边的蚂蚁，右边的蚂蚁向右边走，左边的蚂蚁向左边走，则这一类的蚂蚁都不会与A相撞；另一种情况就是存在右边的蚂蚁向左边走，左边的蚂蚁向右边走，但是，这两种蚂蚁的数量是相等的，这样也不会坠落。
-
-而A坠落的情况，归根结底就是两种，即向右边坠落，或者向左边坠落。这里我们可以先做一下预处理，首先将蚂蚁根据其位置进行排序，对于左边的蚂蚁向左边走，右边的蚂蚁向右边走这种情况，我们可以忽略，然后左边的蚂蚁向右边走归为left数组中，右边的蚂蚁向左边走归为right数组中，left的蚂蚁有n，right的蚂蚁有m，则当n>m时，A向右边坠落，且可以简化认为A是与left中第n-m个蚂蚁（left数组从后往前数）相撞，然后开始向右边移动，并最终移动到100坠落，因此时间为100减去left中第n-m个蚂蚁的位置。当n&lt;m时，A向左边坠落，且可以简化认为A是与right中第m-n个蚂蚁相撞，然后开始向左边移动，并最终移动到0坠落，因此时间为right中第m-n个蚂蚁的位置。
-*/</span>
 
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">int</span> n<span class="token punctuation">;</span>
@@ -574,7 +569,7 @@ Ant ants<span class="token punctuation">[</span>N<span class="token punctuation"
     <span class="token punctuation">}</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
