@@ -4,8 +4,18 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="留言板, C++,Python,算法,AI">
-    <meta name="description" content="记录生活，记录知识">
+    <meta name="keywords" content="路径打印, C++,Python,算法,AI">
+    <meta name="description" content="http://t.cn/E9dvHs4
+描述给你一串路径，譬如：
+a\b\c
+a\d\e
+b\cst
+d\
+你把这些路径中蕴含的目录结构给画出来，子目录直接列在父目录下面，并比父目录的首字符向右缩两个空格，就像这样：
+a
+ b
+  c
+ d">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +27,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>留言板 | 田纳尔多の小栈~</title>
+    <title>路径打印 | 田纳尔多の小栈~</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
@@ -321,12 +331,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/76.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/134.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">留言板</h1>
+                    <h1 class="description center-align post-title">路径打印</h1>
                 </div>
             </div>
         </div>
@@ -440,12 +450,29 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E4%B8%8A%E4%BA%A4/">
+                                <span class="chip bg-color">上交</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%A8%A1%E6%8B%9F/">
+                                <span class="chip bg-color">模拟</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95%E4%B8%8A%E6%9C%BA/" class="post-category">
+                                考研复试上机
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -454,28 +481,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-01-26
+                    2023-01-28
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-01-26
+                    2023-01-28
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    66
+                    534
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -490,7 +517,98 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>欢迎来到我的博客！&gt; 欢迎在这里留言！任何问题都可以在这里留言，我会及时回复的，添加email可以获得更快的回复速度，在nickname栏目输入QQ号可以直接获取你的QQ头像。</p>
+                <p><a target="_blank" rel="noopener" href="http://t.cn/E9dvHs4">http://t.cn/E9dvHs4</a></p>
+<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>给你一串路径，譬如：</p>
+<p>a\b\c</p>
+<p>a\d\e</p>
+<p>b\cst</p>
+<p>d\</p>
+<p>你把这些路径中蕴含的目录结构给画出来，子目录直接列在父目录下面，并比父目录的首字符向右缩两个空格，就像这样：</p>
+<p>a</p>
+<p> b</p>
+<p>  c</p>
+<p> d</p>
+<p>  e</p>
+<p>b</p>
+<p> cst</p>
+<p>d</p>
+<p>注：同一级的需要按字母顺序排列，不能乱。</p>
+<h3 id="输入描述："><a href="#输入描述：" class="headerlink" title="输入描述："></a>输入描述：</h3><p>  每个测试案例第一行为一个正整数n（n&lt;&#x3D;10）表示有n个路径，当n为0时，测试结束，接下来有n行，每行有一个字串表示一个路径，长度小于50。</p>
+<h3 id="输出描述："><a href="#输出描述：" class="headerlink" title="输出描述："></a>输出描述：</h3><p>输出目录结构，每一个测试样例的输出紧跟一个空行。</p>
+<h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><p>输入：</p>
+<pre><code>4
+a\b\c
+a\d\e
+b\cst
+d\
+0
+</code></pre>
+<p>复制</p>
+<p>输出：</p>
+<pre><code>a
+  b
+    c
+  d
+    e
+b
+  cst
+d
+</code></pre>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">define</span> _CRT_SECURE_NO_WARNINGS 1</span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span>
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> n<span class="token punctuation">;</span>
+    vector<span class="token operator">&lt;</span>string<span class="token operator">></span> v<span class="token punctuation">,</span> vs<span class="token punctuation">;</span>
+    vector<span class="token operator">&lt;</span> vector<span class="token operator">&lt;</span>string<span class="token operator">></span> <span class="token operator">></span> ve<span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>cin <span class="token operator">>></span> n<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        string str<span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>n <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+        v<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//存放初始的所有行</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            cin <span class="token operator">>></span> str<span class="token punctuation">;</span>
+            <span class="token keyword">while</span> <span class="token punctuation">(</span>str<span class="token punctuation">[</span>str<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">!=</span> <span class="token string">'\\'</span><span class="token punctuation">)</span> str <span class="token operator">+</span><span class="token operator">=</span> <span class="token string">'\\'</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//对每行进行处理，处理成最后有\的路径形式</span>
+            v<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token function">sort</span><span class="token punctuation">(</span>v<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> v<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//排序</span>
+
+        ve<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//二维数组初始化</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> v<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">int</span> begin <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> end <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            vs<span class="token punctuation">.</span><span class="token function">clear</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//每个一维数组初始化</span>
+            <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>end <span class="token operator">=</span> v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token string">"\\"</span><span class="token punctuation">,</span> begin<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">!=</span> string<span class="token operator">::</span>npos<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                vs<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>v<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">substr</span><span class="token punctuation">(</span>begin<span class="token punctuation">,</span> end <span class="token operator">-</span> begin<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                begin <span class="token operator">=</span> end <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            ve<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>vs<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//存放进二维数组中</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">></span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> ve<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">==</span> ve<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>  <span class="token comment" spellcheck="true">//与前一个目录有相同的根目录</span>
+                <span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+                <span class="token keyword">while</span> <span class="token punctuation">(</span>j <span class="token operator">&lt;</span> ve<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> ve<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">==</span> ve<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> j<span class="token operator">++</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//找到第一个不同的目录</span>
+                <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> ve<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> k <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> k <span class="token operator">&lt;</span> j<span class="token punctuation">;</span> k<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                        cout <span class="token operator">&lt;&lt;</span> <span class="token string">"  "</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//j是该目录在该路径中的下标，控制缩进的次数</span>
+                    <span class="token punctuation">}</span>
+                    cout <span class="token operator">&lt;&lt;</span> ve<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span><span class="token comment" spellcheck="true">//if</span>
+            <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> ve<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> k <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> k <span class="token operator">&lt;</span> j<span class="token punctuation">;</span> k<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                        cout <span class="token operator">&lt;&lt;</span> <span class="token string">"  "</span><span class="token punctuation">;</span>
+                    <span class="token punctuation">}</span>
+                    cout <span class="token operator">&lt;&lt;</span> ve<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+                <span class="token punctuation">}</span><span class="token comment" spellcheck="true">//for</span>
+            <span class="token punctuation">}</span><span class="token comment" spellcheck="true">//else</span>
+        <span class="token punctuation">}</span><span class="token comment" spellcheck="true">//for</span>
+        cout <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">//每个测试用例最后都有一个空行</span>
+    <span class="token punctuation">}</span><span class="token comment" spellcheck="true">//while</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -517,7 +635,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://ynbstyj.github.io/guestbook/index.html">http://ynbstyj.github.io/guestbook/index.html</a>
+                    <a href="http://ynbstyj.github.io/2023/01/28/%E8%B7%AF%E5%BE%84%E6%89%93%E5%8D%B0/">http://ynbstyj.github.io/2023/01/28/%E8%B7%AF%E5%BE%84%E6%89%93%E5%8D%B0/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -554,7 +672,15 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/%E4%B8%8A%E4%BA%A4/">
+                                    <span class="chip bg-color">上交</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%A8%A1%E6%8B%9F/">
+                                    <span class="chip bg-color">模拟</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -873,13 +999,13 @@
                 <i class="far fa-dot-circle"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/guestbook/index.html">
+                <a href="/2023/01/28/%E8%B7%AF%E5%BE%84%E6%89%93%E5%8D%B0/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/76.jpg" class="responsive-img" alt="留言板">
+                        <img src="/medias/featureimages/134.jpg" class="responsive-img" alt="路径打印">
                         
-                        <span class="card-title">留言板</span>
+                        <span class="card-title">路径打印</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -890,17 +1016,33 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-01-26
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-01-28
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Jack Tim
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95%E4%B8%8A%E6%9C%BA/" class="post-category">
+                                    考研复试上机
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
 
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E4%B8%8A%E4%BA%A4/">
+                        <span class="chip bg-color">上交</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%A8%A1%E6%8B%9F/">
+                        <span class="chip bg-color">模拟</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
@@ -908,16 +1050,16 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/guestbook/index.html">
+                <a href="/2023/01/28/Grading/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/76.jpg" class="responsive-img" alt="留言板">
+                        <img src="/medias/featureimages/172.jpg" class="responsive-img" alt="Grading">
                         
-                        <span class="card-title">留言板</span>
+                        <span class="card-title">Grading</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -928,17 +1070,32 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-01-26
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-01-28
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Jack Tim
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95%E4%B8%8A%E6%9C%BA/" class="post-category">
+                                    考研复试上机
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
-
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%A8%A1%E6%8B%9F/">
+                        <span class="chip bg-color">模拟</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%B5%99%E5%A4%A7/">
+                        <span class="chip bg-color">浙大</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
