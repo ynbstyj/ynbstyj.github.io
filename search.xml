@@ -765,6 +765,36 @@ www
 </ul>
 <h3 id="输入描述："><a href="#输入描述：" class="headerlink" title="输入描述："></a>输入描述：</h3><p>  每个输入文件可以包含多个测试用例。每个case占用一行，包含6个正整数:P、T、G1、G2、G3和GJ，如题中所述。保证所有等级都是有效的，即在区间[0,P]内。</p>
 <h3 id="输出描述："><a href="#输出描述：" class="headerlink" title="输出描述："></a>输出描述：</h3><p>  对于每个测试用例，您应该在一行中输出问题的最终等级。答案必须精确到小数点后1位。</p>
+<h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><p>输入：</p>
+<pre><code>20 2 15 13 10 18
+</code></pre>
+<p>输出：</p>
+<pre><code>14.0
+</code></pre>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">define</span> _CRT_SECURE_NO_WARNINGS 1</span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span>
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> perfect<span class="token punctuation">,</span> tolerance<span class="token punctuation">,</span> grade1<span class="token punctuation">,</span> grade2<span class="token punctuation">,</span> grade3<span class="token punctuation">,</span> gradeJudge<span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>cin <span class="token operator">>></span> perfect <span class="token operator">>></span> tolerance <span class="token operator">>></span> grade1 <span class="token operator">>></span> grade2 <span class="token operator">>></span> grade3 <span class="token operator">>></span> gradeJudge<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">double</span> answer<span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">abs</span><span class="token punctuation">(</span>grade1 <span class="token operator">-</span> grade2<span class="token punctuation">)</span> <span class="token operator">&lt;=</span> tolerance<span class="token punctuation">)</span>
+            answer <span class="token operator">=</span> <span class="token punctuation">(</span>grade1 <span class="token operator">+</span> grade2<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2.0</span><span class="token punctuation">;</span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">abs</span><span class="token punctuation">(</span>grade1 <span class="token operator">-</span> grade3<span class="token punctuation">)</span> <span class="token operator">&lt;=</span> tolerance <span class="token operator">&amp;&amp;</span> <span class="token function">abs</span><span class="token punctuation">(</span>grade2 <span class="token operator">-</span> grade3<span class="token punctuation">)</span> <span class="token operator">></span> tolerance<span class="token punctuation">)</span>
+            answer <span class="token operator">=</span> <span class="token punctuation">(</span>grade1 <span class="token operator">+</span> grade3<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2.0</span><span class="token punctuation">;</span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">abs</span><span class="token punctuation">(</span>grade2 <span class="token operator">-</span> grade3<span class="token punctuation">)</span> <span class="token operator">&lt;=</span> tolerance <span class="token operator">&amp;&amp;</span> <span class="token function">abs</span><span class="token punctuation">(</span>grade1 <span class="token operator">-</span> grade3<span class="token punctuation">)</span> <span class="token operator">></span> tolerance<span class="token punctuation">)</span>
+            answer <span class="token operator">=</span> <span class="token punctuation">(</span>grade2 <span class="token operator">+</span> grade3<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2.0</span><span class="token punctuation">;</span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">abs</span><span class="token punctuation">(</span>grade1 <span class="token operator">-</span> grade3<span class="token punctuation">)</span> <span class="token operator">&lt;=</span> tolerance <span class="token operator">&amp;&amp;</span> <span class="token function">abs</span><span class="token punctuation">(</span>grade2 <span class="token operator">-</span> grade3<span class="token punctuation">)</span> <span class="token operator">></span> tolerance<span class="token punctuation">)</span>
+            answer <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span><span class="token function">max</span><span class="token punctuation">(</span>grade1<span class="token punctuation">,</span> grade2<span class="token punctuation">)</span><span class="token punctuation">,</span> grade3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">else</span>
+            answer <span class="token operator">=</span> gradeJudge<span class="token punctuation">;</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%.1f\n"</span><span class="token punctuation">,</span> answer<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 ]]></content>
       <categories>
         <category>考研复试上机</category>
