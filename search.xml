@@ -908,4 +908,75 @@ d
         <tag>模拟</tag>
       </tags>
   </entry>
+  <entry>
+    <title>坠落的蚂蚁</title>
+    <url>/2023/01/28/%E5%9D%A0%E8%90%BD%E7%9A%84%E8%9A%82%E8%9A%81/</url>
+    <content><![CDATA[<p><a href="http://t.cn/E9dhoRA">http://t.cn/E9dhoRA</a></p>
+<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>  一根长度为1米的木棒上有若干只蚂蚁在爬动。它们的速度为每秒一厘米或静止不动，方向只有两种，向左或者向右。如果两只蚂蚁碰头，则它们立即交换速度并继续爬动。三只蚂蚁碰头，则两边的蚂蚁交换速度，中间的蚂蚁仍然静止。如果它们爬到了木棒的边缘（0或100厘米处）则会从木棒上坠落下去。在某一时刻蚂蚁的位置各不相同且均在整数厘米处（即1，2，3，…99厘米），有且只有一只蚂蚁A速度为0，其他蚂蚁均在向左或向右爬动。给出该时刻木棒上的所有蚂蚁位置和初始速度，找出蚂蚁A从此时刻到坠落所需要的时间。</p>
+<h3 id="输入描述："><a href="#输入描述：" class="headerlink" title="输入描述："></a>输入描述：</h3><p>  第一行包含一个整数表示蚂蚁的个数N（2&lt;&#x3D;N&lt;&#x3D;99），之后共有N行，每一行描述一只蚂蚁的初始状态。每个初始状态由两个整数组成，中间用空格隔开，第一个数字表示初始位置厘米数P（1&lt;&#x3D;P&lt;&#x3D;99），第二个数字表示初始方向,-1表示向左，1表示向右，0表示静止。</p>
+<h3 id="输出描述："><a href="#输出描述：" class="headerlink" title="输出描述："></a>输出描述：</h3><p>  蚂蚁A从开始到坠落的时间。若不会坠落，输出“Cannot fall!”</p>
+<h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><p>输入：</p>
+<pre><code>4
+10 1
+90 0
+95 -1
+98 -1
+</code></pre>
+<p>输出：</p>
+<pre><code>98
+</code></pre>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">define</span> _CRT_SECURE_NO_WARNINGS 1</span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span>
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token keyword">int</span> N <span class="token operator">=</span> <span class="token number">100</span> <span class="token operator">+</span> <span class="token number">10</span><span class="token punctuation">;</span>
+<span class="token keyword">struct</span> Ant
+<span class="token punctuation">{</span>
+    <span class="token keyword">int</span> position<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> direction<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">bool</span> <span class="token function">Compare</span><span class="token punctuation">(</span>Ant x<span class="token punctuation">,</span> Ant y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> x<span class="token punctuation">.</span>position <span class="token operator">&lt;</span> y<span class="token punctuation">.</span>position<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+Ant ants<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">int</span> n<span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>cin <span class="token operator">>></span> n<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> left<span class="token punctuation">,</span> right<span class="token punctuation">;</span>
+        <span class="token keyword">int</span> position<span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            cin <span class="token operator">>></span> ants<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>position <span class="token operator">>></span> ants<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>direction<span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>ants<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>direction <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+                position <span class="token operator">=</span> ants<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>position<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 不动</span>
+        <span class="token punctuation">}</span>
+        <span class="token function">sort</span><span class="token punctuation">(</span>ants<span class="token punctuation">,</span> ants<span class="token operator">+</span>n<span class="token punctuation">,</span> Compare<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//依据position升序排列</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>ants<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>position <span class="token operator">&lt;</span> position <span class="token operator">&amp;&amp;</span> ants<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>direction <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span>
+                left<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>ants<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>position<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>ants<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>position <span class="token operator">></span> position <span class="token operator">&amp;&amp;</span> ants<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>direction <span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+                right<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>ants<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>position<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>left<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> right<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Cannot fall!"</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+        <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>left<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;</span> right<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+            cout <span class="token operator">&lt;&lt;</span> right<span class="token punctuation">[</span>left<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+        <span class="token keyword">else</span>
+            cout <span class="token operator">&lt;&lt;</span> <span class="token number">100</span> <span class="token operator">-</span> left<span class="token punctuation">[</span>left<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> right<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+]]></content>
+      <categories>
+        <category>考研复试上机</category>
+      </categories>
+      <tags>
+        <tag>模拟</tag>
+        <tag>北大</tag>
+      </tags>
+  </entry>
 </search>
