@@ -4,10 +4,11 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="abc, C++,Python,算法,AI">
-    <meta name="description" content="描述设a、b、c均是0到9之间的数字，abc、bcc是两个三位数，且有：abc+bcc&amp;#x3D;532。求满足条件的所有a、b、c的值。
-输入题目没有任何输入。
-输出请输出所有满足题目条件的a、b、c的值。 a、b、c之间用空格隔开。 每">
+    <meta name="keywords" content="特殊乘法, C++,Python,算法,AI">
+    <meta name="description" content="http://t.cn/Ai8by9vW
+描述写个算法，对2个小于1000000000的输入，求结果。 特殊乘法举例：123 * 45 &amp;#x3D; 14 +15 +24 +25 +34+35
+输入描述：两个小于1000000000的数
+输">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +20,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>abc | 田纳尔多の小栈~</title>
+    <title>特殊乘法 | 田纳尔多の小栈~</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
@@ -323,12 +324,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/132.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/124.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">abc</h1>
+                    <h1 class="description center-align post-title">特殊乘法</h1>
                 </div>
             </div>
         </div>
@@ -448,8 +449,8 @@
                                 <span class="chip bg-color">清华</span>
                             </a>
                         
-                            <a href="/tags/%E6%9E%9A%E4%B8%BE/">
-                                <span class="chip bg-color">枚举</span>
+                            <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+                                <span class="chip bg-color">字符串</span>
                             </a>
                         
                     </div>
@@ -473,21 +474,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-01-26
+                    2023-01-29
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-01-28
+                    2023-01-29
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    162
+                    158
                 </div>
                 
 
@@ -509,30 +510,34 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>设a、b、c均是0到9之间的数字，abc、bcc是两个三位数，且有：abc+bcc&#x3D;532。求满足条件的所有a、b、c的值。</p>
-<h2 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h2><p>题目没有任何输入。</p>
-<h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><p>请输出所有满足题目条件的a、b、c的值。 a、b、c之间用空格隔开。 每个输出占一行。</p>
-<p><a target="_blank" rel="noopener" href="http://t.cn/E9WMRTE">地址</a></p>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span>
+                <p><a target="_blank" rel="noopener" href="http://t.cn/Ai8by9vW">http://t.cn/Ai8by9vW</a></p>
+<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>写个算法，对2个小于1000000000的输入，求结果。 特殊乘法举例：123 * 45 &#x3D; 1<em>4 +1</em>5 +2<em>4 +2</em>5 +3<em>4+3</em>5</p>
+<h3 id="输入描述："><a href="#输入描述：" class="headerlink" title="输入描述："></a>输入描述：</h3><p>两个小于1000000000的数</p>
+<h3 id="输出描述："><a href="#输出描述：" class="headerlink" title="输出描述："></a>输出描述：</h3><p>输入可能有多组数据，对于每一组数据，输出Input中的两个数按照题目要求的方法进行运算后得到的结果。</p>
+<h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><p>输入：</p>
+<pre><code>123 45
+</code></pre>
+<p>输出：</p>
+<pre><code>54
+</code></pre>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">define</span> _CRT_SECURE_NO_WARNINGS 1</span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-    <span class="token keyword">int</span> i<span class="token punctuation">,</span>bcc<span class="token punctuation">,</span>a<span class="token punctuation">,</span>b<span class="token punctuation">,</span>c<span class="token punctuation">;</span>
-    <span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span><span class="token number">532</span><span class="token punctuation">;</span><span class="token operator">++</span>i<span class="token punctuation">)</span><span class="token punctuation">{</span>
-        bcc<span class="token operator">=</span><span class="token number">532</span><span class="token operator">-</span>i<span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//若十位与个位相同，判断和是否532</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>bcc<span class="token operator">/</span><span class="token number">10</span><span class="token operator">%</span><span class="token number">10</span> <span class="token operator">==</span> bcc<span class="token operator">%</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-            a<span class="token operator">=</span>i<span class="token operator">/</span><span class="token number">100</span><span class="token punctuation">;</span>
-            c<span class="token operator">=</span>bcc<span class="token operator">%</span><span class="token number">10</span><span class="token punctuation">;</span>
-            b<span class="token operator">=</span>bcc<span class="token operator">/</span><span class="token number">100</span><span class="token punctuation">;</span>
-            
-            <span class="token keyword">if</span><span class="token punctuation">(</span>a<span class="token operator">*</span><span class="token number">100</span><span class="token operator">+</span>b<span class="token operator">*</span><span class="token number">10</span><span class="token operator">+</span>c <span class="token operator">+</span> bcc<span class="token operator">==</span><span class="token number">532</span><span class="token punctuation">)</span>
-                <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d %d %d\n"</span><span class="token punctuation">,</span>a<span class="token punctuation">,</span>b<span class="token punctuation">,</span>c<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    string str1<span class="token punctuation">,</span> str2<span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>cin <span class="token operator">>></span> str1 <span class="token operator">>></span> str2<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> answer <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> str1<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> str2<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span>
+                answer <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>str1<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">-</span> <span class="token string">'0'</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span>str2<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">-</span> <span class="token string">'0'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
+        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d\n"</span><span class="token punctuation">,</span> answer<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -559,7 +564,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://ynbstyj.github.io/2023/01/26/abc/">http://ynbstyj.github.io/2023/01/26/abc/</a>
+                    <a href="http://ynbstyj.github.io/2023/01/29/%E7%89%B9%E6%AE%8A%E4%B9%98%E6%B3%95/">http://ynbstyj.github.io/2023/01/29/%E7%89%B9%E6%AE%8A%E4%B9%98%E6%B3%95/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -601,8 +606,8 @@
                                     <span class="chip bg-color">清华</span>
                                 </a>
                             
-                                <a href="/tags/%E6%9E%9A%E4%B8%BE/">
-                                    <span class="chip bg-color">枚举</span>
+                                <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+                                    <span class="chip bg-color">字符串</span>
                                 </a>
                             
                         </div>
@@ -918,70 +923,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2023/01/26/%E5%8F%8D%E5%BA%8F%E6%95%B0/">
+                <a href="/2023/01/29/%E7%89%B9%E6%AE%8A%E4%B9%98%E6%B3%95/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/114.jpg" class="responsive-img" alt="反序数">
+                        <img src="/medias/featureimages/124.jpg" class="responsive-img" alt="特殊乘法">
                         
-                        <span class="card-title">反序数</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-01-26
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95%E4%B8%8A%E6%9C%BA/" class="post-category">
-                                    考研复试上机
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E6%B8%85%E5%8D%8E/">
-                        <span class="chip bg-color">清华</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%9E%9A%E4%B8%BE/">
-                        <span class="chip bg-color">枚举</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/2023/01/26/abc/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/132.jpg" class="responsive-img" alt="abc">
-                        
-                        <span class="card-title">abc</span>
+                        <span class="card-title">特殊乘法</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -992,7 +945,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-01-26
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-01-29
                             </span>
                         <span class="publish-author">
                             
@@ -1014,8 +967,61 @@
                         <span class="chip bg-color">清华</span>
                     </a>
                     
-                    <a href="/tags/%E6%9E%9A%E4%B8%BE/">
-                        <span class="chip bg-color">枚举</span>
+                    <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+                        <span class="chip bg-color">字符串</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/01/29/%E6%89%BE%E4%BD%8D%E7%BD%AE/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/167.jpg" class="responsive-img" alt="找位置">
+                        
+                        <span class="card-title">找位置</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-01-29
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95%E4%B8%8A%E6%9C%BA/" class="post-category">
+                                    考研复试上机
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%8D%8E%E7%A7%91/">
+                        <span class="chip bg-color">华科</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%9F%A5%E6%89%BE/">
+                        <span class="chip bg-color">查找</span>
                     </a>
                     
                 </div>
