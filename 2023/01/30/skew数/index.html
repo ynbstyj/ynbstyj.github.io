@@ -4,8 +4,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="留言板, C++,Python,算法,AI">
-    <meta name="description" content="记录生活，记录知识">
+    <meta name="keywords" content="skew数, C++,Python,算法,AI">
+    <meta name="description" content="http://t.cn/Ai8IALKI
+描述在 skew binary 表示中，第 k 位的值 x[k] 表示 x[k]×(2^(k+1)-1)。每个位上的可能数字是 0 或 1，最后面一个非零位可以是 2，例如，10120(skew) ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +18,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>留言板 | 田纳尔多の小栈~</title>
+    <title>skew数 | 田纳尔多の小栈~</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
@@ -321,12 +322,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/76.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">留言板</h1>
+                    <h1 class="description center-align post-title">skew数</h1>
                 </div>
             </div>
         </div>
@@ -440,12 +441,29 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E5%8C%97%E5%A4%A7/">
+                                <span class="chip bg-color">北大</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+                                <span class="chip bg-color">字符串</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95%E4%B8%8A%E6%9C%BA/" class="post-category">
+                                考研复试上机
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -454,21 +472,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-01-26
+                    2023-01-30
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-01-26
+                    2023-01-30
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    66
+                    226
                 </div>
                 
 
@@ -490,7 +508,44 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>欢迎来到我的博客！&gt; 欢迎在这里留言！任何问题都可以在这里留言，我会及时回复的，添加email可以获得更快的回复速度，在nickname栏目输入QQ号可以直接获取你的QQ头像。</p>
+                <p><a target="_blank" rel="noopener" href="http://t.cn/Ai8IALKI">http://t.cn/Ai8IALKI</a></p>
+<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>在 skew binary 表示中，第 k 位的值 x[k] 表示 x[k]×(2^(k+1)-1)。每个位上的可能数字是 0 或 1，最后面一个非零位可以是 2，例如，10120(skew) &#x3D; 1×(2^5-1) + 0×(2^4-1) + 1×(2^3-1) + 2×(2^2-1) + 0×(2^1-1) &#x3D; 31 + 0 + 7 + 6 + 0 &#x3D; 44。前十个 skew 数是 0、1、2、10、11、12、20、100、101、以及 102。</p>
+<h3 id="输入描述："><a href="#输入描述：" class="headerlink" title="输入描述："></a>输入描述：</h3><p>输入包括多组数据，每组数据包含一个 skew 数。</p>
+<h3 id="输出描述："><a href="#输出描述：" class="headerlink" title="输出描述："></a>输出描述：</h3><p>对应每一组数据，输出相应的十进制形式。结果不超过 2^31-1。</p>
+<h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><p>输入：</p>
+<pre><code>10120
+200000000000000000000000000000
+10
+1000000000000000000000000000000
+11
+100
+11111000001110000101101102000
+</code></pre>
+<p>输出：</p>
+<pre><code>44
+2147483646
+3
+2147483647
+4
+7
+1041110737
+</code></pre>
+<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">define</span> _CRT_SECURE_NO_WARNINGS 1</span>
+<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span>
+<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    string str<span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>cin <span class="token operator">>></span> str<span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> sum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> k<span class="token operator">=</span>str<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> str<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">,</span> k<span class="token operator">--</span><span class="token punctuation">)</span>
+            sum <span class="token operator">+</span><span class="token operator">=</span> <span class="token punctuation">(</span>str<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">-</span> <span class="token string">'0'</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span><span class="token function">pow</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> k<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        cout <span class="token operator">&lt;&lt;</span> sum <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -517,7 +572,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://ynbstyj.github.io/guestbook/index.html">http://ynbstyj.github.io/guestbook/index.html</a>
+                    <a href="http://ynbstyj.github.io/2023/01/30/skew%E6%95%B0/">http://ynbstyj.github.io/2023/01/30/skew%E6%95%B0/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -554,7 +609,15 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/%E5%8C%97%E5%A4%A7/">
+                                    <span class="chip bg-color">北大</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+                                    <span class="chip bg-color">字符串</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -873,13 +936,13 @@
                 <i class="far fa-dot-circle"></i>&nbsp;本篇
             </div>
             <div class="card">
-                <a href="/guestbook/index.html">
+                <a href="/2023/01/30/skew%E6%95%B0/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/76.jpg" class="responsive-img" alt="留言板">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="skew数">
                         
-                        <span class="card-title">留言板</span>
+                        <span class="card-title">skew数</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -890,17 +953,33 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-01-26
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-01-30
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Jack Tim
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95%E4%B8%8A%E6%9C%BA/" class="post-category">
+                                    考研复试上机
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
 
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%8C%97%E5%A4%A7/">
+                        <span class="chip bg-color">北大</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+                        <span class="chip bg-color">字符串</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
@@ -908,16 +987,16 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/guestbook/index.html">
+                <a href="/2023/01/30/%E5%AD%97%E6%AF%8D%E7%BB%9F%E8%AE%A1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/76.jpg" class="responsive-img" alt="留言板">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="字母统计">
                         
-                        <span class="card-title">留言板</span>
+                        <span class="card-title">字母统计</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -928,17 +1007,32 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-01-26
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-01-30
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            Jack Tim
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95%E4%B8%8A%E6%9C%BA/" class="post-category">
+                                    考研复试上机
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
-
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E4%B8%8A%E4%BA%A4/">
+                        <span class="chip bg-color">上交</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
+                        <span class="chip bg-color">字符串</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
