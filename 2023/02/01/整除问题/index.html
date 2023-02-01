@@ -4,10 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="质因数的个数, C++,Python,算法,AI">
-    <meta name="description" content="http://t.cn/Aip7J0Oo
-描述求正整数N(N&amp;gt;1)的质因数的个数。 相同的质因数需要重复计算。如120&amp;#x3D;2*2*2*3*5，共有5个质因数。
-输入描述：可能有多组测试数据，每组测试数据的输入是一个正整数N，(">
+    <meta name="keywords" content="整除问题, C++,Python,算法,AI">
+    <meta name="description" content="http://t.cn/Aip7eHBD
+描述给定n，a求最大的k，使n！可以被 a^k 整除但不能被 a^(k+1) 整除。
+输入描述：两个整数n(2&amp;lt;&amp;#x3D;n&amp;lt;&amp;#x3D;1000)，a(2&amp;lt;&amp;#x3D;a&amp;lt">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +19,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>质因数的个数 | 田纳尔多の小栈~</title>
+    <title>整除问题 | 田纳尔多の小栈~</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
@@ -323,12 +323,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/96.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/90.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">质因数的个数</h1>
+                    <h1 class="description center-align post-title">整除问题</h1>
                 </div>
             </div>
         </div>
@@ -444,8 +444,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%B8%85%E5%8D%8E/">
-                                <span class="chip bg-color">清华</span>
+                            <a href="/tags/%E4%B8%8A%E4%BA%A4/">
+                                <span class="chip bg-color">上交</span>
                             </a>
                         
                             <a href="/tags/%E8%B4%A8%E6%95%B0/">
@@ -487,7 +487,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    236
+                    386
                 </div>
                 
 
@@ -509,28 +509,31 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><a target="_blank" rel="noopener" href="http://t.cn/Aip7J0Oo">http://t.cn/Aip7J0Oo</a></p>
-<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>求正整数N(N&gt;1)的质因数的个数。 相同的质因数需要重复计算。如120&#x3D;2*2*2*3*5，共有5个质因数。</p>
-<h3 id="输入描述："><a href="#输入描述：" class="headerlink" title="输入描述："></a>输入描述：</h3><p>可能有多组测试数据，每组测试数据的输入是一个正整数N，(1&lt;N&lt;10^9)。</p>
-<h3 id="输出描述："><a href="#输出描述：" class="headerlink" title="输出描述："></a>输出描述：</h3><p>对于每组数据，输出N的质因数的个数。</p>
+                <p><a target="_blank" rel="noopener" href="http://t.cn/Aip7eHBD">http://t.cn/Aip7eHBD</a></p>
+<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>给定n，a求最大的k，使n！可以被 a^k 整除但不能被 a^(k+1) 整除。</p>
+<h3 id="输入描述："><a href="#输入描述：" class="headerlink" title="输入描述："></a>输入描述：</h3><p>两个整数n(2&lt;&#x3D;n&lt;&#x3D;1000)，a(2&lt;&#x3D;a&lt;&#x3D;1000)</p>
+<h3 id="输出描述："><a href="#输出描述：" class="headerlink" title="输出描述："></a>输出描述：</h3><p>一个整数.</p>
 <h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><p>输入：</p>
-<pre><code>120
+<pre><code>6 10
 </code></pre>
 <p>输出：</p>
-<pre><code>5
+<pre><code>1
 </code></pre>
+<p>首先暴力求出来 n 的阶乘肯定不行，那么我们可以把 a 给拆分成若干个质因子之积，然后看下 2 ~ n 中包含多少个对应的质因子，就能得出来最多可以整除 a 的多少次方。比如 a 中有质因子p1, p2, p3，2~n中有对应的质因子num1, num2……. 个，那 k 的最大值也就是若干个 num 的最小值。</p>
 <pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">define</span> _CRT_SECURE_NO_WARNINGS 1</span>
 <span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 
-<span class="token keyword">const</span> <span class="token keyword">int</span> N <span class="token operator">=</span> <span class="token function">sqrt</span><span class="token punctuation">(</span><span class="token number">1e9</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token keyword">int</span> N <span class="token operator">=</span> <span class="token function">sqrt</span><span class="token punctuation">(</span><span class="token number">1e3</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">10</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token keyword">int</span> INF <span class="token operator">=</span> INT_MAX<span class="token punctuation">;</span>
+
 vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> prime<span class="token punctuation">;</span>
 vector<span class="token operator">&lt;</span><span class="token keyword">bool</span><span class="token operator">></span> <span class="token function">isPrime</span><span class="token punctuation">(</span>N<span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token keyword">void</span> <span class="token function">Initial</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     isPrime<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> isPrime<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
     <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> N<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>isPrime<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//非质数则跳过</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>isPrime<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span>
             <span class="token keyword">continue</span><span class="token punctuation">;</span>
         prime<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> i <span class="token operator">*</span> i<span class="token punctuation">;</span> j <span class="token operator">&lt;</span> N<span class="token punctuation">;</span> j <span class="token operator">+</span><span class="token operator">=</span> i<span class="token punctuation">)</span>
@@ -541,25 +544,40 @@ vector<span class="token operator">&lt;</span><span class="token keyword">bool</
 
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token function">Initial</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">int</span> n<span class="token punctuation">;</span>
-    <span class="token keyword">while</span> <span class="token punctuation">(</span>cin <span class="token operator">>></span> n<span class="token punctuation">)</span>
+    <span class="token keyword">int</span> n<span class="token punctuation">,</span> a<span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>cin <span class="token operator">>></span> n <span class="token operator">>></span> a<span class="token punctuation">)</span>
     <span class="token punctuation">{</span>
-        <span class="token keyword">int</span> answer <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> prime<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> prime<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">int</span> factor <span class="token operator">=</span> prime<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
-            <span class="token keyword">while</span> <span class="token punctuation">(</span>n <span class="token operator">%</span> factor <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
-            <span class="token punctuation">{</span>
-                n <span class="token operator">/</span><span class="token operator">=</span> factor<span class="token punctuation">;</span>
-                answer<span class="token operator">++</span><span class="token punctuation">;</span>
+        map<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">></span> exponentN<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//存储n!的质因数分解</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> j <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">int</span> number <span class="token operator">=</span> j<span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> prime<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> prime<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;=</span> number<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">while</span> <span class="token punctuation">(</span>number <span class="token operator">%</span> prime<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+                <span class="token punctuation">{</span>
+                    exponentN<span class="token punctuation">[</span>prime<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">++</span><span class="token punctuation">;</span>
+                    number <span class="token operator">/</span><span class="token operator">=</span> prime<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
             <span class="token punctuation">}</span>
         <span class="token punctuation">}</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>n <span class="token operator">></span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//还存在一个质因数</span>
-            answer<span class="token operator">++</span><span class="token punctuation">;</span>
+        map<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">></span> exponentA<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//存储a的质因数分解</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> prime<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">while</span> <span class="token punctuation">(</span>a <span class="token operator">%</span> prime<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span>
+            <span class="token punctuation">{</span>
+                exponentA<span class="token punctuation">[</span>prime<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token operator">++</span><span class="token punctuation">;</span>
+                a <span class="token operator">/</span><span class="token operator">=</span> prime<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">int</span> answer <span class="token operator">=</span> INF<span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>map<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">></span><span class="token operator">::</span>iterator it <span class="token operator">=</span> exponentA<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> it <span class="token operator">!=</span> exponentA<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">++</span>it<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>exponentN<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span>it<span class="token operator">-</span><span class="token operator">></span>first<span class="token punctuation">)</span> <span class="token operator">==</span> exponentN<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+                answer <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+            <span class="token keyword">else</span>
+                answer <span class="token operator">=</span> <span class="token function">min</span><span class="token punctuation">(</span>answer<span class="token punctuation">,</span> exponentN<span class="token punctuation">[</span>it<span class="token operator">-</span><span class="token operator">></span>first<span class="token punctuation">]</span> <span class="token operator">/</span> it<span class="token operator">-</span><span class="token operator">></span>second<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
         <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d\n"</span><span class="token punctuation">,</span> answer<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -586,7 +604,7 @@ vector<span class="token operator">&lt;</span><span class="token keyword">bool</
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://ynbstyj.github.io/2023/02/01/%E8%B4%A8%E5%9B%A0%E6%95%B0%E7%9A%84%E4%B8%AA%E6%95%B0/">http://ynbstyj.github.io/2023/02/01/%E8%B4%A8%E5%9B%A0%E6%95%B0%E7%9A%84%E4%B8%AA%E6%95%B0/</a>
+                    <a href="http://ynbstyj.github.io/2023/02/01/%E6%95%B4%E9%99%A4%E9%97%AE%E9%A2%98/">http://ynbstyj.github.io/2023/02/01/%E6%95%B4%E9%99%A4%E9%97%AE%E9%A2%98/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -624,8 +642,8 @@ vector<span class="token operator">&lt;</span><span class="token keyword">bool</
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%B8%85%E5%8D%8E/">
-                                    <span class="chip bg-color">清华</span>
+                                <a href="/tags/%E4%B8%8A%E4%BA%A4/">
+                                    <span class="chip bg-color">上交</span>
                                 </a>
                             
                                 <a href="/tags/%E8%B4%A8%E6%95%B0/">
@@ -945,17 +963,18 @@ vector<span class="token operator">&lt;</span><span class="token keyword">bool</
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2023/02/01/%E7%BA%A6%E6%95%B0%E7%9A%84%E4%B8%AA%E6%95%B0/">
+                <a href="/2023/02/01/%E6%95%B4%E9%99%A4%E9%97%AE%E9%A2%98/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/58.jpg" class="responsive-img" alt="约数的个数">
+                        <img src="/medias/featureimages/90.jpg" class="responsive-img" alt="整除问题">
                         
-                        <span class="card-title">约数的个数</span>
+                        <span class="card-title">整除问题</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -965,9 +984,9 @@ vector<span class="token operator">&lt;</span><span class="token keyword">bool</
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-02-01
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-01
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -980,11 +999,12 @@ vector<span class="token operator">&lt;</span><span class="token keyword">bool</
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%B8%85%E5%8D%8E/">
-                        <span class="chip bg-color">清华</span>
+                    <a href="/tags/%E4%B8%8A%E4%BA%A4/">
+                        <span class="chip bg-color">上交</span>
                     </a>
                     
                     <a href="/tags/%E8%B4%A8%E6%95%B0/">
@@ -1002,13 +1022,13 @@ vector<span class="token operator">&lt;</span><span class="token keyword">bool</
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/01/31/Prime-Number/">
+                <a href="/2023/02/01/%E7%BA%A6%E6%95%B0%E7%9A%84%E4%B8%AA%E6%95%B0/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Prime Number">
+                        <img src="/medias/featureimages/58.jpg" class="responsive-img" alt="约数的个数">
                         
-                        <span class="card-title">Prime Number</span>
+                        <span class="card-title">约数的个数</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1019,7 +1039,7 @@ vector<span class="token operator">&lt;</span><span class="token keyword">bool</
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-01-31
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-01
                             </span>
                         <span class="publish-author">
                             
@@ -1036,8 +1056,8 @@ vector<span class="token operator">&lt;</span><span class="token keyword">bool</
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E4%B8%8A%E4%BA%A4/">
-                        <span class="chip bg-color">上交</span>
+                    <a href="/tags/%E6%B8%85%E5%8D%8E/">
+                        <span class="chip bg-color">清华</span>
                     </a>
                     
                     <a href="/tags/%E8%B4%A8%E6%95%B0/">
