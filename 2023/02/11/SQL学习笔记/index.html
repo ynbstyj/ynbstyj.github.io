@@ -487,14 +487,14 @@ select courseno 课程号, max(score) 最高分, min(score) 最低分 from score
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    458
+                    674
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
 
@@ -542,6 +542,21 @@ select courseno 课程号, max(score) 最高分, min(score) 最低分 from score
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>10、统计每门课程的学生选修人数（超过2人的课程才统计，要求输出课程号和选修人数，查询结果按人数降序排序，若人数相同，按课程号升序排序）</p>
 <pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> <span class="token punctuation">(</span><span class="token keyword">select</span> courseNo<span class="token punctuation">,</span> <span class="token function">count</span><span class="token punctuation">(</span>courseNo<span class="token punctuation">)</span> 总数 <span class="token keyword">from</span> scores <span class="token keyword">group</span> <span class="token keyword">by</span> courseNo <span class="token keyword">order</span> <span class="token keyword">by</span> 总数 <span class="token keyword">desc</span><span class="token punctuation">,</span> courseNo <span class="token keyword">asc</span><span class="token punctuation">)</span> <span class="token keyword">where</span> 总数<span class="token operator">></span><span class="token number">2</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>11、查询两门以上不及格课程的同学的学号及其平均成绩</p>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">-- 代码一：</span>
+<span class="token keyword">select</span> studentNo<span class="token punctuation">,</span> 平均成绩 <span class="token keyword">from</span> <span class="token punctuation">(</span><span class="token keyword">select</span> <span class="token function">avg</span><span class="token punctuation">(</span>score<span class="token punctuation">)</span> 平均成绩<span class="token punctuation">,</span> <span class="token function">count</span><span class="token punctuation">(</span>studentNo<span class="token punctuation">)</span> 总数 <span class="token keyword">from</span> <span class="token punctuation">(</span><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> scores <span class="token keyword">where</span> score <span class="token operator">&lt;</span> <span class="token number">60</span><span class="token punctuation">)</span> <span class="token keyword">group</span> <span class="token keyword">by</span> studentNo<span class="token punctuation">)</span> <span class="token keyword">where</span> 总数<span class="token operator">></span><span class="token number">2</span><span class="token punctuation">;</span> 
+<span class="token comment" spellcheck="true">-- 代码二：</span>
+<span class="token keyword">select</span> studentNo 学号<span class="token punctuation">,</span> <span class="token function">avg</span><span class="token punctuation">(</span>score<span class="token punctuation">)</span> 平均成绩 <span class="token keyword">from</span> scores <span class="token keyword">where</span> score<span class="token operator">&lt;</span><span class="token number">60</span> <span class="token keyword">group</span> <span class="token keyword">by</span> studentNo <span class="token keyword">having</span> <span class="token function">count</span><span class="token punctuation">(</span>courseNo<span class="token punctuation">)</span><span class="token operator">></span><span class="token number">2</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>12、查询学生的总成绩并进行排名</p>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> name <span class="token operator">*</span><span class="token punctuation">,</span> <span class="token function">sum</span><span class="token punctuation">(</span>score<span class="token punctuation">)</span> 总成绩 <span class="token keyword">from</span> scores <span class="token keyword">group</span> <span class="token keyword">by</span> studentNo <span class="token keyword">order</span> <span class="token keyword">by</span> <span class="token keyword">desc</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>13、查询所有课程中成绩小于60分学生的学号和姓名</p>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> st<span class="token punctuation">.</span>studentNo<span class="token punctuation">,</span> st<span class="token punctuation">.</span>name <span class="token keyword">from</span> students st <span class="token keyword">right</span> <span class="token keyword">join</span> scores sc <span class="token keyword">on</span> st<span class="token punctuation">.</span>studentNo <span class="token operator">=</span> sc<span class="token punctuation">.</span>studentNo <span class="token keyword">where</span> score<span class="token operator">&lt;</span><span class="token number">60</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>14、查询只选修了2门课程的全部学生的学号和姓名</p>
+<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> <span class="token punctuation">(</span><span class="token keyword">select</span> st<span class="token punctuation">.</span>studentNo<span class="token punctuation">,</span> st<span class="token punctuation">.</span>name<span class="token punctuation">,</span> <span class="token function">count</span><span class="token punctuation">(</span>st<span class="token punctuation">.</span>studentNo<span class="token punctuation">)</span> 课程总数 <span class="token keyword">from</span> students st <span class="token keyword">left</span> <span class="token keyword">join</span> scores sc <span class="token keyword">on</span> st<span class="token punctuation">.</span>studentNo <span class="token operator">=</span> sc<span class="token punctuation">.</span>studentNo <span class="token keyword">group</span> <span class="token keyword">by</span> st<span class="token punctuation">.</span>studentNo<span class="token punctuation">)</span> <span class="token keyword">where</span> 课程总数<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">;</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
                 
@@ -1226,7 +1241,7 @@ select courseno 课程号, max(score) 最高分, min(score) 最低分 from score
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">22.4k</span>
+                        class="white-color">22.6k</span>
             
             
             
