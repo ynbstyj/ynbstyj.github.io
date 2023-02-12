@@ -35,6 +35,16 @@ touch 文件名
     <link rel="stylesheet" type="text/css" href="/css/my.css">
     <link rel="stylesheet" type="text/css" href="/css/dark.css">
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+	
+	<script>
+	var _hmt = _hmt || [];
+	(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?5b2e1a1393cdd5dcb1a3fd65e471c0e5";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+	})();
+	</script>
 <style type="text/css" lang="css">
     #loading-container{
         position: fixed;
@@ -167,6 +177,8 @@ touch 文件名
 })()
  </script><meta name="generator" content="Hexo 6.3.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
 <link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+
 
 
 
@@ -492,14 +504,14 @@ touch 文件名
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2k
+                    2.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    7 分
+                    10 分
                 </div>
                 
 
@@ -508,6 +520,9 @@ touch 文件名
         </div>
         <hr class="clearfix">
 
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
         
 
         
@@ -561,19 +576,58 @@ touch 文件名
     -i: 在覆盖目标文件之前将给出提示要求用户确认
 
 #实例：
-    mv -i abc.txt abc.log
+    mv -i abc.txt def.txt
+#重命名之后结果为def.txt，abc.txt已删除
 </code></pre>
 <h2 id="2-查看文件内容"><a href="#2-查看文件内容" class="headerlink" title="2.查看文件内容"></a>2.查看文件内容</h2><h3 id="2-1-查看文件内容-cat命令"><a href="#2-1-查看文件内容-cat命令" class="headerlink" title="2.1 查看文件内容-cat命令"></a>2.1 查看文件内容-cat命令</h3><pre><code>#格式
     cat [选项] 文件
 #说明：
-    -n:对输出的所有行编号
-    -b：对输出的非空行编号 。
+    -n:对输出的所有行编号，包括空行
+    -b:对输出的非空行编号，不包括空行
+</code></pre>
+<p>效果如下：</p>
+<pre><code>[root@localhost home]# cat -n ip.txt 
+     1	ens33: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500
+     2	        inet 192.168.44.128  netmask 255.255.255.0  broadcast 192.168.44.255
+     3	        inet6 fe80::94b2:89ae:d08e:93ba  prefixlen 64  scopeid 0x20&lt;link&gt;
+     4	        ether 00:0c:29:80:2a:97  txqueuelen 1000  (Ethernet)
+     5	        RX packets 16392  bytes 9667834 (9.2 MiB)
+     6	        RX errors 0  dropped 0  overruns 0  frame 0
+     7	        TX packets 7758  bytes 919765 (898.2 KiB)
+     8	        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+     9	
+    10	lo: flags=73&lt;UP,LOOPBACK,RUNNING&gt;  mtu 65536
+    11	        inet 127.0.0.1  netmask 255.0.0.0
+    12	        inet6 ::1  prefixlen 128  scopeid 0x10&lt;host&gt;
+    13	        loop  txqueuelen 1000  (Local Loopback)
+    14	        RX packets 68  bytes 5916 (5.7 KiB)
+    15	        RX errors 0  dropped 0  overruns 0  frame 0
+    16	        TX packets 68  bytes 5916 (5.7 KiB)
+    17	        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+    18	
+</code></pre>
+<pre><code>[root@localhost home]# cat -b ip.txt 
+     1	ens33: flags=4163&lt;UP,BROADCAST,RUNNING,MULTICAST&gt;  mtu 1500
+     2	        inet 192.168.44.128  netmask 255.255.255.0  broadcast 192.168.44.255
+     3	        inet6 fe80::94b2:89ae:d08e:93ba  prefixlen 64  scopeid 0x20&lt;link&gt;
+     4	        ether 00:0c:29:80:2a:97  txqueuelen 1000  (Ethernet)
+     5	        RX packets 16392  bytes 9667834 (9.2 MiB)
+     6	        RX errors 0  dropped 0  overruns 0  frame 0
+     7	        TX packets 7758  bytes 919765 (898.2 KiB)
+     8	        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+     9	lo: flags=73&lt;UP,LOOPBACK,RUNNING&gt;  mtu 65536
+    10	        inet 127.0.0.1  netmask 255.0.0.0
+    11	        inet6 ::1  prefixlen 128  scopeid 0x10&lt;host&gt;
+    12	        loop  txqueuelen 1000  (Local Loopback)
+    13	        RX packets 68  bytes 5916 (5.7 KiB)
+    14	        RX errors 0  dropped 0  overruns 0  frame 0
+    15	        TX packets 68  bytes 5916 (5.7 KiB)
+    16	        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
 </code></pre>
 <ul>
-<li><p>cat还能合并查看多个文件内容，用法：cat 文件 1 文件 2 文件N.</p>
-</li>
-<li><p>使用cat查看操作系统信息：cat &#x2F;proc&#x2F;version</p>
-</li>
+<li>cat还能同时查看多个文件内容，如：cat 12.txt 13.txt 14.txt</li>
+<li>使用cat查看操作系统信息：cat &#x2F;proc&#x2F;version</li>
 </ul>
 <h3 id="2-2-分页查看-more命令"><a href="#2-2-分页查看-more命令" class="headerlink" title="2.2 分页查看-more命令"></a>2.2 分页查看-more命令</h3><p>more命令可以分屏显示文件内容，一页一页看 。</p>
 <pre><code>more 文件名
@@ -583,6 +637,7 @@ touch 文件名
 -f 循环读取
 -n&lt;行数&gt; 显示文件的尾部 n 行内容
 </code></pre>
+<p>tail -f 文件名    ——查看日志（工作中最常用的命令）<br>tail -f &#x2F;var&#x2F;log&#x2F;messages   ——实时监控Linux系统</p>
 <h3 id="2-4-过滤查看-grep"><a href="#2-4-过滤查看-grep" class="headerlink" title="2.4 过滤查看-grep"></a>2.4 过滤查看-grep</h3><p>grep命令能根据规则搜索文本，并且把匹配的行显示出来</p>
 <pre><code>#格式：
     grep [选项] &quot;规则&quot; 文件名
@@ -598,6 +653,8 @@ touch 文件名
     z$ : z结尾的行
     ^a.*z$ : a开头,z结尾的行
 </code></pre>
+<p>如：grep ‘errors’ ip.txt，把包含‘errors’的行显示出来；</p>
+<p>grep -v ‘errors’ ip.txt，把不包含‘errors’的行显示出来</p>
 <h2 id="3-其它命令"><a href="#3-其它命令" class="headerlink" title="3.其它命令"></a>3.其它命令</h2><h3 id="3-1-清屏-clear"><a href="#3-1-清屏-clear" class="headerlink" title="3.1 清屏-clear"></a>3.1 清屏-clear</h3><p>清除屏幕显示历史内容</p>
 <pre><code>clear
 </code></pre>
@@ -1237,8 +1294,9 @@ tar -zxvf 压缩包名.tar.gz #用gzip解压后同时解包
 
 
 
+
 <!-- 代码块功能依赖 -->
-<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFunction.js"></script>
 
 <!-- 代码语言 -->
 
@@ -1253,6 +1311,13 @@ tar -zxvf 压缩包名.tar.gz #用gzip解压后同时解包
 <!-- 代码块收缩 -->
 
 <script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+<!-- 代码块折行 -->
+
+<style type="text/css">
+code[class*="language-"], pre[class*="language-"] { white-space: pre !important; }
+</style>
 
 
     </div>
@@ -1422,7 +1487,7 @@ tar -zxvf 压缩包名.tar.gz #用gzip解压后同时解包
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">24.6k</span>
+                        class="white-color">25.1k</span>
             
             
             
