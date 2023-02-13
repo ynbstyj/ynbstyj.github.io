@@ -4,10 +4,18 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="简单计算器, C++,Python,算法,AI">
-    <meta name="description" content="http://t.cn/AiKoGS94
-描述  读入一个只包含 +, -, *, &amp;#x2F; 的非负整数计算表达式，计算该表达式的值。
-输入描述：  测试输入包含若干测试用例，每个测试用例占一行，每行不超过200个字符，整数和运算符之间">
+    <meta name="keywords" content="Linux学习笔记3, C++,Python,算法,AI">
+    <meta name="description" content="1.vi 简介
+vi 是一个基于字符界面文本编辑程序
+vi 没有菜单，只有命令，虽然很多，只需了解常用的即可；
+vi 有三种基本工作模式 
+命令模式
+输入模式
+末行模式(底线命令模式)
+
+
+2. vi 基本操作流程
+命令行输入vi + 文件">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +27,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>简单计算器 | 田纳尔多の小栈~</title>
+    <title>Linux学习笔记3 | 田纳尔多の小栈~</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
@@ -356,12 +364,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/159.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/3.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">简单计算器</h1>
+                    <h1 class="description center-align post-title">Linux学习笔记3</h1>
                 </div>
             </div>
         </div>
@@ -477,16 +485,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%B5%99%E5%A4%A7/">
-                                <span class="chip bg-color">浙大</span>
+                            <a href="/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/">
+                                <span class="chip bg-color">软件测试</span>
                             </a>
                         
-                            <a href="/tags/%E6%A0%88/">
-                                <span class="chip bg-color">栈</span>
+                            <a href="/tags/Linux%E5%AD%A6%E4%B9%A0/">
+                                <span class="chip bg-color">Linux学习</span>
                             </a>
                         
-                            <a href="/tags/%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B1%82%E5%80%BC/">
-                                <span class="chip bg-color">表达式求值</span>
+                            <a href="/tags/vim/">
+                                <span class="chip bg-color">vim</span>
                             </a>
                         
                     </div>
@@ -497,8 +505,12 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95%E4%B8%8A%E6%9C%BA/" class="post-category">
-                                考研复试上机
+                            <a href="/categories/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/" class="post-category">
+                                软件测试
+                            </a>
+                        
+                            <a href="/categories/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/Linux/" class="post-category">
+                                Linux
                             </a>
                         
                     </div>
@@ -510,28 +522,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-01-30
+                    2023-02-13
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-01-30
+                    2023-02-13
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    607
+                    339
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    1 分
                 </div>
                 
 
@@ -549,82 +561,39 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><a target="_blank" rel="noopener" href="http://t.cn/AiKoGS94">http://t.cn/AiKoGS94</a></p>
-<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>  读入一个只包含 +, -, *, &#x2F; 的非负整数计算表达式，计算该表达式的值。</p>
-<h3 id="输入描述："><a href="#输入描述：" class="headerlink" title="输入描述："></a>输入描述：</h3><p>  测试输入包含若干测试用例，每个测试用例占一行，每行不超过200个字符，整数和运算符之间用一个空格分隔。没有非法表达式。当一行中只有0时输入结束，相应的结果不要输出。</p>
-<h3 id="输出描述："><a href="#输出描述：" class="headerlink" title="输出描述："></a>输出描述：</h3><p>  对每个测试用例输出1行，即该表达式的值，精确到小数点后2位。</p>
-<h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><p>输入：</p>
-<pre class="line-numbers language-none"><code class="language-none">1 + 2
-4 + 2 * 5 - 7 &#x2F; 11
-0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-<p>输出：</p>
-<pre class="line-numbers language-none"><code class="language-none">3.00
-13.36<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">_CRT_SECURE_NO_WARNINGS</span> <span class="token expression"><span class="token number">1</span></span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span>
-<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
-
-<span class="token comment">/*
-
-之前计算表达式的题，不需要处理空格。两者的区别就在于怎么处理输入顺序
-
-无空格版本：先输入数字， 之后就按照运算符+数字的顺序反复。直到输入的运算符为换行符为止
-空格版本：先输入数字+空格符，再输入运算符，空格，数字，之后就按照空格，运算符，空格，数字的顺序输入，直到第一个空格为换行符为止
-
-
-*/</span>
-
-
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">&#123;</span>
-    <span class="token keyword">double</span> t<span class="token punctuation">,</span> term<span class="token punctuation">;</span><span class="token comment">//测试数据默认先输入数字。如果存在先输入符号的情况，可以用if语句,比如-5</span>
-    <span class="token keyword">char</span> c<span class="token punctuation">;</span><span class="token comment">//紧接着数字输入运算符号,空格</span>
-
-    <span class="token keyword">double</span> a<span class="token punctuation">[</span><span class="token number">150</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment">//保存结果的栈</span>
-    <span class="token keyword">double</span> sum<span class="token punctuation">;</span><span class="token comment">//保存最终结果</span>
-
-    <span class="token keyword">int</span> i<span class="token punctuation">;</span><span class="token comment">//i表示栈的高度，从0开始计算</span>
-    <span class="token keyword">int</span> j<span class="token punctuation">;</span>
-
-    <span class="token comment">//先输入数字，空格</span>
-    <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%lf%c"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>t<span class="token punctuation">,</span> <span class="token operator">&amp;</span>c<span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token constant">EOF</span><span class="token punctuation">)</span>
-    <span class="token punctuation">&#123;</span>
-        sum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-        i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-        a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> t<span class="token punctuation">;</span><span class="token comment">//输入的第一个数字压栈</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>t <span class="token operator">!=</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> c <span class="token operator">==</span> <span class="token char">'\n'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%0.2f\n"</span><span class="token punctuation">,</span> t<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">continue</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>t <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> c <span class="token operator">==</span> <span class="token char">'\n'</span><span class="token punctuation">)</span>
-            <span class="token keyword">break</span><span class="token punctuation">;</span>
-        <span class="token comment">//之后的节奏是：符号 空格 或者 数字，空格，或者 数字，换行</span>
-
-        <span class="token keyword">do</span> <span class="token punctuation">&#123;</span>
-            <span class="token comment">//这时候输入运算符，空格，数字</span>
-            <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%c %lf"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>c<span class="token punctuation">,</span> <span class="token operator">&amp;</span>term<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token comment">//计算逻辑：加法直接压栈，减法压栈相反数，乘法取出一个数相乘后压栈，除法取出一个数相除后压栈</span>
-            <span class="token comment">//最关键的就是这个加法的处理，两个操作数都要压栈</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>c <span class="token operator">==</span> <span class="token char">'+'</span><span class="token punctuation">)</span>
-                a<span class="token punctuation">[</span><span class="token operator">++</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> term<span class="token punctuation">;</span>
-            <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>c <span class="token operator">==</span> <span class="token char">'-'</span><span class="token punctuation">)</span>
-                a<span class="token punctuation">[</span><span class="token operator">++</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span> <span class="token operator">-</span> term<span class="token punctuation">;</span>
-            <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>c <span class="token operator">==</span> <span class="token char">'*'</span><span class="token punctuation">)</span>
-                a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">*=</span> term<span class="token punctuation">;</span>
-            <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>c <span class="token operator">==</span> <span class="token char">'/'</span><span class="token punctuation">)</span>
-                a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">/=</span> term<span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span> <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%c"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>c<span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token constant">EOF</span> <span class="token operator">&amp;&amp;</span> c <span class="token operator">!=</span> <span class="token char">'\n'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//此时又输入空格</span>
-
-        <span class="token keyword">for</span> <span class="token punctuation">(</span>j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;=</span> i<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>
-            sum <span class="token operator">+=</span> a<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%0.2f\n"</span><span class="token punctuation">,</span> sum<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token punctuation">&#125;</span>
-    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+                <h2 id="1-vi-简介"><a href="#1-vi-简介" class="headerlink" title="1.vi 简介"></a>1.vi 简介</h2><ul>
+<li>vi 是一个基于字符界面文本编辑程序</li>
+<li>vi 没有菜单，只有命令，虽然很多，只需了解常用的即可；</li>
+<li>vi 有三种基本工作模式 </li>
+<li>命令模式</li>
+<li>输入模式</li>
+<li>末行模式(底线命令模式)</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/ynbstyj/picb/main/img/20230213124801.png"></p>
+<h2 id="2-vi-基本操作流程"><a href="#2-vi-基本操作流程" class="headerlink" title="2. vi 基本操作流程"></a>2. vi 基本操作流程</h2><ol>
+<li>命令行输入vi + 文件名，进入vi命令模式</li>
+<li>从命令模式下(按i或a)进入文本输入模式</li>
+<li>插入或编辑文件内容</li>
+<li>编辑完成后按ESC键回到命令模式</li>
+<li>从命令模式按冒号(:)进入末行模式</li>
+<li>按wq保存退出，或者按q!不保存退出。</li>
+</ol>
+<h2 id="3-命令模式"><a href="#3-命令模式" class="headerlink" title="3. 命令模式"></a>3. 命令模式</h2><ul>
+<li>当用户输入vi 命令，进入编辑器时，就处于该模式下</li>
+<li>任何时候，不管用户处于何种模式，只要按一下ESC，即可使vi命令模式</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/ynbstyj/picb/main/img/20230213125002.png"></p>
+<h2 id="4-输入模式"><a href="#4-输入模式" class="headerlink" title="4. 输入模式"></a>4. 输入模式</h2><ul>
+<li>在命令模式下输入命令i，a，o都可以进入输入模式</li>
+<li>在输入过程中，若想回到命令模式，按ESC即可</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/ynbstyj/picb/main/img/20230213125108.png"></p>
+<h2 id="5-末行模式"><a href="#5-末行模式" class="headerlink" title="5. 末行模式"></a>5. 末行模式</h2><ul>
+<li>在命令模式下，用户按&quot;:&quot;键(shift+;)，即可进入末行模式</li>
+<li>末行模式时窗口的最后一行显示一个&quot;:&quot;作为模式的提示符，等待用户输入命令</li>
+<li>末行命令执行完后，vi自动回到命令模式</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/ynbstyj/picb/main/img/20230213125221.png"></p>
 
                 
             </div>
@@ -651,7 +620,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://ynbstyj.github.io/2023/01/30/%E7%AE%80%E5%8D%95%E8%AE%A1%E7%AE%97%E5%99%A8/">http://ynbstyj.github.io/2023/01/30/%E7%AE%80%E5%8D%95%E8%AE%A1%E7%AE%97%E5%99%A8/</a>
+                    <a href="http://ynbstyj.github.io/2023/02/13/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B03/">http://ynbstyj.github.io/2023/02/13/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B03/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -689,16 +658,16 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%B5%99%E5%A4%A7/">
-                                    <span class="chip bg-color">浙大</span>
+                                <a href="/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/">
+                                    <span class="chip bg-color">软件测试</span>
                                 </a>
                             
-                                <a href="/tags/%E6%A0%88/">
-                                    <span class="chip bg-color">栈</span>
+                                <a href="/tags/Linux%E5%AD%A6%E4%B9%A0/">
+                                    <span class="chip bg-color">Linux学习</span>
                                 </a>
                             
-                                <a href="/tags/%E8%A1%A8%E8%BE%BE%E5%BC%8F%E6%B1%82%E5%80%BC/">
-                                    <span class="chip bg-color">表达式求值</span>
+                                <a href="/tags/vim/">
+                                    <span class="chip bg-color">vim</span>
                                 </a>
                             
                         </div>
@@ -1014,17 +983,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2023/01/30/%E5%A0%86%E6%A0%88%E7%9A%84%E4%BD%BF%E7%94%A8/">
+                <a href="/2023/02/13/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B03/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/61.jpg" class="responsive-img" alt="堆栈的使用">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="Linux学习笔记3">
                         
-                        <span class="card-title">堆栈的使用</span>
+                        <span class="card-title">Linux学习笔记3</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1034,30 +1004,39 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-01-30
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-13
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95%E4%B8%8A%E6%9C%BA/" class="post-category">
-                                    考研复试上机
+                            <a href="/categories/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/" class="post-category">
+                                    软件测试
+                                </a>
+                            
+                            <a href="/categories/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/Linux/" class="post-category">
+                                    Linux
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%A0%88/">
-                        <span class="chip bg-color">栈</span>
+                    <a href="/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/">
+                        <span class="chip bg-color">软件测试</span>
                     </a>
                     
-                    <a href="/tags/%E5%90%89%E5%A4%A7/">
-                        <span class="chip bg-color">吉大</span>
+                    <a href="/tags/Linux%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">Linux学习</span>
+                    </a>
+                    
+                    <a href="/tags/vim/">
+                        <span class="chip bg-color">vim</span>
                     </a>
                     
                 </div>
@@ -1071,13 +1050,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/01/30/%E6%8B%AC%E5%8F%B7%E5%8C%B9%E9%85%8D%E9%97%AE%E9%A2%98/">
+                <a href="/2023/02/13/SQL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/59.jpg" class="responsive-img" alt="括号匹配问题">
+                        <img src="/medias/featureimages/96.jpg" class="responsive-img" alt="SQL学习笔记">
                         
-                        <span class="card-title">括号匹配问题</span>
+                        <span class="card-title">SQL学习笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1088,14 +1067,18 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-01-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-13
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95%E4%B8%8A%E6%9C%BA/" class="post-category">
-                                    考研复试上机
+                            <a href="/categories/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/" class="post-category">
+                                    软件测试
+                                </a>
+                            
+                            <a href="/categories/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
+                                    数据库
                                 </a>
                             
                             
@@ -1105,8 +1088,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%A0%88/">
-                        <span class="chip bg-color">栈</span>
+                    <a href="/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/">
+                        <span class="chip bg-color">软件测试</span>
+                    </a>
+                    
+                    <a href="/tags/MySQL/">
+                        <span class="chip bg-color">MySQL</span>
                     </a>
                     
                 </div>

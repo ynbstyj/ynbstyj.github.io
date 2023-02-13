@@ -4340,4 +4340,51 @@ tar -zxvf 压缩包名.tar.gz #用gzip解压后同时解包<span aria-hidden="tr
         <tag>Linux学习</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Linux学习笔记3</title>
+    <url>/2023/02/13/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B03/</url>
+    <content><![CDATA[<h2 id="1-vi-简介"><a href="#1-vi-简介" class="headerlink" title="1.vi 简介"></a>1.vi 简介</h2><ul>
+<li>vi 是一个基于字符界面文本编辑程序</li>
+<li>vi 没有菜单，只有命令，虽然很多，只需了解常用的即可；</li>
+<li>vi 有三种基本工作模式 </li>
+<li>命令模式</li>
+<li>输入模式</li>
+<li>末行模式(底线命令模式)</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/ynbstyj/picb/main/img/20230213124801.png"></p>
+<h2 id="2-vi-基本操作流程"><a href="#2-vi-基本操作流程" class="headerlink" title="2. vi 基本操作流程"></a>2. vi 基本操作流程</h2><ol>
+<li>命令行输入vi + 文件名，进入vi命令模式</li>
+<li>从命令模式下(按i或a)进入文本输入模式</li>
+<li>插入或编辑文件内容</li>
+<li>编辑完成后按ESC键回到命令模式</li>
+<li>从命令模式按冒号(:)进入末行模式</li>
+<li>按wq保存退出，或者按q!不保存退出。</li>
+</ol>
+<h2 id="3-命令模式"><a href="#3-命令模式" class="headerlink" title="3. 命令模式"></a>3. 命令模式</h2><ul>
+<li>当用户输入vi 命令，进入编辑器时，就处于该模式下</li>
+<li>任何时候，不管用户处于何种模式，只要按一下ESC，即可使vi命令模式</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/ynbstyj/picb/main/img/20230213125002.png"></p>
+<h2 id="4-输入模式"><a href="#4-输入模式" class="headerlink" title="4. 输入模式"></a>4. 输入模式</h2><ul>
+<li>在命令模式下输入命令i，a，o都可以进入输入模式</li>
+<li>在输入过程中，若想回到命令模式，按ESC即可</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/ynbstyj/picb/main/img/20230213125108.png"></p>
+<h2 id="5-末行模式"><a href="#5-末行模式" class="headerlink" title="5. 末行模式"></a>5. 末行模式</h2><ul>
+<li>在命令模式下，用户按&quot;:&quot;键(shift+;)，即可进入末行模式</li>
+<li>末行模式时窗口的最后一行显示一个&quot;:&quot;作为模式的提示符，等待用户输入命令</li>
+<li>末行命令执行完后，vi自动回到命令模式</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/ynbstyj/picb/main/img/20230213125221.png"></p>
+]]></content>
+      <categories>
+        <category>软件测试</category>
+        <category>Linux</category>
+      </categories>
+      <tags>
+        <tag>软件测试</tag>
+        <tag>Linux学习</tag>
+        <tag>vim</tag>
+      </tags>
+  </entry>
 </search>
