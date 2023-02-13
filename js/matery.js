@@ -196,7 +196,7 @@ setTimeout(function () {
             '<i class="fa fa-bell" aria-hidden="true"></i>晚上使用深色模式阅读更好哦。(ﾟ▽ﾟ)/</span>';
         M.toast({ html: toastHTML });
     }
-}, 2200);
+}, 2000);
 
 /* 深色模式设置*/
 function switchNightMode() {
