@@ -3,7 +3,7 @@
 
 
 <head>
-    <meta charset="utf-8">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="abc, C++,Python,算法,AI">
     <meta name="description" content="描述设a、b、c均是0到9之间的数字，abc、bcc是两个三位数，且有：abc+bcc&amp;#x3D;532。求满足条件的所有a、b、c的值。
 输入题目没有任何输入。
@@ -170,8 +170,7 @@
     };
     loaded();
 })()
- </script><meta name="generator" content="Hexo 6.3.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+ </script><meta name="generator" content="Hexo 6.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 
 
@@ -189,7 +188,7 @@
          <div></div>
      </div>
  </div><body>
-<header class="navbar-fixed">
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
         <div id="navContainer" class="nav-wrapper container">
             <div class="brand-logo">
@@ -521,7 +520,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    162
+                    168
                 </div>
                 
 
@@ -550,26 +549,26 @@
 <h2 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h2><p>题目没有任何输入。</p>
 <h2 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h2><p>请输出所有满足题目条件的a、b、c的值。 a、b、c之间用空格隔开。 每个输出占一行。</p>
 <p><a target="_blank" rel="noopener" href="http://t.cn/E9WMRTE">地址</a></p>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
     <span class="token keyword">int</span> i<span class="token punctuation">,</span>bcc<span class="token punctuation">,</span>a<span class="token punctuation">,</span>b<span class="token punctuation">,</span>c<span class="token punctuation">;</span>
-    <span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span><span class="token number">532</span><span class="token punctuation">;</span><span class="token operator">++</span>i<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span>i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;=</span><span class="token number">532</span><span class="token punctuation">;</span><span class="token operator">++</span>i<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
         bcc<span class="token operator">=</span><span class="token number">532</span><span class="token operator">-</span>i<span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//若十位与个位相同，判断和是否532</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>bcc<span class="token operator">/</span><span class="token number">10</span><span class="token operator">%</span><span class="token number">10</span> <span class="token operator">==</span> bcc<span class="token operator">%</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment">//若十位与个位相同，判断和是否532</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>bcc<span class="token operator">/</span><span class="token number">10</span><span class="token operator">%</span><span class="token number">10</span> <span class="token operator">==</span> bcc<span class="token operator">%</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
             a<span class="token operator">=</span>i<span class="token operator">/</span><span class="token number">100</span><span class="token punctuation">;</span>
             c<span class="token operator">=</span>bcc<span class="token operator">%</span><span class="token number">10</span><span class="token punctuation">;</span>
             b<span class="token operator">=</span>bcc<span class="token operator">/</span><span class="token number">100</span><span class="token punctuation">;</span>
             
             <span class="token keyword">if</span><span class="token punctuation">(</span>a<span class="token operator">*</span><span class="token number">100</span><span class="token operator">+</span>b<span class="token operator">*</span><span class="token number">10</span><span class="token operator">+</span>c <span class="token operator">+</span> bcc<span class="token operator">==</span><span class="token number">532</span><span class="token punctuation">)</span>
                 <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d %d %d\n"</span><span class="token punctuation">,</span>a<span class="token punctuation">,</span>b<span class="token punctuation">,</span>c<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 
                 
             </div>
@@ -1260,7 +1259,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">25.1k</span>
+                        class="white-color">25.8k</span>
             
             
             
@@ -1576,6 +1575,6 @@ $(function () {
 
 
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"rect":"opacity:0.7","log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"rect":"opacity:0.7","log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
 
 </html>

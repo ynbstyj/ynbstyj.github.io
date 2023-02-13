@@ -3,7 +3,7 @@
 
 
 <head>
-    <meta charset="utf-8">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="奥运排序问题, C++,Python,算法,AI">
     <meta name="description" content="http://t.cn/E9gYpyl
 描述按要求，给国家进行排名。
@@ -170,8 +170,7 @@
     };
     loaded();
 })()
- </script><meta name="generator" content="Hexo 6.3.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+ </script><meta name="generator" content="Hexo 6.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 
 
@@ -189,7 +188,7 @@
          <div></div>
      </div>
  </div><body>
-<header class="navbar-fixed">
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
         <div id="navContainer" class="nav-wrapper container">
             <div class="brand-logo">
@@ -521,7 +520,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    785
+                    825
                 </div>
                 
 
@@ -551,7 +550,7 @@
 <h3 id="输入描述："><a href="#输入描述：" class="headerlink" title="输入描述："></a>输入描述：</h3><p>有多组数据。 第一行给出国家数N，要求排名的国家数M，国家号从0到N-1。 第二行开始的N行给定国家或地区的奥运金牌数，奖牌数，人口数（百万）。 接下来一行给出M个国家号。</p>
 <h3 id="输出描述："><a href="#输出描述：" class="headerlink" title="输出描述："></a>输出描述：</h3><p>排序有4种方式: 金牌总数 奖牌总数 金牌人口比例 奖牌人口比例 对每个国家给出最佳排名排名方式 和 最终排名 格式为: 排名:排名方式 如果有相同的最终排名，则输出排名方式最小的那种排名，对于排名方式，金牌总数 &lt; 奖牌总数 &lt; 金牌人口比例 &lt; 奖牌人口比例 如果有并列排名的情况，即如果出现金牌总数为 100,90,90,80.则排名为1,2,2,4. 每组数据后加一个空行。</p>
 <h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><p>输入：</p>
-<pre><code>4 4
+<pre class="line-numbers language-none"><code class="language-none">4 4
 4 8 1
 6 6 2
 4 8 2
@@ -563,134 +562,134 @@
 8 11 2
 8 12 3
 8 13 4
-0 3
-</code></pre>
+0 3<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>输出：</p>
-<pre><code>1:3
+<pre class="line-numbers language-none"><code class="language-none">1:3
 1:1
 2:1
 1:2
 
 1:1
-1:1
-</code></pre>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">define</span> _CRT_SECURE_NO_WARNINGS 1</span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span>
+1:1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">_CRT_SECURE_NO_WARNINGS</span> <span class="token expression"><span class="token number">1</span></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 
 <span class="token keyword">const</span> <span class="token keyword">int</span> N <span class="token operator">=</span> <span class="token number">210</span><span class="token punctuation">;</span>
 <span class="token keyword">const</span> <span class="token keyword">double</span> INF <span class="token operator">=</span> INT_MAX<span class="token punctuation">;</span>
 
-<span class="token keyword">struct</span> Country
-<span class="token punctuation">{</span>
-    <span class="token keyword">int</span> id<span class="token punctuation">;</span>
-    <span class="token keyword">double</span> gold<span class="token punctuation">,</span> medal<span class="token punctuation">,</span> goldrate<span class="token punctuation">,</span> medalrate<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//金牌总数 奖牌总数 金牌人口比例 奖牌人口比例</span>
-    <span class="token keyword">int</span> bestMethod<span class="token punctuation">;</span>
-    <span class="token keyword">int</span> bestOrder<span class="token punctuation">;</span>
-    <span class="token keyword">int</span> order<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token function">Country</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-    <span class="token function">Country</span><span class="token punctuation">(</span><span class="token keyword">int</span> id<span class="token punctuation">,</span> <span class="token keyword">int</span> gold<span class="token punctuation">,</span> <span class="token keyword">int</span> medal<span class="token punctuation">,</span> <span class="token keyword">int</span> people<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        bestMethod <span class="token operator">=</span> N<span class="token punctuation">;</span>
-        bestOrder <span class="token operator">=</span> N<span class="token punctuation">;</span>
-        <span class="token keyword">this</span><span class="token operator">-</span><span class="token operator">></span>id <span class="token operator">=</span> id<span class="token punctuation">;</span>
-        <span class="token keyword">this</span><span class="token operator">-</span><span class="token operator">></span>gold <span class="token operator">=</span> gold<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//金牌总数</span>
-        <span class="token keyword">this</span><span class="token operator">-</span><span class="token operator">></span>medal <span class="token operator">=</span> medal<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//奖牌总数</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>people <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> gold <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//金牌比例</span>
-            goldrate <span class="token operator">=</span> INF<span class="token punctuation">;</span>
-        <span class="token keyword">else</span>
-            goldrate <span class="token operator">=</span> gold <span class="token operator">/</span> <span class="token punctuation">(</span><span class="token keyword">double</span><span class="token punctuation">)</span>people<span class="token punctuation">;</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>people <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> medal <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//奖牌比例</span>
-            medalrate <span class="token operator">=</span> INF<span class="token punctuation">;</span>
-        <span class="token keyword">else</span>
-            medalrate <span class="token operator">=</span> medal <span class="token operator">/</span> <span class="token punctuation">(</span><span class="token keyword">double</span><span class="token punctuation">)</span>people<span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">struct</span> <span class="token class-name">Country</span>
+<span class="token punctuation">&#123;</span>
+	<span class="token keyword">int</span> id<span class="token punctuation">;</span>
+	<span class="token keyword">double</span> gold<span class="token punctuation">,</span> medal<span class="token punctuation">,</span> goldrate<span class="token punctuation">,</span> medalrate<span class="token punctuation">;</span><span class="token comment">//金牌总数 奖牌总数 金牌人口比例 奖牌人口比例</span>
+	<span class="token keyword">int</span> bestMethod<span class="token punctuation">;</span>
+	<span class="token keyword">int</span> bestOrder<span class="token punctuation">;</span>
+	<span class="token keyword">int</span> order<span class="token punctuation">[</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+	<span class="token function">Country</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+	<span class="token function">Country</span><span class="token punctuation">(</span><span class="token keyword">int</span> id<span class="token punctuation">,</span> <span class="token keyword">int</span> gold<span class="token punctuation">,</span> <span class="token keyword">int</span> medal<span class="token punctuation">,</span> <span class="token keyword">int</span> people<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+		bestMethod <span class="token operator">=</span> N<span class="token punctuation">;</span>
+		bestOrder <span class="token operator">=</span> N<span class="token punctuation">;</span>
+		<span class="token keyword">this</span><span class="token operator">-></span>id <span class="token operator">=</span> id<span class="token punctuation">;</span>
+		<span class="token keyword">this</span><span class="token operator">-></span>gold <span class="token operator">=</span> gold<span class="token punctuation">;</span><span class="token comment">//金牌总数</span>
+		<span class="token keyword">this</span><span class="token operator">-></span>medal <span class="token operator">=</span> medal<span class="token punctuation">;</span><span class="token comment">//奖牌总数</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span>people <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> gold <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token comment">//金牌比例</span>
+			goldrate <span class="token operator">=</span> INF<span class="token punctuation">;</span>
+		<span class="token keyword">else</span>
+			goldrate <span class="token operator">=</span> gold <span class="token operator">/</span> <span class="token punctuation">(</span><span class="token keyword">double</span><span class="token punctuation">)</span>people<span class="token punctuation">;</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span>people <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> medal <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token comment">//奖牌比例</span>
+			medalrate <span class="token operator">=</span> INF<span class="token punctuation">;</span>
+		<span class="token keyword">else</span>
+			medalrate <span class="token operator">=</span> medal <span class="token operator">/</span> <span class="token punctuation">(</span><span class="token keyword">double</span><span class="token punctuation">)</span>people<span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
 
 Country arr<span class="token punctuation">[</span>N<span class="token punctuation">]</span><span class="token punctuation">;</span>
 
-<span class="token keyword">bool</span> <span class="token function">CompareID</span><span class="token punctuation">(</span>Country x<span class="token punctuation">,</span> Country y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> x<span class="token punctuation">.</span>id <span class="token operator">&lt;</span> y<span class="token punctuation">.</span>id<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<span class="token keyword">bool</span> <span class="token function">CompareID</span><span class="token punctuation">(</span>Country x<span class="token punctuation">,</span> Country y<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	<span class="token keyword">return</span> x<span class="token punctuation">.</span>id <span class="token operator">&lt;</span> y<span class="token punctuation">.</span>id<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-<span class="token keyword">bool</span> <span class="token function">CompareGold</span><span class="token punctuation">(</span>Country x<span class="token punctuation">,</span> Country y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> x<span class="token punctuation">.</span>gold <span class="token operator">></span> y<span class="token punctuation">.</span>gold<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<span class="token keyword">bool</span> <span class="token function">CompareGold</span><span class="token punctuation">(</span>Country x<span class="token punctuation">,</span> Country y<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	<span class="token keyword">return</span> x<span class="token punctuation">.</span>gold <span class="token operator">></span> y<span class="token punctuation">.</span>gold<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-<span class="token keyword">bool</span> <span class="token function">CompareMedal</span><span class="token punctuation">(</span>Country x<span class="token punctuation">,</span> Country y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> x<span class="token punctuation">.</span>medal <span class="token operator">></span> y<span class="token punctuation">.</span>medal<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<span class="token keyword">bool</span> <span class="token function">CompareMedal</span><span class="token punctuation">(</span>Country x<span class="token punctuation">,</span> Country y<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	<span class="token keyword">return</span> x<span class="token punctuation">.</span>medal <span class="token operator">></span> y<span class="token punctuation">.</span>medal<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-<span class="token keyword">bool</span> <span class="token function">CompareGoldRate</span><span class="token punctuation">(</span>Country x<span class="token punctuation">,</span> Country y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> x<span class="token punctuation">.</span>goldrate <span class="token operator">></span> y<span class="token punctuation">.</span>goldrate<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<span class="token keyword">bool</span> <span class="token function">CompareGoldRate</span><span class="token punctuation">(</span>Country x<span class="token punctuation">,</span> Country y<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	<span class="token keyword">return</span> x<span class="token punctuation">.</span>goldrate <span class="token operator">></span> y<span class="token punctuation">.</span>goldrate<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-<span class="token keyword">bool</span> <span class="token function">CompareMedalRate</span><span class="token punctuation">(</span>Country x<span class="token punctuation">,</span> Country y<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> x<span class="token punctuation">.</span>medalrate <span class="token operator">></span> y<span class="token punctuation">.</span>medalrate<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<span class="token keyword">bool</span> <span class="token function">CompareMedalRate</span><span class="token punctuation">(</span>Country x<span class="token punctuation">,</span> Country y<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	<span class="token keyword">return</span> x<span class="token punctuation">.</span>medalrate <span class="token operator">></span> y<span class="token punctuation">.</span>medalrate<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-<span class="token keyword">void</span> <span class="token function">Solve</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token function">sort</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> arr <span class="token operator">+</span> n<span class="token punctuation">,</span> CompareGold<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
-        arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>order<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>gold <span class="token operator">==</span> arr<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>gold<span class="token punctuation">)</span>
-            arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>order<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> arr<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>order<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//order记录排名数</span>
-    <span class="token punctuation">}</span>
+<span class="token keyword">void</span> <span class="token function">Solve</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	<span class="token function">sort</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> arr <span class="token operator">+</span> n<span class="token punctuation">,</span> CompareGold<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+		arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>order<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+	<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>gold <span class="token operator">==</span> arr<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>gold<span class="token punctuation">)</span>
+			arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>order<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> arr<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>order<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment">//order记录排名数</span>
+	<span class="token punctuation">&#125;</span>
 
-    <span class="token function">sort</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> arr <span class="token operator">+</span> n<span class="token punctuation">,</span> CompareMedal<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
-        arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>order<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>medal <span class="token operator">==</span> arr<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>medal<span class="token punctuation">)</span>
-            arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>order<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> arr<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>order<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//order记录排名数</span>
-    <span class="token punctuation">}</span>
+	<span class="token function">sort</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> arr <span class="token operator">+</span> n<span class="token punctuation">,</span> CompareMedal<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+		arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>order<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+	<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>medal <span class="token operator">==</span> arr<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>medal<span class="token punctuation">)</span>
+			arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>order<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> arr<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>order<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment">//order记录排名数</span>
+	<span class="token punctuation">&#125;</span>
 
-    <span class="token function">sort</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> arr <span class="token operator">+</span> n<span class="token punctuation">,</span> CompareGoldRate<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
-        arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>order<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>goldrate <span class="token operator">==</span> arr<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>goldrate<span class="token punctuation">)</span>
-            arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>order<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> arr<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>order<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//order记录排名数</span>
-    <span class="token punctuation">}</span>
+	<span class="token function">sort</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> arr <span class="token operator">+</span> n<span class="token punctuation">,</span> CompareGoldRate<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+		arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>order<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+	<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>goldrate <span class="token operator">==</span> arr<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>goldrate<span class="token punctuation">)</span>
+			arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>order<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> arr<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>order<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment">//order记录排名数</span>
+	<span class="token punctuation">&#125;</span>
 
-    <span class="token function">sort</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> arr <span class="token operator">+</span> n<span class="token punctuation">,</span> CompareMedalRate<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
-        arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>order<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>medalrate <span class="token operator">==</span> arr<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>medalrate<span class="token punctuation">)</span>
-            arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>order<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">=</span> arr<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>order<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//order记录排名数</span>
-    <span class="token punctuation">}</span>
+	<span class="token function">sort</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> arr <span class="token operator">+</span> n<span class="token punctuation">,</span> CompareMedalRate<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+		arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>order<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+	<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+		<span class="token keyword">if</span> <span class="token punctuation">(</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>medalrate <span class="token operator">==</span> arr<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>medalrate<span class="token punctuation">)</span>
+			arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>order<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span> <span class="token operator">=</span> arr<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span>order<span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment">//order记录排名数</span>
+	<span class="token punctuation">&#125;</span>
 
-    <span class="token function">sort</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> arr <span class="token operator">+</span> n<span class="token punctuation">,</span> CompareID<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> <span class="token number">4</span><span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>bestOrder <span class="token operator">></span> arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>order<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>bestOrder <span class="token operator">=</span> arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>order<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
-                arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>bestMethod <span class="token operator">=</span> j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
+	<span class="token function">sort</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> arr <span class="token operator">+</span> n<span class="token punctuation">,</span> CompareID<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+		<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> <span class="token number">4</span><span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+			<span class="token keyword">if</span> <span class="token punctuation">(</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>bestOrder <span class="token operator">></span> arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>order<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+				arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>bestOrder <span class="token operator">=</span> arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>order<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+				arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>bestMethod <span class="token operator">=</span> j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+			<span class="token punctuation">&#125;</span>
+		<span class="token punctuation">&#125;</span>
+	<span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
 
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">int</span> n<span class="token punctuation">,</span> m<span class="token punctuation">;</span>
-    <span class="token keyword">while</span> <span class="token punctuation">(</span>cin <span class="token operator">>></span> n <span class="token operator">>></span> m<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">int</span> gold<span class="token punctuation">,</span> medal<span class="token punctuation">,</span> people<span class="token punctuation">;</span>
-            cin <span class="token operator">>></span> gold <span class="token operator">>></span> medal <span class="token operator">>></span> people<span class="token punctuation">;</span>
-            arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">Country</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> gold<span class="token punctuation">,</span> medal<span class="token punctuation">,</span> people<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token function">Solve</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> m<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">int</span> index<span class="token punctuation">;</span>
-            cin <span class="token operator">>></span> index<span class="token punctuation">;</span>
-            <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d:%d\n"</span><span class="token punctuation">,</span> arr<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">.</span>bestOrder<span class="token punctuation">,</span> arr<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">.</span>bestMethod<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+	<span class="token keyword">int</span> n<span class="token punctuation">,</span> m<span class="token punctuation">;</span>
+	<span class="token keyword">while</span> <span class="token punctuation">(</span>cin <span class="token operator">>></span> n <span class="token operator">>></span> m<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+		<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+			<span class="token keyword">int</span> gold<span class="token punctuation">,</span> medal<span class="token punctuation">,</span> people<span class="token punctuation">;</span>
+			cin <span class="token operator">>></span> gold <span class="token operator">>></span> medal <span class="token operator">>></span> people<span class="token punctuation">;</span>
+			arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">Country</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> gold<span class="token punctuation">,</span> medal<span class="token punctuation">,</span> people<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">&#125;</span>
+		<span class="token function">Solve</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> m<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+			<span class="token keyword">int</span> index<span class="token punctuation">;</span>
+			cin <span class="token operator">>></span> index<span class="token punctuation">;</span>
+			<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%d:%d\n"</span><span class="token punctuation">,</span> arr<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">.</span>bestOrder<span class="token punctuation">,</span> arr<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">.</span>bestMethod<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">&#125;</span>
+		<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"\n"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+	<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 
                 
             </div>
@@ -1114,12 +1113,12 @@ Country arr<span class="token punctuation">[</span>N<span class="token punctuati
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%93%88%E5%B7%A5%E5%A4%A7/">
-                        <span class="chip bg-color">哈工大</span>
-                    </a>
-                    
                     <a href="/tags/%E6%9F%A5%E6%89%BE/">
                         <span class="chip bg-color">查找</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%93%88%E5%B7%A5%E5%A4%A7/">
+                        <span class="chip bg-color">哈工大</span>
                     </a>
                     
                 </div>
@@ -1380,7 +1379,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">25.1k</span>
+                        class="white-color">25.8k</span>
             
             
             
@@ -1696,6 +1695,6 @@ $(function () {
 
 
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"rect":"opacity:0.7","log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"rect":"opacity:0.7","log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
 
 </html>

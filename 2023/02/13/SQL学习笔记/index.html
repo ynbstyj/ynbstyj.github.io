@@ -3,7 +3,7 @@
 
 
 <head>
-    <meta charset="utf-8">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="SQL学习笔记, C++,Python,算法,AI">
     <meta name="description" content="
 1、查询各科成绩(courseNo)最高和最低的分，以如下的形式显示：课程号、最高分、最低分
@@ -170,8 +170,7 @@ select courseno 课程号, max(score) 最高分, min(score) 最低分 from score
     };
     loaded();
 })()
- </script><meta name="generator" content="Hexo 6.3.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+ </script><meta name="generator" content="Hexo 6.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 
 
@@ -189,7 +188,7 @@ select courseno 课程号, max(score) 最高分, min(score) 最低分 from score
          <div></div>
      </div>
  </div><body>
-<header class="navbar-fixed">
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
         <div id="navContainer" class="nav-wrapper container">
             <div class="brand-logo">
@@ -482,8 +481,8 @@ select courseno 课程号, max(score) 最高分, min(score) 最低分 from score
                                 <span class="chip bg-color">软件测试</span>
                             </a>
                         
-                            <a href="/tags/SQL/">
-                                <span class="chip bg-color">SQL</span>
+                            <a href="/tags/MySQL/">
+                                <span class="chip bg-color">MySQL</span>
                             </a>
                         
                     </div>
@@ -494,8 +493,12 @@ select courseno 课程号, max(score) 最高分, min(score) 最低分 from score
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-category">
-                                学习笔记
+                            <a href="/categories/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/" class="post-category">
+                                软件测试
+                            </a>
+                        
+                            <a href="/categories/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
+                                数据库
                             </a>
                         
                     </div>
@@ -507,14 +510,14 @@ select courseno 课程号, max(score) 最高分, min(score) 最低分 from score
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-02-11
+                    2023-02-13
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-02-11
+                    2023-02-13
                 </div>
                 
 
@@ -548,54 +551,52 @@ select courseno 课程号, max(score) 最高分, min(score) 最低分 from score
             <div id="articleContent">
                 <p><img src="https://raw.githubusercontent.com/ynbstyj/picb/main/img/20230211231933.jpg"></p>
 <p>1、查询各科成绩(courseNo)最高和最低的分，以如下的形式显示：课程号、最高分、最低分</p>
-<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> courseno 课程号<span class="token punctuation">,</span> <span class="token function">max</span><span class="token punctuation">(</span>score<span class="token punctuation">)</span> 最高分<span class="token punctuation">,</span> <span class="token function">min</span><span class="token punctuation">(</span>score<span class="token punctuation">)</span> 最低分 <span class="token keyword">from</span> scores <span class="token keyword">group</span> <span class="token keyword">by</span> courseno<span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>2、查询每门课程被选修的学生数</p>
-<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> courseno 课程号<span class="token punctuation">,</span> <span class="token function">count</span><span class="token punctuation">(</span>courseno<span class="token punctuation">)</span> 总数 <span class="token keyword">from</span> scores <span class="token keyword">group</span> <span class="token keyword">by</span> courseno<span class="token punctuation">;</span> 
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>3、查询男生女生人数分别为多少</p>
-<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> sex 性别<span class="token punctuation">,</span> <span class="token function">count</span><span class="token punctuation">(</span>sex<span class="token punctuation">)</span> 人数 <span class="token keyword">from</span> students <span class="token keyword">group</span> <span class="token keyword">by</span> sex<span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>4、查询平均成绩大于60分学生的学号和平均成绩</p>
-<pre class="line-numbers language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">-- 代码一：</span>
-<span class="token keyword">select</span> studentNo 学号<span class="token punctuation">,</span> <span class="token function">avg</span><span class="token punctuation">(</span>score<span class="token punctuation">)</span> 平均成绩 <span class="token keyword">from</span> scores <span class="token keyword">group</span> <span class="token keyword">by</span> studentNo <span class="token keyword">having</span> <span class="token function">avg</span><span class="token punctuation">(</span>score<span class="token punctuation">)</span><span class="token operator">></span><span class="token number">60</span><span class="token punctuation">;</span>
-<span class="token comment" spellcheck="true">-- 代码二：</span>
-<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> <span class="token punctuation">(</span><span class="token keyword">select</span> studentNo 学号<span class="token punctuation">,</span> <span class="token function">avg</span><span class="token punctuation">(</span>score<span class="token punctuation">)</span> 平均成绩 <span class="token keyword">from</span> scores <span class="token keyword">group</span> <span class="token keyword">by</span> studentNo<span class="token punctuation">)</span> <span class="token number">a</span> <span class="token keyword">where</span> 平均成绩<span class="token operator">></span><span class="token number">60</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>5、查询至少选修两门课程的学生学号（去重）</p>
-<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> studentNo <span class="token keyword">from</span> <span class="token punctuation">(</span><span class="token keyword">select</span> studentNo<span class="token punctuation">,</span> <span class="token function">count</span><span class="token punctuation">(</span>courseNo<span class="token punctuation">)</span> 总数 <span class="token keyword">from</span> scores <span class="token keyword">group</span> <span class="token keyword">by</span> studentNo<span class="token punctuation">)</span> <span class="token number">a</span> <span class="token keyword">where</span> 总数<span class="token operator">>=</span><span class="token number">2</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>6、查询同名同姓学生名单并统计同名人数</p>
-<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> name<span class="token punctuation">,</span> <span class="token function">count</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token keyword">from</span> students <span class="token keyword">group</span> <span class="token keyword">by</span> name<span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>7、查询不及格的课程并按课程号从大到小排列</p>
-<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> scores <span class="token keyword">where</span> score<span class="token operator">&lt;</span><span class="token number">60</span> <span class="token keyword">order</span> <span class="token keyword">by</span> courseNo <span class="token keyword">desc</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>8、查询每门课程的平均成绩，结果按平均成绩升序排序，平均成绩相同时，按课程号降序排列</p>
-<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token function">avg</span><span class="token punctuation">(</span>score<span class="token punctuation">)</span> 平均成绩 <span class="token keyword">from</span> scores <span class="token keyword">group</span> <span class="token keyword">by</span> courseNo <span class="token keyword">order</span> <span class="token keyword">by</span> 平均成绩 <span class="token keyword">asc</span><span class="token punctuation">,</span> courseNo <span class="token keyword">desc</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>9、检索课程编号为“0004”且分数小于60的学生学号，结果按分数降序排列</p>
-<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> studentNo <span class="token keyword">from</span> scores <span class="token keyword">where</span> courseNo<span class="token operator">=</span><span class="token string">'0004'</span> <span class="token operator">and</span> score<span class="token operator">&lt;</span><span class="token number">60</span> <span class="token keyword">order</span> <span class="token keyword">by</span> score <span class="token keyword">desc</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>10、统计每门课程的学生选修人数（超过2人的课程才统计，要求输出课程号和选修人数，查询结果按人数降序排序，若人数相同，按课程号升序排序）</p>
-<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> <span class="token punctuation">(</span><span class="token keyword">select</span> courseNo<span class="token punctuation">,</span> <span class="token function">count</span><span class="token punctuation">(</span>courseNo<span class="token punctuation">)</span> 总数 <span class="token keyword">from</span> scores <span class="token keyword">group</span> <span class="token keyword">by</span> courseNo <span class="token keyword">order</span> <span class="token keyword">by</span> 总数 <span class="token keyword">desc</span><span class="token punctuation">,</span> courseNo <span class="token keyword">asc</span><span class="token punctuation">)</span> <span class="token keyword">where</span> 总数<span class="token operator">></span><span class="token number">2</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>11、查询两门以上不及格课程的同学的学号及其平均成绩</p>
-<pre class="line-numbers language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">-- 代码一：</span>
-<span class="token keyword">select</span> studentNo<span class="token punctuation">,</span> 平均成绩 <span class="token keyword">from</span> <span class="token punctuation">(</span><span class="token keyword">select</span> <span class="token function">avg</span><span class="token punctuation">(</span>score<span class="token punctuation">)</span> 平均成绩<span class="token punctuation">,</span> <span class="token function">count</span><span class="token punctuation">(</span>studentNo<span class="token punctuation">)</span> 总数 <span class="token keyword">from</span> <span class="token punctuation">(</span><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> scores <span class="token keyword">where</span> score <span class="token operator">&lt;</span> <span class="token number">60</span><span class="token punctuation">)</span> <span class="token keyword">group</span> <span class="token keyword">by</span> studentNo<span class="token punctuation">)</span> <span class="token keyword">where</span> 总数<span class="token operator">></span><span class="token number">2</span><span class="token punctuation">;</span> 
-<span class="token comment" spellcheck="true">-- 代码二：</span>
-<span class="token keyword">select</span> studentNo 学号<span class="token punctuation">,</span> <span class="token function">avg</span><span class="token punctuation">(</span>score<span class="token punctuation">)</span> 平均成绩 <span class="token keyword">from</span> scores <span class="token keyword">where</span> score<span class="token operator">&lt;</span><span class="token number">60</span> <span class="token keyword">group</span> <span class="token keyword">by</span> studentNo <span class="token keyword">having</span> <span class="token function">count</span><span class="token punctuation">(</span>courseNo<span class="token punctuation">)</span><span class="token operator">></span><span class="token number">2</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<p>12、查询学生的总成绩并进行排名</p>
-<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> name <span class="token operator">*</span><span class="token punctuation">,</span> <span class="token function">sum</span><span class="token punctuation">(</span>score<span class="token punctuation">)</span> 总成绩 <span class="token keyword">from</span> scores <span class="token keyword">group</span> <span class="token keyword">by</span> studentNo <span class="token keyword">order</span> <span class="token keyword">by</span> <span class="token keyword">desc</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>13、查询所有课程中成绩小于60分学生的学号和姓名</p>
-<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> st<span class="token punctuation">.</span>studentNo<span class="token punctuation">,</span> st<span class="token punctuation">.</span>name <span class="token keyword">from</span> students st <span class="token keyword">right</span> <span class="token keyword">join</span> scores sc <span class="token keyword">on</span> st<span class="token punctuation">.</span>studentNo <span class="token operator">=</span> sc<span class="token punctuation">.</span>studentNo <span class="token keyword">where</span> score<span class="token operator">&lt;</span><span class="token number">60</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>14、查询只选修了2门课程的全部学生的学号和姓名</p>
-<pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> <span class="token punctuation">(</span><span class="token keyword">select</span> st<span class="token punctuation">.</span>studentNo<span class="token punctuation">,</span> st<span class="token punctuation">.</span>name<span class="token punctuation">,</span> <span class="token function">count</span><span class="token punctuation">(</span>st<span class="token punctuation">.</span>studentNo<span class="token punctuation">)</span> 课程总数 <span class="token keyword">from</span> students st <span class="token keyword">left</span> <span class="token keyword">join</span> scores sc <span class="token keyword">on</span> st<span class="token punctuation">.</span>studentNo <span class="token operator">=</span> sc<span class="token punctuation">.</span>studentNo <span class="token keyword">group</span> <span class="token keyword">by</span> st<span class="token punctuation">.</span>studentNo<span class="token punctuation">)</span> <span class="token keyword">where</span> 课程总数<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> courseno 课程号<span class="token punctuation">,</span> <span class="token function">max</span><span class="token punctuation">(</span>score<span class="token punctuation">)</span> 最高分<span class="token punctuation">,</span> <span class="token function">min</span><span class="token punctuation">(</span>score<span class="token punctuation">)</span> 最低分 <span class="token keyword">from</span> scores <span class="token keyword">group</span> <span class="token keyword">by</span> courseno<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<p>2、查询每门课程被选修的学生数</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> courseno 课程号<span class="token punctuation">,</span> <span class="token function">count</span><span class="token punctuation">(</span>courseno<span class="token punctuation">)</span> 总数 <span class="token keyword">from</span> scores <span class="token keyword">group</span> <span class="token keyword">by</span> courseno<span class="token punctuation">;</span> <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>3、查询男生女生人数分别为多少</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> sex 性别<span class="token punctuation">,</span> <span class="token function">count</span><span class="token punctuation">(</span>sex<span class="token punctuation">)</span> 人数 <span class="token keyword">from</span> students <span class="token keyword">group</span> <span class="token keyword">by</span> sex<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>4、查询平均成绩大于60分学生的学号和平均成绩</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- 代码一：</span>
+<span class="token keyword">select</span> studentNo 学号<span class="token punctuation">,</span> <span class="token function">avg</span><span class="token punctuation">(</span>score<span class="token punctuation">)</span> 平均成绩 <span class="token keyword">from</span> scores <span class="token keyword">group</span> <span class="token keyword">by</span> studentNo <span class="token keyword">having</span> <span class="token function">avg</span><span class="token punctuation">(</span>score<span class="token punctuation">)</span><span class="token operator">></span><span class="token number">60</span><span class="token punctuation">;</span>
+<span class="token comment">-- 代码二：</span>
+<span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> <span class="token punctuation">(</span><span class="token keyword">select</span> studentNo 学号<span class="token punctuation">,</span> <span class="token function">avg</span><span class="token punctuation">(</span>score<span class="token punctuation">)</span> 平均成绩 <span class="token keyword">from</span> scores <span class="token keyword">group</span> <span class="token keyword">by</span> studentNo<span class="token punctuation">)</span> a <span class="token keyword">where</span> 平均成绩<span class="token operator">></span><span class="token number">60</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>5、查询至少选修两门课程的学生学号（去重）</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> studentNo <span class="token keyword">from</span> <span class="token punctuation">(</span><span class="token keyword">select</span> studentNo<span class="token punctuation">,</span> <span class="token function">count</span><span class="token punctuation">(</span>courseNo<span class="token punctuation">)</span> 总数 <span class="token keyword">from</span> scores <span class="token keyword">group</span> <span class="token keyword">by</span> studentNo<span class="token punctuation">)</span> a <span class="token keyword">where</span> 总数<span class="token operator">>=</span><span class="token number">2</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>6、查询同名同姓学生名单并统计同名人数</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> name<span class="token punctuation">,</span> <span class="token function">count</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token keyword">from</span> students <span class="token keyword">group</span> <span class="token keyword">by</span> name<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>7、查询不及格的课程并按课程号从大到小排列</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> scores <span class="token keyword">where</span> score<span class="token operator">&lt;</span><span class="token number">60</span> <span class="token keyword">order</span> <span class="token keyword">by</span> courseNo <span class="token keyword">desc</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>8、查询每门课程的平均成绩，结果按平均成绩升序排序，平均成绩相同时，按课程号降序排列</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token function">avg</span><span class="token punctuation">(</span>score<span class="token punctuation">)</span> 平均成绩 <span class="token keyword">from</span> scores <span class="token keyword">group</span> <span class="token keyword">by</span> courseNo <span class="token keyword">order</span> <span class="token keyword">by</span> 平均成绩 <span class="token keyword">asc</span><span class="token punctuation">,</span> courseNo <span class="token keyword">desc</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>9、检索课程编号为“0004”且分数小于60的学生学号，结果按分数降序排列</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> studentNo <span class="token keyword">from</span> scores <span class="token keyword">where</span> courseNo<span class="token operator">=</span><span class="token string">'0004'</span> <span class="token operator">and</span> score<span class="token operator">&lt;</span><span class="token number">60</span> <span class="token keyword">order</span> <span class="token keyword">by</span> score <span class="token keyword">desc</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>10、统计每门课程的学生选修人数（超过2人的课程才统计，要求输出课程号和选修人数，查询结果按人数降序排序，若人数相同，按课程号升序排序）</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> <span class="token punctuation">(</span><span class="token keyword">select</span> courseNo<span class="token punctuation">,</span> <span class="token function">count</span><span class="token punctuation">(</span>courseNo<span class="token punctuation">)</span> 总数 <span class="token keyword">from</span> scores <span class="token keyword">group</span> <span class="token keyword">by</span> courseNo <span class="token keyword">order</span> <span class="token keyword">by</span> 总数 <span class="token keyword">desc</span><span class="token punctuation">,</span> courseNo <span class="token keyword">asc</span><span class="token punctuation">)</span> <span class="token keyword">where</span> 总数<span class="token operator">></span><span class="token number">2</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>11、查询两门以上不及格课程的同学的学号及其平均成绩</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token comment">-- 代码一：</span>
+<span class="token keyword">select</span> studentNo<span class="token punctuation">,</span> 平均成绩 <span class="token keyword">from</span> <span class="token punctuation">(</span><span class="token keyword">select</span> <span class="token function">avg</span><span class="token punctuation">(</span>score<span class="token punctuation">)</span> 平均成绩<span class="token punctuation">,</span> <span class="token function">count</span><span class="token punctuation">(</span>studentNo<span class="token punctuation">)</span> 总数 <span class="token keyword">from</span> <span class="token punctuation">(</span><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> scores <span class="token keyword">where</span> score <span class="token operator">&lt;</span> <span class="token number">60</span><span class="token punctuation">)</span> <span class="token keyword">group</span> <span class="token keyword">by</span> studentNo<span class="token punctuation">)</span> <span class="token keyword">where</span> 总数<span class="token operator">></span><span class="token number">2</span><span class="token punctuation">;</span> 
+<span class="token comment">-- 代码二：</span>
+<span class="token keyword">select</span> studentNo 学号<span class="token punctuation">,</span> <span class="token function">avg</span><span class="token punctuation">(</span>score<span class="token punctuation">)</span> 平均成绩 <span class="token keyword">from</span> scores <span class="token keyword">where</span> score<span class="token operator">&lt;</span><span class="token number">60</span> <span class="token keyword">group</span> <span class="token keyword">by</span> studentNo <span class="token keyword">having</span> <span class="token function">count</span><span class="token punctuation">(</span>courseNo<span class="token punctuation">)</span><span class="token operator">></span><span class="token number">2</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>12、查询学生的总成绩并进行排名</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> name <span class="token operator">*</span><span class="token punctuation">,</span> <span class="token function">sum</span><span class="token punctuation">(</span>score<span class="token punctuation">)</span> 总成绩 <span class="token keyword">from</span> scores <span class="token keyword">group</span> <span class="token keyword">by</span> studentNo <span class="token keyword">order</span> <span class="token keyword">by</span> <span class="token keyword">desc</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>13、查询所有课程中成绩小于60分学生的学号和姓名</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> st<span class="token punctuation">.</span>studentNo<span class="token punctuation">,</span> st<span class="token punctuation">.</span>name <span class="token keyword">from</span> students st <span class="token keyword">right</span> <span class="token keyword">join</span> scores sc <span class="token keyword">on</span> st<span class="token punctuation">.</span>studentNo <span class="token operator">=</span> sc<span class="token punctuation">.</span>studentNo <span class="token keyword">where</span> score<span class="token operator">&lt;</span><span class="token number">60</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>14、查询只选修了2门课程的全部学生的学号和姓名</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> <span class="token punctuation">(</span><span class="token keyword">select</span> st<span class="token punctuation">.</span>studentNo<span class="token punctuation">,</span> st<span class="token punctuation">.</span>name<span class="token punctuation">,</span> <span class="token function">count</span><span class="token punctuation">(</span>st<span class="token punctuation">.</span>studentNo<span class="token punctuation">)</span> 课程总数 <span class="token keyword">from</span> students st <span class="token keyword">left</span> <span class="token keyword">join</span> scores sc <span class="token keyword">on</span> st<span class="token punctuation">.</span>studentNo <span class="token operator">=</span> sc<span class="token punctuation">.</span>studentNo <span class="token keyword">group</span> <span class="token keyword">by</span> st<span class="token punctuation">.</span>studentNo<span class="token punctuation">)</span> <span class="token keyword">where</span> 课程总数<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
                 
             </div>
             <hr/>
@@ -621,7 +622,7 @@ select courseno 课程号, max(score) 最高分, min(score) 最低分 from score
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://ynbstyj.github.io/2023/02/11/SQL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">http://ynbstyj.github.io/2023/02/11/SQL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</a>
+                    <a href="http://ynbstyj.github.io/2023/02/13/SQL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">http://ynbstyj.github.io/2023/02/13/SQL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -663,8 +664,8 @@ select courseno 课程号, max(score) 最高分, min(score) 最低分 from score
                                     <span class="chip bg-color">软件测试</span>
                                 </a>
                             
-                                <a href="/tags/SQL/">
-                                    <span class="chip bg-color">SQL</span>
+                                <a href="/tags/MySQL/">
+                                    <span class="chip bg-color">MySQL</span>
                                 </a>
                             
                         </div>
@@ -980,17 +981,18 @@ select courseno 课程号, max(score) 最高分, min(score) 最低分 from score
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2023/02/12/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+                <a href="/2023/02/13/SQL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Linux学习笔记2">
+                        <img src="/medias/featureimages/96.jpg" class="responsive-img" alt="SQL学习笔记">
                         
-                        <span class="card-title">Linux学习笔记2</span>
+                        <span class="card-title">SQL学习笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1000,21 +1002,26 @@ select courseno 课程号, max(score) 最高分, min(score) 最低分 from score
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-02-12
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-13
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-category">
-                                    学习笔记
+                            <a href="/categories/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/" class="post-category">
+                                    软件测试
+                                </a>
+                            
+                            <a href="/categories/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/%E6%95%B0%E6%8D%AE%E5%BA%93/" class="post-category">
+                                    数据库
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -1022,8 +1029,8 @@ select courseno 课程号, max(score) 最高分, min(score) 最低分 from score
                         <span class="chip bg-color">软件测试</span>
                     </a>
                     
-                    <a href="/tags/Linux/">
-                        <span class="chip bg-color">Linux</span>
+                    <a href="/tags/MySQL/">
+                        <span class="chip bg-color">MySQL</span>
                     </a>
                     
                 </div>
@@ -1037,13 +1044,13 @@ select courseno 课程号, max(score) 最高分, min(score) 最低分 from score
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/02/06/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+                <a href="/2023/02/13/Linux%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/59.jpg" class="responsive-img" alt="软件测试学习笔记">
+                        <img src="/medias/featureimages/172.jpg" class="responsive-img" alt="Linux学习笔记">
                         
-                        <span class="card-title">软件测试学习笔记</span>
+                        <span class="card-title">Linux学习笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1054,14 +1061,18 @@ select courseno 课程号, max(score) 最高分, min(score) 最低分 from score
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-06
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-13
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-category">
-                                    学习笔记
+                            <a href="/categories/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/" class="post-category">
+                                    软件测试
+                                </a>
+                            
+                            <a href="/categories/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/Linux/" class="post-category">
+                                    Linux
                                 </a>
                             
                             
@@ -1075,8 +1086,8 @@ select courseno 课程号, max(score) 最高分, min(score) 最低分 from score
                         <span class="chip bg-color">软件测试</span>
                     </a>
                     
-                    <a href="/tags/%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80/">
-                        <span class="chip bg-color">理论基础</span>
+                    <a href="/tags/Linux%E5%AD%A6%E4%B9%A0/">
+                        <span class="chip bg-color">Linux学习</span>
                     </a>
                     
                 </div>
@@ -1284,7 +1295,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">25.1k</span>
+                        class="white-color">25.8k</span>
             
             
             
@@ -1600,6 +1611,6 @@ $(function () {
 
 
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"rect":"opacity:0.7","log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"rect":"opacity:0.7","log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
 
 </html>

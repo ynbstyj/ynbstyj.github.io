@@ -3,7 +3,7 @@
 
 
 <head>
-    <meta charset="utf-8">
+    <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
     <meta name="keywords" content="简单计算器, C++,Python,算法,AI">
     <meta name="description" content="http://t.cn/AiKoGS94
 描述  读入一个只包含 +, -, *, &amp;#x2F; 的非负整数计算表达式，计算该表达式的值。
@@ -170,8 +170,7 @@
     };
     loaded();
 })()
- </script><meta name="generator" content="Hexo 6.3.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+ </script><meta name="generator" content="Hexo 6.3.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 
 
@@ -189,7 +188,7 @@
          <div></div>
      </div>
  </div><body>
-<header class="navbar-fixed">
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><header class="navbar-fixed">
     <nav id="headNav" class="bg-color nav-transparent">
         <div id="navContainer" class="nav-wrapper container">
             <div class="brand-logo">
@@ -525,7 +524,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    598
+                    607
                 </div>
                 
 
@@ -555,19 +554,19 @@
 <h3 id="输入描述："><a href="#输入描述：" class="headerlink" title="输入描述："></a>输入描述：</h3><p>  测试输入包含若干测试用例，每个测试用例占一行，每行不超过200个字符，整数和运算符之间用一个空格分隔。没有非法表达式。当一行中只有0时输入结束，相应的结果不要输出。</p>
 <h3 id="输出描述："><a href="#输出描述：" class="headerlink" title="输出描述："></a>输出描述：</h3><p>  对每个测试用例输出1行，即该表达式的值，精确到小数点后2位。</p>
 <h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><p>输入：</p>
-<pre><code>1 + 2
-4 + 2 * 5 - 7 / 11
-0
-</code></pre>
+<pre class="line-numbers language-none"><code class="language-none">1 + 2
+4 + 2 * 5 - 7 &#x2F; 11
+0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
 <p>输出：</p>
-<pre><code>3.00
-13.36
-</code></pre>
-<pre class="line-numbers language-cpp"><code class="language-cpp"><span class="token macro property">#<span class="token directive keyword">define</span> _CRT_SECURE_NO_WARNINGS 1</span>
-<span class="token macro property">#<span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span>
+<pre class="line-numbers language-none"><code class="language-none">3.00
+13.36<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">_CRT_SECURE_NO_WARNINGS</span> <span class="token expression"><span class="token number">1</span></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span>
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 
-<span class="token comment" spellcheck="true">/*
+<span class="token comment">/*
 
 之前计算表达式的题，不需要处理空格。两者的区别就在于怎么处理输入顺序
 
@@ -579,53 +578,53 @@
 
 
 <span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">{</span>
-    <span class="token keyword">double</span> t<span class="token punctuation">,</span> term<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//测试数据默认先输入数字。如果存在先输入符号的情况，可以用if语句,比如-5</span>
-    <span class="token keyword">char</span> c<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//紧接着数字输入运算符号,空格</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">double</span> t<span class="token punctuation">,</span> term<span class="token punctuation">;</span><span class="token comment">//测试数据默认先输入数字。如果存在先输入符号的情况，可以用if语句,比如-5</span>
+    <span class="token keyword">char</span> c<span class="token punctuation">;</span><span class="token comment">//紧接着数字输入运算符号,空格</span>
 
-    <span class="token keyword">double</span> a<span class="token punctuation">[</span><span class="token number">150</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//保存结果的栈</span>
-    <span class="token keyword">double</span> sum<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//保存最终结果</span>
+    <span class="token keyword">double</span> a<span class="token punctuation">[</span><span class="token number">150</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment">//保存结果的栈</span>
+    <span class="token keyword">double</span> sum<span class="token punctuation">;</span><span class="token comment">//保存最终结果</span>
 
-    <span class="token keyword">int</span> i<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//i表示栈的高度，从0开始计算</span>
+    <span class="token keyword">int</span> i<span class="token punctuation">;</span><span class="token comment">//i表示栈的高度，从0开始计算</span>
     <span class="token keyword">int</span> j<span class="token punctuation">;</span>
 
-    <span class="token comment" spellcheck="true">//先输入数字，空格</span>
+    <span class="token comment">//先输入数字，空格</span>
     <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%lf%c"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>t<span class="token punctuation">,</span> <span class="token operator">&amp;</span>c<span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token constant">EOF</span><span class="token punctuation">)</span>
-    <span class="token punctuation">{</span>
+    <span class="token punctuation">&#123;</span>
         sum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
         i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-        a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> t<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//输入的第一个数字压栈</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>t <span class="token operator">!=</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> c <span class="token operator">==</span> <span class="token string">'\n'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> t<span class="token punctuation">;</span><span class="token comment">//输入的第一个数字压栈</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>t <span class="token operator">!=</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> c <span class="token operator">==</span> <span class="token char">'\n'</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
             <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%0.2f\n"</span><span class="token punctuation">,</span> t<span class="token punctuation">)</span><span class="token punctuation">;</span>
             <span class="token keyword">continue</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>t <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> c <span class="token operator">==</span> <span class="token string">'\n'</span><span class="token punctuation">)</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>t <span class="token operator">==</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> c <span class="token operator">==</span> <span class="token char">'\n'</span><span class="token punctuation">)</span>
             <span class="token keyword">break</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//之后的节奏是：符号 空格 或者 数字，空格，或者 数字，换行</span>
+        <span class="token comment">//之后的节奏是：符号 空格 或者 数字，空格，或者 数字，换行</span>
 
-        <span class="token keyword">do</span> <span class="token punctuation">{</span>
-            <span class="token comment" spellcheck="true">//这时候输入运算符，空格，数字</span>
+        <span class="token keyword">do</span> <span class="token punctuation">&#123;</span>
+            <span class="token comment">//这时候输入运算符，空格，数字</span>
             <span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%c %lf"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>c<span class="token punctuation">,</span> <span class="token operator">&amp;</span>term<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token comment" spellcheck="true">//计算逻辑：加法直接压栈，减法压栈相反数，乘法取出一个数相乘后压栈，除法取出一个数相除后压栈</span>
-            <span class="token comment" spellcheck="true">//最关键的就是这个加法的处理，两个操作数都要压栈</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>c <span class="token operator">==</span> <span class="token string">'+'</span><span class="token punctuation">)</span>
+            <span class="token comment">//计算逻辑：加法直接压栈，减法压栈相反数，乘法取出一个数相乘后压栈，除法取出一个数相除后压栈</span>
+            <span class="token comment">//最关键的就是这个加法的处理，两个操作数都要压栈</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>c <span class="token operator">==</span> <span class="token char">'+'</span><span class="token punctuation">)</span>
                 a<span class="token punctuation">[</span><span class="token operator">++</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> term<span class="token punctuation">;</span>
-            <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>c <span class="token operator">==</span> <span class="token string">'-'</span><span class="token punctuation">)</span>
+            <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>c <span class="token operator">==</span> <span class="token char">'-'</span><span class="token punctuation">)</span>
                 a<span class="token punctuation">[</span><span class="token operator">++</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token number">0</span> <span class="token operator">-</span> term<span class="token punctuation">;</span>
-            <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>c <span class="token operator">==</span> <span class="token string">'*'</span><span class="token punctuation">)</span>
-                a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">*</span><span class="token operator">=</span> term<span class="token punctuation">;</span>
-            <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>c <span class="token operator">==</span> <span class="token string">'/'</span><span class="token punctuation">)</span>
-                a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">/</span><span class="token operator">=</span> term<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span> <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%c"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>c<span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token constant">EOF</span> <span class="token operator">&amp;&amp;</span> c <span class="token operator">!=</span> <span class="token string">'\n'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//此时又输入空格</span>
+            <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>c <span class="token operator">==</span> <span class="token char">'*'</span><span class="token punctuation">)</span>
+                a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">*=</span> term<span class="token punctuation">;</span>
+            <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>c <span class="token operator">==</span> <span class="token char">'/'</span><span class="token punctuation">)</span>
+                a<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">/=</span> term<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token function">scanf</span><span class="token punctuation">(</span><span class="token string">"%c"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>c<span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token constant">EOF</span> <span class="token operator">&amp;&amp;</span> c <span class="token operator">!=</span> <span class="token char">'\n'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//此时又输入空格</span>
 
         <span class="token keyword">for</span> <span class="token punctuation">(</span>j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;=</span> i<span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span>
-            sum <span class="token operator">+</span><span class="token operator">=</span> a<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            sum <span class="token operator">+=</span> a<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
         <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%0.2f\n"</span><span class="token punctuation">,</span> sum<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-    <span class="token punctuation">}</span>
+    <span class="token punctuation">&#125;</span>
     <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 
                 
             </div>
@@ -1315,7 +1314,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">25.1k</span>
+                        class="white-color">25.8k</span>
             
             
             
@@ -1631,6 +1630,6 @@ $(function () {
 
 
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"rect":"opacity:0.7","log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"rect":"opacity:0.7","log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
 
 </html>
