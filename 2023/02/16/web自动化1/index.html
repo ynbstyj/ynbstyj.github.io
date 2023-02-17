@@ -528,21 +528,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-02-16
+                    2023-02-17
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    261
+                    1.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    6 分
                 </div>
                 
 
@@ -571,16 +571,203 @@
 <h3 id="条件"><a href="#条件" class="headerlink" title="条件"></a>条件</h3><p>1、项目周期长<br>2、项目需求变化周期长或变化频率不高<br>3、手工测试之后，系统相对稳定了之后比较适合做自动化</p>
 <h3 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h3><p>决定是否做自动化-&gt;选择工具-&gt;测试计划-&gt;选择手工测试的测试用例-&gt;测试脚本的开发(测试的框架和测试用例的编-&gt;执行测试脚本-&gt;管理测试脚本-&gt;测试报告</p>
 <h2 id="web自动化环境搭建"><a href="#web自动化环境搭建" class="headerlink" title="web自动化环境搭建"></a>web自动化环境搭建</h2><p>1、pip install selenium<br>2、下载浏览器的驱动，驱动的版本号与浏览器的版本号一致</p>
-<h3 id="脚本的编写"><a href="#脚本的编写" class="headerlink" title="脚本的编写"></a>脚本的编写</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> selenium <span class="token keyword">import</span> webdriver
+<h2 id="脚本的编写"><a href="#脚本的编写" class="headerlink" title="脚本的编写"></a>脚本的编写</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> selenium <span class="token keyword">import</span> webdriver
 <span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver<span class="token punctuation">.</span>edge<span class="token punctuation">.</span>service <span class="token keyword">import</span> Service
 <span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver<span class="token punctuation">.</span>common<span class="token punctuation">.</span>by <span class="token keyword">import</span> By
-<span class="token keyword">from</span> time <span class="token keyword">import</span> sleep
-<span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver<span class="token punctuation">.</span>support<span class="token punctuation">.</span>select <span class="token keyword">import</span> Select
 
 e <span class="token operator">=</span> Service<span class="token punctuation">(</span>executable_path<span class="token operator">=</span><span class="token string">r'C:\web_selenium\driver\msedgedriver.exe'</span><span class="token punctuation">)</span>
-driver <span class="token operator">=</span> webdriver<span class="token punctuation">.</span>Edge<span class="token punctuation">(</span>service<span class="token operator">=</span>e<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+driver <span class="token operator">=</span> webdriver<span class="token punctuation">.</span>Edge<span class="token punctuation">(</span>service<span class="token operator">=</span>e<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<h3 id="找元素"><a href="#找元素" class="headerlink" title="找元素"></a>找元素</h3><p><strong>find_element(元素属性，值)</strong></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver<span class="token punctuation">.</span>common<span class="token punctuation">.</span>by <span class="token keyword">import</span> By<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<p>By类下有很多种寻找元素的方法：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">By<span class="token punctuation">.</span>ID <span class="token comment"># id</span>
+By<span class="token punctuation">.</span>NAME <span class="token comment"># name</span>
+CLASS_NAME <span class="token comment"># class</span>
+LINK_TEXT <span class="token comment"># 超链接的内容</span>
+PARTIAL_LINK_TEXT <span class="token comment"># 包含超链接的内容</span>
+TAG_NAME <span class="token comment"># 标签名</span>
+XPATH <span class="token comment"># 路径</span>
+CSS_SELECTOR <span class="token comment"># css格式</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>登录禅道</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 登录禅道</span>
+driver<span class="token punctuation">.</span>maximize_window<span class="token punctuation">(</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'http://127.0.0.1/zentao/user-login.html'</span><span class="token punctuation">)</span> <span class="token comment"># 网页链接</span>
+driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>ID<span class="token punctuation">,</span><span class="token string">'account'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>send_keys<span class="token punctuation">(</span><span class="token string">'admin'</span><span class="token punctuation">)</span> <span class="token comment"># 用户名</span>
+driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>NAME<span class="token punctuation">,</span> <span class="token string">'password'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>send_keys<span class="token punctuation">(</span><span class="token string">'111Tianyangjun'</span><span class="token punctuation">)</span> <span class="token comment"># 密码</span>
+driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>ID<span class="token punctuation">,</span><span class="token string">'submit'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>click<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 点击提交</span>
+sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>添加用户</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 添加用户</span>
+driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>LINK_TEXT<span class="token punctuation">,</span> <span class="token string">'组织'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>click<span class="token punctuation">(</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>LINK_TEXT<span class="token punctuation">,</span> <span class="token string">"添加用户"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>click<span class="token punctuation">(</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>NAME<span class="token punctuation">,</span> <span class="token string">'account'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>send_keys<span class="token punctuation">(</span><span class="token string">'tester215_005'</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>ID<span class="token punctuation">,</span> <span class="token string">'password1'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>send_keys<span class="token punctuation">(</span><span class="token string">'Password1'</span><span class="token punctuation">)</span> <span class="token comment"># 输入密码</span>
+driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>ID<span class="token punctuation">,</span> <span class="token string">'password2'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>send_keys<span class="token punctuation">(</span><span class="token string">'Password1'</span><span class="token punctuation">)</span> <span class="token comment"># 二次确认密码</span>
+driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>ID<span class="token punctuation">,</span> <span class="token string">'realname'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>send_keys<span class="token punctuation">(</span><span class="token string">'tester215_005'</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>ID<span class="token punctuation">,</span> <span class="token string">'submit'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>click<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 提交新用户</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>添加滚动条</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment">## 添加滚动条</span>
+js <span class="token operator">=</span> <span class="token string">'var q=document.documentElement.scrollTop=200'</span>
+driver<span class="token punctuation">.</span>execute_script<span class="token punctuation">(</span>js<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>切换层，切换到不同的iframe</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment">## 删除用户</span>
+driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>LINK_TEXT<span class="token punctuation">,</span> <span class="token string">'组织'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>click<span class="token punctuation">(</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>LINK_TEXT<span class="token punctuation">,</span> <span class="token string">'用户'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>click<span class="token punctuation">(</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>ID<span class="token punctuation">,</span> <span class="token string">'bysearchTab'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>click<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 点击搜索</span>
+sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>ID<span class="token punctuation">,</span> <span class="token string">'value1'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>send_keys<span class="token punctuation">(</span><span class="token string">'tester215_005'</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>ID<span class="token punctuation">,</span> <span class="token string">'submit'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>click<span class="token punctuation">(</span><span class="token punctuation">)</span>
+sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>CLASS_NAME<span class="token punctuation">,</span> <span class="token string">'icon-trash'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>click<span class="token punctuation">(</span><span class="token punctuation">)</span>
+sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token comment">## 切换层，切换到不同的iframe</span>
+driver<span class="token punctuation">.</span>switch_to<span class="token punctuation">.</span>frame<span class="token punctuation">(</span><span class="token string">'iframe-triggerModal'</span><span class="token punctuation">)</span> <span class="token comment"># id/name/index</span>
+
+driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>ID<span class="token punctuation">,</span> <span class="token string">'verifyPassword'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>send_keys<span class="token punctuation">(</span><span class="token string">'111Tianyangjun'</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>ID<span class="token punctuation">,</span> <span class="token string">'submit'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>click<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># 点击删除</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>登出禅道</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 切换回原来的iframe</span>
+driver<span class="token punctuation">.</span>switch_to<span class="token punctuation">.</span>default_content<span class="token punctuation">(</span><span class="token punctuation">)</span>
+sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token comment"># 登出禅道</span>
+driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>CLASS_NAME<span class="token punctuation">,</span> <span class="token string">"user-name"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>click<span class="token punctuation">(</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>LINK_TEXT<span class="token punctuation">,</span> <span class="token string">'退出'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>click<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>鼠标事件，即鼠标移动到相应位置会自动有下拉条内容选择显示</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 鼠标事件</span>
+<span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver<span class="token punctuation">.</span>common<span class="token punctuation">.</span>action_chains <span class="token keyword">import</span> ActionChains
+driver<span class="token punctuation">.</span>maximize_window<span class="token punctuation">(</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'https://www.baidu.com'</span><span class="token punctuation">)</span>
+target_elem<span class="token operator">=</span>driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>ID<span class="token punctuation">,</span> <span class="token string">'s-usersetting-top'</span><span class="token punctuation">)</span>
+ActionChains<span class="token punctuation">(</span>driver<span class="token punctuation">)</span><span class="token punctuation">.</span>move_to_element<span class="token punctuation">(</span>target_elem<span class="token punctuation">)</span><span class="token punctuation">.</span>perform<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>键盘事件，模拟键盘输入</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 键盘事件</span>
+<span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver<span class="token punctuation">.</span>common<span class="token punctuation">.</span>keys <span class="token keyword">import</span> Keys
+
+driver<span class="token punctuation">.</span>maximize_window<span class="token punctuation">(</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>get<span class="token punctuation">(</span><span class="token string">'http://127.0.0.1/zentao/user-login.html'</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>ID<span class="token punctuation">,</span><span class="token string">'account'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>send_keys<span class="token punctuation">(</span><span class="token string">'admin'</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>ID<span class="token punctuation">,</span><span class="token string">'account'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>send_keys<span class="token punctuation">(</span>Keys<span class="token punctuation">.</span>BACK_SPACE<span class="token punctuation">)</span> <span class="token comment"># 退格一位</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>上传文件</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment">## 上传文件</span>
+driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>LINK_TEXT<span class="token punctuation">,</span> <span class="token string">'测试'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>click<span class="token punctuation">(</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>XPATH<span class="token punctuation">,</span> <span class="token string">'//nav[@id="subNavbar"]/ul[1]/li[1]/a'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>click<span class="token punctuation">(</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>LINK_TEXT<span class="token punctuation">,</span> <span class="token string">'提Bug'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>click<span class="token punctuation">(</span><span class="token punctuation">)</span>
+sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+js <span class="token operator">=</span> <span class="token string">'var q=document.documentElement.scrollTop=200'</span>
+driver<span class="token punctuation">.</span>execute_script<span class="token punctuation">(</span>js<span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>XPATH<span class="token punctuation">,</span> <span class="token string">'//div[@class="file-input-empty"]/button'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>click<span class="token punctuation">(</span><span class="token punctuation">)</span>
+sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 文件上传选择框</span>
+<span class="token comment">## 利用工具spy7.10.3077</span>
+<span class="token keyword">import</span> win32gui
+<span class="token keyword">import</span> win32con
+win1 <span class="token operator">=</span> win32gui<span class="token punctuation">.</span>FindWindow<span class="token punctuation">(</span><span class="token string">'#32770'</span><span class="token punctuation">,</span> <span class="token string">'打开'</span><span class="token punctuation">)</span>
+win2 <span class="token operator">=</span> win32gui<span class="token punctuation">.</span>FindWindowEx<span class="token punctuation">(</span>win1<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">'ComboBoxEx32'</span><span class="token punctuation">,</span> <span class="token boolean">None</span><span class="token punctuation">)</span>
+win3 <span class="token operator">=</span> win32gui<span class="token punctuation">.</span>FindWindowEx<span class="token punctuation">(</span>win2<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">'ComboBox'</span><span class="token punctuation">,</span> <span class="token boolean">None</span><span class="token punctuation">)</span>
+edit <span class="token operator">=</span> win32gui<span class="token punctuation">.</span>FindWindowEx<span class="token punctuation">(</span>win3<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">'Edit'</span><span class="token punctuation">,</span> <span class="token boolean">None</span><span class="token punctuation">)</span>
+button <span class="token operator">=</span> win32gui<span class="token punctuation">.</span>FindWindowEx<span class="token punctuation">(</span>win1<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token string">'Button'</span><span class="token punctuation">,</span> <span class="token string">'打开(&amp;O)'</span><span class="token punctuation">)</span>
+win32gui<span class="token punctuation">.</span>SendMessage<span class="token punctuation">(</span>edit<span class="token punctuation">,</span> win32con<span class="token punctuation">.</span>WM_SETTEXT<span class="token punctuation">,</span> <span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token string">r'C:\Users\86187\Desktop\test.txt'</span><span class="token punctuation">)</span>
+sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+win32gui<span class="token punctuation">.</span>SendMessage<span class="token punctuation">(</span>win1<span class="token punctuation">,</span> win32con<span class="token punctuation">.</span>WM_COMMAND<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> button<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>弹出框，例如登录报错弹出框</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 弹出框</span>
+<span class="token comment">#方法一：</span>
+alert_dialog <span class="token operator">=</span> driver<span class="token punctuation">.</span>switch_to<span class="token punctuation">.</span>alert <span class="token comment"># 切换到弹出框</span>
+content <span class="token operator">=</span> alert_dialog<span class="token punctuation">.</span>text           <span class="token comment"># 获取弹出框内容</span>
+alert_dialog<span class="token punctuation">.</span>accept<span class="token punctuation">(</span><span class="token punctuation">)</span>                 <span class="token comment"># 点击弹出框的同意按钮</span>
+<span class="token comment"># alert_dialog.dismiss()                # 点击弹出框的取消按钮</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>content<span class="token punctuation">)</span>
+
+<span class="token comment">#方法二：</span>
+<span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver<span class="token punctuation">.</span>common<span class="token punctuation">.</span>alert <span class="token keyword">import</span> Alert
+content <span class="token operator">=</span> Alert<span class="token punctuation">(</span>driver<span class="token punctuation">)</span><span class="token punctuation">.</span>text
+Alert<span class="token punctuation">(</span>driver<span class="token punctuation">)</span><span class="token punctuation">.</span>accept<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>content<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>窗体的切换</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 窗体的切换</span>
+<span class="token comment"># current_handle = driver.current_window_handle</span>
+js <span class="token operator">=</span> <span class="token string">'window.open("https://www.baidu.com");'</span>
+driver<span class="token punctuation">.</span>execute_script<span class="token punctuation">(</span>js<span class="token punctuation">)</span>
+<span class="token comment"># driver.switch_to.window(current_handle)</span>
+handles <span class="token operator">=</span> driver<span class="token punctuation">.</span>window_handles
+sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>switch_to<span class="token punctuation">.</span>window<span class="token punctuation">(</span>handles<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>等待：</p>
+<ul>
+<li>强制等待</li>
+<li>显式等待</li>
+<li>隐式等待</li>
+</ul>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># 等待</span>
+<span class="token comment"># 强制等待：time模块的sleep()，让进程停止运行</span>
+sleep<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token comment"># 显式等待：直到指定元素出现为止，等待结束，如果在指定时间内没有出现就报异常</span>
+<span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver<span class="token punctuation">.</span>support<span class="token punctuation">.</span>ui <span class="token keyword">import</span> WebDriverWait
+<span class="token keyword">from</span> selenium<span class="token punctuation">.</span>webdriver<span class="token punctuation">.</span>support <span class="token keyword">import</span> expected_conditions <span class="token keyword">as</span> EC
+
+<span class="token comment"># 直到By.CLASS_NAME, 'user-name'该元素出现了，等待结束</span>
+<span class="token keyword">if</span> WebDriverWait<span class="token punctuation">(</span>driver<span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">.</span>until<span class="token punctuation">(</span>EC<span class="token punctuation">.</span>presence_of_element_located<span class="token punctuation">(</span><span class="token punctuation">(</span>By<span class="token punctuation">.</span>CLASS_NAME<span class="token punctuation">,</span> <span class="token string">'user-name'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'Yes'</span><span class="token punctuation">)</span>
+    <span class="token comment"># 登出禅道</span>
+    driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>CLASS_NAME<span class="token punctuation">,</span> <span class="token string">"user-name"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>click<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>LINK_TEXT<span class="token punctuation">,</span> <span class="token string">'退出'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>click<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'页面加载太慢'</span><span class="token punctuation">)</span>
+    
+<span class="token comment"># 隐式等待：浏览器在设定的时间内不断刷新页面来寻找元素(可提高自动化测试脚本运行的速度)</span>
+driver<span class="token punctuation">.</span>implicitly_wait<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>ID<span class="token punctuation">,</span><span class="token string">'account'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>send_keys<span class="token punctuation">(</span><span class="token string">'admin'</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>NAME<span class="token punctuation">,</span> <span class="token string">'password'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>send_keys<span class="token punctuation">(</span><span class="token string">'111Tianyangjun'</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>ID<span class="token punctuation">,</span><span class="token string">'submit'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>click<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>xpath获取元素方式</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># # xpath: By.XPATH，插件：chropath</span>
+<span class="token comment"># 绝对路径：从根节点开始到目标位置</span>
+<span class="token comment"># 相对路径：从指定位置开始到目标位置</span>
+
+driver<span class="token punctuation">.</span>implicitly_wait<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>CSS_SELECTOR<span class="token punctuation">,</span> <span class="token string">'#account'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>send_keys<span class="token punctuation">(</span><span class="token string">'admin'</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>CSS_SELECTOR<span class="token punctuation">,</span> <span class="token string">'[name="password"]'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>send_keys<span class="token punctuation">(</span><span class="token string">'111Tianyangjun'</span><span class="token punctuation">)</span>
+
+<span class="token comment">### XPATH方式：</span>
+driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>XPATH<span class="token punctuation">,</span> <span class="token string">'//td[@class="form-actions"]/button'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>click<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>CSS方式获取元素</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># # css_selector: By.CSS_SELECTOR</span>
+<span class="token triple-quoted-string string">"""
+    By.CSS_SELECTOR, 'div p': 获取标签div内部所有的p标签元素
+    By.CSS_SELECTOR, 'div>p': 获取所有的父亲标签为
+    By.CSS_SELECTOR, 'div+p': 获取所有div标签之后的所有p标签
+    By.CSS_SELECTOR, '#d2': 获取属性id的值为d2的元素
+    By.CSS_SELECTOR, '.tb': 获取属性class的值为tb的元素
+    By.CSS_SELECTOR, '[text-align="center"]': 获取属性text-align="center"的元素
+    By.CSS_SELECTOR, '[type]': 获取属性为type的所有元素
+    By.CSS_SELECTOR, '[type~="text"]': 获取属性为type的内容包含text的所有元素
+    By.CSS_SELECTOR, 'a[href^="https"]': 获取href属性值以https开头的所有a标签元素
+    By.CSS_SELECTOR, 'a[src$=".jpg"]': 获取src属性值以.jpg结尾的所有a标签元素
+    By.CSS_SELECTOR, 'a[src*="abc"]': 获取src属性值包含abc的所有a标签元素
+    By.CSS_SELECTOR, '.tb2 td:nth-child(2)': 获取父亲元素.tb2的第二个子元素的所有td标签元素
+    
+"""</span>
+
+driver<span class="token punctuation">.</span>implicitly_wait<span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>CSS_SELECTOR<span class="token punctuation">,</span> <span class="token string">'#account'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>send_keys<span class="token punctuation">(</span><span class="token string">'admin'</span><span class="token punctuation">)</span>
+driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>CSS_SELECTOR<span class="token punctuation">,</span> <span class="token string">'[name="password"]'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>send_keys<span class="token punctuation">(</span><span class="token string">'111Tianyangjun'</span><span class="token punctuation">)</span>
+<span class="token comment">### CSS方式</span>
+driver<span class="token punctuation">.</span>find_element<span class="token punctuation">(</span>By<span class="token punctuation">.</span>CSS_SELECTOR<span class="token punctuation">,</span> <span class="token string">'#submit'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>click<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
                 
@@ -1289,7 +1476,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">27.4k</span>
+                        class="white-color">28.6k</span>
             
             
             
