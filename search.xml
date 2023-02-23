@@ -5401,4 +5401,121 @@ clang<span class="token punctuation">.</span>info<span class="token punctuation"
         <tag>双指针</tag>
       </tags>
   </entry>
+  <entry>
+    <title>长度最小的子数组209</title>
+    <url>/2023/02/23/%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84209/</url>
+    <content><![CDATA[<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>给定一个含有 n 个正整数的数组和一个正整数 target 。</p>
+<p>找出该数组中满足其和 ≥ target 的长度最小的 连续子数组 [numsl, numsl+1, …, numsr-1, numsr] ，并返回其长度。如果不存在符合条件的子数组，返回 0 。</p>
+<blockquote>
+<p>示例 1：</p>
+<p>输入：target &#x3D; 7, nums &#x3D; [2,3,1,2,4,3]<br>输出：2<br>解释：子数组 [4,3] 是该条件下的长度最小的子数组。</p>
+</blockquote>
+<blockquote>
+<p>示例 2：</p>
+<p>输入：target &#x3D; 4, nums &#x3D; [1,4,4]<br>输出：1</p>
+</blockquote>
+<blockquote>
+<p>示例 3：</p>
+<p>输入：target &#x3D; 11, nums &#x3D; [1,1,1,1,1,1,1,1]<br>输出：0</p>
+</blockquote>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode.cn/problems/minimum-size-subarray-sum">https://leetcode.cn/problems/minimum-size-subarray-sum</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>这道题给定了我们一个数字，让求子数组之和大于等于给定值的最小长度，注意这里是大于等于，不是等于。跟之前那道 <a href="%5Bhttp://ynbstyj.github.io/2023/02/23/%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84%E5%92%8C53/%5D(http://ynbstyj.github.io/2023/02/23/%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84%E5%92%8C53/)">Maximum Subarray</a> 有些类似。本题用滑动窗口来解决，所谓滑动窗口就是不断调节子数组的起始位置和终止位置，从而得出我们想要的结果。</p>
+<p>窗口内的元素：保持窗口内数值之和总大于等于target的长度最小的连续子数组。</p>
+<p>移动窗口的起始位置：如果当前窗口的值大于target，则窗口向前移动（也就是窗口该缩小了）；</p>
+<p>移动窗口的结束位置：窗口的结束位置就是for循环遍历数组指针。</p>
+<p>代码如下：</p>
+ <pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">int</span> <span class="token function">minSubArrayLen</span><span class="token punctuation">(</span><span class="token keyword">int</span> target<span class="token punctuation">,</span> vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">int</span> result <span class="token operator">=</span> INT_MAX<span class="token punctuation">;</span> <span class="token comment">// 保存结果</span>
+        <span class="token keyword">int</span> sum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">// 滑动窗口的数值之和</span>
+        <span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">// 滑动窗口的起始位置</span>
+        <span class="token keyword">int</span> subLength <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">// 滑动窗口的长度</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> j<span class="token operator">&lt;</span>nums<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> j<span class="token operator">++</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            sum <span class="token operator">+=</span> nums<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token keyword">while</span><span class="token punctuation">(</span>sum <span class="token operator">>=</span> target<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+                subLength <span class="token operator">=</span> j<span class="token operator">-</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span>
+                result <span class="token operator">=</span> result <span class="token operator">&lt;</span> subLength <span class="token operator">?</span> result <span class="token operator">:</span> subLength<span class="token punctuation">;</span>
+                <span class="token comment">// 这里体现出滑动窗口的精髓之处，不断变更i</span>
+                sum <span class="token operator">-=</span> nums<span class="token punctuation">[</span>i<span class="token operator">++</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token comment">// 如果result没有被赋值，则返回0，说明没有符合条件的子数组</span>
+        <span class="token keyword">return</span> result <span class="token operator">==</span> INT_MAX <span class="token operator">?</span> <span class="token number">0</span> <span class="token operator">:</span> result<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>数组</tag>
+        <tag>双指针</tag>
+        <tag>滑动窗口</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>最大子数组和53</title>
+    <url>/2023/02/23/%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84%E5%92%8C53/</url>
+    <content><![CDATA[<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>给你一个整数数组 nums ，请你找出一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。</p>
+<p>子数组 是数组中的一个连续部分。</p>
+<blockquote>
+<p>示例 1：</p>
+<p>输入：nums &#x3D; [-2,1,-3,4,-1,2,1,-5,4]<br>输出：6<br>解释：连续子数组 [4,-1,2,1] 的和最大，为 6 。</p>
+<p>示例 2：</p>
+<p>输入：nums &#x3D; [1]<br>输出：1</p>
+<p>示例 3：</p>
+<p>输入：nums &#x3D; [5,4,-1,7,8]<br>输出：23</p>
+</blockquote>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode.cn/problems/maximum-subarray">https://leetcode.cn/problems/maximum-subarray</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>这道题让求最大子数组之和，并且要用两种方法来解，分别是 O(n) 的解法，还有用分治法，这个解法的时间复杂度是 O(nlgn)，那就先来看 O(n) 的解法，这个方法叫做卡达内算法 。定义两个变量 result 和 curSum，其中 result 保存最终要返回的结果，即最大的子数组之和，curSum 初始值为0，每遍历一个数字 num，比较 curSum + num 和 num 中的较大值存入 curSum，然后再把 result 和 curSum 中的较大值存入 result ，以此类推直到遍历完整个数组，可得到最大子数组的值存在 result 中，代码如下：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">int</span> <span class="token function">maxSubArray</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">int</span> result <span class="token operator">=</span> INT_MIN<span class="token punctuation">,</span> curSum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> num<span class="token operator">:</span> nums<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+            curSum <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>curSum<span class="token operator">+</span>num<span class="token punctuation">,</span> num<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            result <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>result<span class="token punctuation">,</span> curSum<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>题目还要求我们用分治法来解，这个分治法的思想就类似于二分搜索法，需要把数组一分为二，分别找出左边和右边的最大子数组之和，然后还要从中间开始向左右分别扫描，求出的最大值分别和左右两边得出的最大值相比较取最大的那一个，代码如下：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">int</span> <span class="token function">maxSubArray</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>nums<span class="token punctuation">.</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token function">helper</span><span class="token punctuation">(</span>nums<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span>nums<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">int</span> <span class="token function">helper</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> nums<span class="token punctuation">,</span> <span class="token keyword">int</span> left<span class="token punctuation">,</span> <span class="token keyword">int</span> right<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>left <span class="token operator">>=</span> right<span class="token punctuation">)</span> <span class="token keyword">return</span> nums<span class="token punctuation">[</span>left<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> mid <span class="token operator">=</span> left <span class="token operator">+</span> <span class="token punctuation">(</span>right <span class="token operator">-</span> left<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> lmax <span class="token operator">=</span> <span class="token function">helper</span><span class="token punctuation">(</span>nums<span class="token punctuation">,</span> left<span class="token punctuation">,</span> mid <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> rmax <span class="token operator">=</span> <span class="token function">helper</span><span class="token punctuation">(</span>nums<span class="token punctuation">,</span> mid <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> right<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> mmax <span class="token operator">=</span> nums<span class="token punctuation">[</span>mid<span class="token punctuation">]</span><span class="token punctuation">,</span> t <span class="token operator">=</span> mmax<span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> mid <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">>=</span> left<span class="token punctuation">;</span> <span class="token operator">--</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            t <span class="token operator">+=</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            mmax <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>mmax<span class="token punctuation">,</span> t<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        t <span class="token operator">=</span> mmax<span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> mid <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> right<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            t <span class="token operator">+=</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            mmax <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>mmax<span class="token punctuation">,</span> t<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> <span class="token function">max</span><span class="token punctuation">(</span>mmax<span class="token punctuation">,</span> <span class="token function">max</span><span class="token punctuation">(</span>lmax<span class="token punctuation">,</span> rmax<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+]]></content>
+      <categories>
+        <category>Leetcode</category>
+      </categories>
+      <tags>
+        <tag>数组</tag>
+        <tag>滑动窗口</tag>
+        <tag>分治法</tag>
+      </tags>
+  </entry>
 </search>
