@@ -4,13 +4,8 @@
 
 <head>
     <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="utf-8">
-    <meta name="keywords" content="字母统计, C++,Python,算法,AI">
-    <meta name="description" content="http://t.cn/Ai8VB72e
-描述输入一行字符串，计算其中A-Z大写字母出现的次数
-输入描述：案例可能有多组，每个案例输入为一行字符串。
-输出描述：对每个案例按A-Z的顺序输出其中大写字母出现的次数。
-示例1输入：
-DFJEIW">
+    <meta name="keywords" content="三数之和, C++,Python,算法,AI">
+    <meta name="description" content="描述给你一个整数数组 nums ，判断是否存在三元组 [nums[i], nums[j], nums[k]] 满足 i !&amp;#x3D; j、i !&amp;#x3D; k 且 j !&amp;#x3D; k ，同时还满足 nums[i] + nums[j]">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -22,7 +17,7 @@ DFJEIW">
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>字母统计 | 田纳尔多の小栈~</title>
+    <title>三数之和 | 田纳尔多の小栈~</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
@@ -359,12 +354,12 @@ DFJEIW">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/38.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">字母统计</h1>
+                    <h1 class="description center-align post-title">三数之和</h1>
                 </div>
             </div>
         </div>
@@ -480,12 +475,8 @@ DFJEIW">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E4%B8%8A%E4%BA%A4/">
-                                <span class="chip bg-color">上交</span>
-                            </a>
-                        
-                            <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
-                                <span class="chip bg-color">字符串</span>
+                            <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">
+                                <span class="chip bg-color">双指针</span>
                             </a>
                         
                     </div>
@@ -496,8 +487,8 @@ DFJEIW">
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95%E4%B8%8A%E6%9C%BA/" class="post-category">
-                                考研复试上机
+                            <a href="/categories/Leetcode/" class="post-category">
+                                Leetcode
                             </a>
                         
                     </div>
@@ -509,28 +500,28 @@ DFJEIW">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-01-30
+                    2023-02-26
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-01-30
+                    2023-02-26
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    215
+                    1.8k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    8 分
                 </div>
                 
 
@@ -548,61 +539,173 @@ DFJEIW">
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><a target="_blank" rel="noopener" href="http://t.cn/Ai8VB72e">http://t.cn/Ai8VB72e</a></p>
-<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>输入一行字符串，计算其中A-Z大写字母出现的次数</p>
-<h3 id="输入描述："><a href="#输入描述：" class="headerlink" title="输入描述："></a>输入描述：</h3><p>案例可能有多组，每个案例输入为一行字符串。</p>
-<h3 id="输出描述："><a href="#输出描述：" class="headerlink" title="输出描述："></a>输出描述：</h3><p>对每个案例按A-Z的顺序输出其中大写字母出现的次数。</p>
-<h2 id="示例1"><a href="#示例1" class="headerlink" title="示例1"></a>示例1</h2><p>输入：</p>
-<pre class="line-numbers language-none"><code class="language-none">DFJEIWFNQLEF0395823048+_+JDLSFJDLSJFKK<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                <h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>给你一个整数数组 nums ，判断是否存在三元组 [nums[i], nums[j], nums[k]] 满足 i !&#x3D; j、i !&#x3D; k 且 j !&#x3D; k ，同时还满足 nums[i] + nums[j] + nums[k] &#x3D;&#x3D; 0 。请</p>
+<p>你返回所有和为 0 且不重复的三元组。</p>
+<p>注意：答案中不可以包含重复的三元组。</p>
+<blockquote>
+<p>示例 1：</p>
+<p>输入：nums &#x3D; [-1,0,1,2,-1,-4]<br>输出：[[-1,-1,2],[-1,0,1]]<br>解释：<br>nums[0] + nums[1] + nums[2] &#x3D; (-1) + 0 + 1 &#x3D; 0 。<br>nums[1] + nums[2] + nums[4] &#x3D; 0 + 1 + (-1) &#x3D; 0 。<br>nums[0] + nums[3] + nums[4] &#x3D; (-1) + 2 + (-1) &#x3D; 0 。<br>不同的三元组是 [-1,0,1] 和 [-1,-1,2] 。<br>注意，输出的顺序和三元组的顺序并不重要。<br>示例 2：</p>
+<p>输入：nums &#x3D; [0,1,1]<br>输出：[]<br>解释：唯一可能的三元组和不为 0 。<br>示例 3：</p>
+<p>输入：nums &#x3D; [0,0,0]<br>输出：[[0,0,0]]<br>解释：唯一可能的三元组和为 0 。</p>
+<p>提示：</p>
+<p>3 &lt;&#x3D; nums.length &lt;&#x3D; 3000<br>-105 &lt;&#x3D; nums[i] &lt;&#x3D; 105</p>
+</blockquote>
+<p>来源：力扣（LeetCode）<br>链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/3sum">https://leetcode.cn/problems/3sum</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><h3 id="代码一"><a href="#代码一" class="headerlink" title="代码一"></a>代码一</h3><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span><span class="token operator">:</span>
+    vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span> <span class="token function">threeSum</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">sort</span><span class="token punctuation">(</span>nums<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> nums<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// n 为 3，从 nums[0] 开始计算和为 0 的三元组</span>
+        <span class="token keyword">return</span> <span class="token function">nSumTarget</span><span class="token punctuation">(</span>nums<span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
 
-<p>输出：</p>
-<pre class="line-numbers language-none"><code class="language-none">A:0
-B:0
-C:0
-D:3
-E:2
-F:5
-G:0
-H:0
-I:1
-J:4
-K:2
-L:3
-M:0
-N:1
-O:0
-P:0
-Q:1
-R:0
-S:2
-T:0
-U:0
-V:0
-W:1
-X:0
-Y:0
-Z:0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token comment">/* 注意：调用这个函数之前一定要先给 nums 排序 */</span>
+    <span class="token comment">// n 填写想求的是几数之和，start 从哪个索引开始计算（一般填 0），target 填想凑出的目标和</span>
+    vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span> <span class="token function">nSumTarget</span><span class="token punctuation">(</span>
+            vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> nums<span class="token punctuation">,</span> <span class="token keyword">int</span> n<span class="token punctuation">,</span> <span class="token keyword">int</span> start<span class="token punctuation">,</span> <span class="token keyword">int</span> target<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
 
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name">_CRT_SECURE_NO_WARNINGS</span> <span class="token expression"><span class="token number">1</span></span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;bits/stdc++.h></span></span>
-<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+        <span class="token keyword">int</span> sz <span class="token operator">=</span> nums<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span> res<span class="token punctuation">;</span>
+        <span class="token comment">// 至少是 2Sum，且数组大小不应该小于 n</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>n <span class="token operator">&lt;</span> <span class="token number">2</span> <span class="token operator">||</span> sz <span class="token operator">&lt;</span> n<span class="token punctuation">)</span> <span class="token keyword">return</span> res<span class="token punctuation">;</span>
+        <span class="token comment">// 2Sum 是 base case</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>n <span class="token operator">==</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token comment">// 双指针那一套操作</span>
+            <span class="token keyword">int</span> lo <span class="token operator">=</span> start<span class="token punctuation">,</span> hi <span class="token operator">=</span> sz <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+            <span class="token keyword">while</span> <span class="token punctuation">(</span>lo <span class="token operator">&lt;</span> hi<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token keyword">int</span> sum <span class="token operator">=</span> nums<span class="token punctuation">[</span>lo<span class="token punctuation">]</span> <span class="token operator">+</span> nums<span class="token punctuation">[</span>hi<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                <span class="token keyword">int</span> left <span class="token operator">=</span> nums<span class="token punctuation">[</span>lo<span class="token punctuation">]</span><span class="token punctuation">,</span> right <span class="token operator">=</span> nums<span class="token punctuation">[</span>hi<span class="token punctuation">]</span><span class="token punctuation">;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>sum <span class="token operator">&lt;</span> target<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                    <span class="token keyword">while</span> <span class="token punctuation">(</span>lo <span class="token operator">&lt;</span> hi <span class="token operator">&amp;&amp;</span> nums<span class="token punctuation">[</span>lo<span class="token punctuation">]</span> <span class="token operator">==</span> left<span class="token punctuation">)</span> lo<span class="token operator">++</span><span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>sum <span class="token operator">></span> target<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                    <span class="token keyword">while</span> <span class="token punctuation">(</span>lo <span class="token operator">&lt;</span> hi <span class="token operator">&amp;&amp;</span> nums<span class="token punctuation">[</span>hi<span class="token punctuation">]</span> <span class="token operator">==</span> right<span class="token punctuation">)</span> hi<span class="token operator">--</span><span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+                    res<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>left<span class="token punctuation">,</span> right<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token keyword">while</span> <span class="token punctuation">(</span>lo <span class="token operator">&lt;</span> hi <span class="token operator">&amp;&amp;</span> nums<span class="token punctuation">[</span>lo<span class="token punctuation">]</span> <span class="token operator">==</span> left<span class="token punctuation">)</span> lo<span class="token operator">++</span><span class="token punctuation">;</span>
+                    <span class="token keyword">while</span> <span class="token punctuation">(</span>lo <span class="token operator">&lt;</span> hi <span class="token operator">&amp;&amp;</span> nums<span class="token punctuation">[</span>hi<span class="token punctuation">]</span> <span class="token operator">==</span> right<span class="token punctuation">)</span> hi<span class="token operator">--</span><span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+            <span class="token comment">// n > 2 时，递归计算 (n-1)Sum 的结果</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> start<span class="token punctuation">;</span> i <span class="token operator">&lt;</span> sz<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span>
+                        sub <span class="token operator">=</span> <span class="token function">nSumTarget</span><span class="token punctuation">(</span>nums<span class="token punctuation">,</span> n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> target <span class="token operator">-</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">for</span> <span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> arr <span class="token operator">:</span> sub<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                    <span class="token comment">// (n-1)Sum 加上 nums[i] 就是 nSum</span>
+                    arr<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    res<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span>
+                <span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span> sz <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">&amp;&amp;</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> nums<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> i<span class="token operator">++</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> res<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<span class="token keyword">int</span> number<span class="token punctuation">[</span><span class="token number">26</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<p>这样，我们再泛化一下题目，不要光和为 0 的三元组了，计算和为 <code>target</code> 的三元组吧，同上面的 <code>twoSum</code> 一样，也不允许重复的结果：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span> <span class="token function">threeSum</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// 求和为 0 的三元组</span>
+    <span class="token keyword">return</span> <span class="token function">threeSumTarget</span><span class="token punctuation">(</span>nums<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
 
-<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-	string str<span class="token punctuation">;</span>
-	<span class="token keyword">while</span> <span class="token punctuation">(</span>cin <span class="token operator">>></span> str<span class="token punctuation">)</span>
-	<span class="token punctuation">&#123;</span>
-		<span class="token function">memset</span><span class="token punctuation">(</span>number<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>number<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-		<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> str<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-			<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token char">'A'</span> <span class="token operator">&lt;=</span> str<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> str<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;</span> <span class="token char">'Z'</span><span class="token punctuation">)</span>
-				number<span class="token punctuation">[</span>str<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">-</span> <span class="token char">'A'</span><span class="token punctuation">]</span><span class="token operator">++</span><span class="token punctuation">;</span>
-		<span class="token punctuation">&#125;</span>
-		<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">26</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
-			<span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"%c:%d\n"</span><span class="token punctuation">,</span> <span class="token char">'A'</span><span class="token operator">+</span>i<span class="token punctuation">,</span> number<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-	<span class="token punctuation">&#125;</span>
-	<span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span> <span class="token function">threeSumTarget</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> nums<span class="token punctuation">,</span> <span class="token keyword">int</span> target<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// 输入数组 nums，返回所有和为 target 的三元组</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>这个问题怎么解决呢？<strong>很简单，穷举呗</strong>。现在我们想找和为 <code>target</code> 的三个数字，那么对于第一个数字，可能是什么？<code>nums</code> 中的每一个元素 <code>nums[i]</code> 都有可能！</p>
+<p>那么，确定了第一个数字之后，剩下的两个数字可以是什么呢？其实就是和为 <code>target - nums[i]</code> 的两个数字呗，那不就是 <code>twoSum</code> 函数解决的问题么🤔</p>
+<p>可以直接写代码了，需要把 <code>twoSum</code> 函数稍作修改即可复用：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">/* 从 nums[start] 开始，计算有序数组
+ * nums 中所有和为 target 的二元组 */</span>
+vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span> <span class="token function">twoSumTarget</span><span class="token punctuation">(</span>
+    vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> nums<span class="token punctuation">,</span> <span class="token keyword">int</span> start<span class="token punctuation">,</span> <span class="token keyword">int</span> target<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// 左指针改为从 start 开始，其他不变</span>
+    <span class="token keyword">int</span> lo <span class="token operator">=</span> start<span class="token punctuation">,</span> hi <span class="token operator">=</span> nums<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span> res<span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>lo <span class="token operator">&lt;</span> hi<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> res<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">/* 计算数组 nums 中所有和为 target 的三元组 */</span>
+vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span> <span class="token function">threeSumTarget</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> nums<span class="token punctuation">,</span> <span class="token keyword">int</span> target<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// 数组得排个序</span>
+    <span class="token function">sort</span><span class="token punctuation">(</span>nums<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> nums<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> n <span class="token operator">=</span> nums<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span> res<span class="token punctuation">;</span>
+    <span class="token comment">// 穷举 threeSum 的第一个数</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// 对 target - nums[i] 计算 twoSum</span>
+        vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span> 
+            tuples <span class="token operator">=</span> <span class="token function">twoSumTarget</span><span class="token punctuation">(</span>nums<span class="token punctuation">,</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">,</span> target <span class="token operator">-</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 如果存在满足条件的二元组，再加上 nums[i] 就是结果三元组</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> tuple <span class="token operator">:</span> tuples<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            tuple<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            res<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>tuple<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token comment">// 跳过第一个数字重复的情况，否则会出现重复结果</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span> n <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">&amp;&amp;</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> nums<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> i<span class="token operator">++</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> res<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>需要注意的是，类似 <code>twoSum</code>，<code>3Sum</code> 的结果也可能重复，比如输入是 <code>nums = [1,1,1,2,3], target = 6</code>，结果就会重复。</p>
+<p><strong>关键点在于，不能让第一个数重复，至于后面的两个数，我们复用的 <code>twoSum</code> 函数会保证它们不重复</strong>。所以代码中必须用一个 while 循环来保证 <code>3Sum</code> 中第一个元素不重复。</p>
+<p>至此，<code>3Sum</code> 问题就解决了，时间复杂度不难算，排序的复杂度为 <code>O(NlogN)</code>，<code>twoSumTarget</code> 函数中的双指针操作为 <code>O(N)</code>，<code>threeSumTarget</code> 函数在 for 循环中调用 <code>twoSumTarget</code> 所以总的时间复杂度就是 <code>O(NlogN + N^2) = O(N^2)</code>。</p>
+<h3 id="代码二"><a href="#代码二" class="headerlink" title="代码二"></a>代码二</h3><p>首先将数组排序，然后有一层for循环，i从下标0的地方开始，同时定一个下标left 定义在i+1的位置上，定义下标right 在数组结尾的位置上。</p>
+<p>依然还是在数组中找到 abc 使得a + b +c &#x3D;0，我们这里相当于 a &#x3D; nums[i]，b &#x3D; nums[left]，c &#x3D; nums[right]。</p>
+<p>接下来如何移动left 和right呢， 如果nums[i] + nums[left] + nums[right] &gt; 0 就说明 此时三数之和大了，因为数组是排序后了，所以right下标就应该向左移动，这样才能让三数之和小一些。</p>
+<p>如果 nums[i] + nums[left] + nums[right] &lt; 0 说明 此时 三数之和小了，left 就向右移动，才能让三数之和大一些，直到left与right相遇为止。</p>
+<p>时间复杂度：O(n^2)。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span> <span class="token function">threeSum</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token operator">&amp;</span> nums<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span> result<span class="token punctuation">;</span>
+        <span class="token function">sort</span><span class="token punctuation">(</span>nums<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> nums<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 找出a + b + c = 0</span>
+        <span class="token comment">// a = nums[i], b = nums[left], c = nums[right]</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> nums<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token comment">// 排序之后如果第一个元素已经大于零，那么无论如何组合都不可能凑成三元组，直接返回结果就可以了</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+            <span class="token comment">// 错误去重a方法，将会漏掉-1,-1,2 这种情况</span>
+            <span class="token comment">/*
+            if (nums[i] == nums[i + 1]) &#123;
+                continue;
+            &#125;
+            */</span>
+            <span class="token comment">// 正确去重a方法</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">></span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> nums<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token keyword">continue</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
+            <span class="token keyword">int</span> left <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> right <span class="token operator">=</span> nums<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+            <span class="token keyword">while</span> <span class="token punctuation">(</span>right <span class="token operator">></span> left<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token comment">// 去重复逻辑如果放在这里，0，0，0 的情况，可能直接导致 right&lt;=left 了，从而漏掉了 0,0,0 这种三元组</span>
+                <span class="token comment">/*
+                while (right > left &amp;&amp; nums[right] == nums[right - 1]) right--;
+                while (right > left &amp;&amp; nums[left] == nums[left + 1]) left++;
+                */</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> nums<span class="token punctuation">[</span>left<span class="token punctuation">]</span> <span class="token operator">+</span> nums<span class="token punctuation">[</span>right<span class="token punctuation">]</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> right<span class="token operator">--</span><span class="token punctuation">;</span>
+                <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> nums<span class="token punctuation">[</span>left<span class="token punctuation">]</span> <span class="token operator">+</span> nums<span class="token punctuation">[</span>right<span class="token punctuation">]</span> <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> left<span class="token operator">++</span><span class="token punctuation">;</span>
+                <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+                    result<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span><span class="token punctuation">&#123;</span>nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> nums<span class="token punctuation">[</span>left<span class="token punctuation">]</span><span class="token punctuation">,</span> nums<span class="token punctuation">[</span>right<span class="token punctuation">]</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token comment">// 去重逻辑应该放在找到一个三元组之后，对b 和 c去重</span>
+                    <span class="token keyword">while</span> <span class="token punctuation">(</span>right <span class="token operator">></span> left <span class="token operator">&amp;&amp;</span> nums<span class="token punctuation">[</span>right<span class="token punctuation">]</span> <span class="token operator">==</span> nums<span class="token punctuation">[</span>right <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> right<span class="token operator">--</span><span class="token punctuation">;</span>
+                    <span class="token keyword">while</span> <span class="token punctuation">(</span>right <span class="token operator">></span> left <span class="token operator">&amp;&amp;</span> nums<span class="token punctuation">[</span>left<span class="token punctuation">]</span> <span class="token operator">==</span> nums<span class="token punctuation">[</span>left <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> left<span class="token operator">++</span><span class="token punctuation">;</span>
+
+                    <span class="token comment">// 找到答案时，双指针同时收缩</span>
+                    right<span class="token operator">--</span><span class="token punctuation">;</span>
+                    left<span class="token operator">++</span><span class="token punctuation">;</span>
+                <span class="token punctuation">&#125;</span>
+            <span class="token punctuation">&#125;</span>
+
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
                 
@@ -630,7 +733,7 @@ Z:0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://ynbstyj.github.io/2023/01/30/%E5%AD%97%E6%AF%8D%E7%BB%9F%E8%AE%A1/">http://ynbstyj.github.io/2023/01/30/%E5%AD%97%E6%AF%8D%E7%BB%9F%E8%AE%A1/</a>
+                    <a href="http://ynbstyj.github.io/2023/02/26/%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/">http://ynbstyj.github.io/2023/02/26/%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -668,12 +771,8 @@ Z:0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E4%B8%8A%E4%BA%A4/">
-                                    <span class="chip bg-color">上交</span>
-                                </a>
-                            
-                                <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
-                                    <span class="chip bg-color">字符串</span>
+                                <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">
+                                    <span class="chip bg-color">双指针</span>
                                 </a>
                             
                         </div>
@@ -989,17 +1088,18 @@ Z:0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2023/01/30/skew%E6%95%B0/">
+                <a href="/2023/02/26/%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="skew数">
+                        <img src="/medias/featureimages/38.jpg" class="responsive-img" alt="三数之和">
                         
-                        <span class="card-title">skew数</span>
+                        <span class="card-title">三数之和</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1009,30 +1109,27 @@ Z:0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-01-30
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-26
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95%E4%B8%8A%E6%9C%BA/" class="post-category">
-                                    考研复试上机
+                            <a href="/categories/Leetcode/" class="post-category">
+                                    Leetcode
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
-                        <span class="chip bg-color">字符串</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%8C%97%E5%A4%A7/">
-                        <span class="chip bg-color">北大</span>
+                    <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">
+                        <span class="chip bg-color">双指针</span>
                     </a>
                     
                 </div>
@@ -1046,13 +1143,13 @@ Z:0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/01/30/%E7%BB%9F%E8%AE%A1%E5%AD%97%E7%AC%A6/">
+                <a href="/2023/02/26/%E8%B5%8E%E9%87%91%E4%BF%A1/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/139.jpg" class="responsive-img" alt="统计字符">
+                        <img src="/medias/featureimages/118.jpg" class="responsive-img" alt="赎金信">
                         
-                        <span class="card-title">统计字符</span>
+                        <span class="card-title">赎金信</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1063,14 +1160,14 @@ Z:0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-01-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-26
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E8%80%83%E7%A0%94%E5%A4%8D%E8%AF%95%E4%B8%8A%E6%9C%BA/" class="post-category">
-                                    考研复试上机
+                            <a href="/categories/Leetcode/" class="post-category">
+                                    Leetcode
                                 </a>
                             
                             
@@ -1080,12 +1177,8 @@ Z:0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%B5%99%E5%A4%A7/">
-                        <span class="chip bg-color">浙大</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">
-                        <span class="chip bg-color">字符串</span>
+                    <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/">
+                        <span class="chip bg-color">哈希表</span>
                     </a>
                     
                 </div>
