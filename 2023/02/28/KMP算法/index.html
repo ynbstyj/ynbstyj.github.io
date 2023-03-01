@@ -513,21 +513,21 @@ next数组就可以是前缀表，但">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-02-28
+                    2023-03-01
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    367
+                    1.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    5 分
                 </div>
                 
 
@@ -549,34 +549,109 @@ next数组就可以是前缀表，但">
 <p>很多KMP算法的时间都是使用next数组来做回退操作，那么next数组与前缀表有什么关系呢？</p>
 <p>next数组就可以是前缀表，但是很多实现都是把前缀表统一减一（右移一位，初始位置为-1）之后作为next数组。</p>
 <p>其实<strong>这并不涉及到KMP的原理，而是具体实现，next数组既可以就是前缀表，也可以是前缀表统一减一（右移一位，初始位置为-1）。</strong></p>
-<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;string></span></span>
+<h3 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h3><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;vector></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;string></span></span>
 
 <span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
 
-<span class="token comment">// KMP 算法的预处理过程，用于计算模式串的 next 数组</span>
-vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token function">getNext</span><span class="token punctuation">(</span>string<span class="token operator">&amp;</span> pattern<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">int</span> n <span class="token operator">=</span> pattern<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>          <span class="token comment">// 模式串的长度</span>
-    vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token function">next</span><span class="token punctuation">(</span>n<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>          <span class="token comment">// 初始化 next 数组为 0</span>
-    next<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>                    <span class="token comment">// next[0] = -1</span>
+<span class="token comment">// 计算模式串 pattern 的 next 数组</span>
+vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token function">getNext</span><span class="token punctuation">(</span>string pattern<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> len <span class="token operator">=</span> pattern<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 计算模式串的长度</span>
+    vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token function">next</span><span class="token punctuation">(</span>len<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 初始化 next 数组，全部赋值为 0</span>
+    <span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">// j 表示当前比较的位置</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> len<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// i 表示当前需要计算 next 值的位置</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>j <span class="token operator">></span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> pattern<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">!=</span> pattern<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 如果当前字符不匹配，则向前跳</span>
+            j <span class="token operator">=</span> next<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// next[j-1] 表示当前字符之前的字符串的最长公共前缀和后缀的长度</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>pattern<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> pattern<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 如果当前字符匹配，则继续向后比较</span>
+            j<span class="token operator">++</span><span class="token punctuation">;</span> <span class="token comment">// 比较下一个字符</span>
+        <span class="token punctuation">&#125;</span>
+        next<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> j<span class="token punctuation">;</span> <span class="token comment">// 更新 next 数组</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> next<span class="token punctuation">;</span> <span class="token comment">// 返回计算好的 next 数组</span>
+<span class="token punctuation">&#125;</span>
 
-    <span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> j <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>               <span class="token comment">// i 表示当前要计算 next[i] 的值，j 表示 next[i] 的前一个值，初始值为 -1</span>
-
-    <span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span> n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>              <span class="token comment">// 计算 next[1] 到 next[n-1] 的值</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>j <span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1</span> <span class="token operator">||</span> pattern<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> pattern<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token comment">// 如果 j = -1 或者当前字符匹配成功，则将 i 和 j 分别加 1</span>
-            <span class="token operator">++</span>i<span class="token punctuation">;</span>
-            <span class="token operator">++</span>j<span class="token punctuation">;</span>
-            next<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> j<span class="token punctuation">;</span>             <span class="token comment">// 将 next[i] 赋值为 j</span>
-        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-            <span class="token comment">// 如果匹配失败，则令 j = next[j]</span>
-            j <span class="token operator">=</span> next<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token comment">// 在文本串 text 中查找模式串 pattern</span>
+<span class="token keyword">int</span> <span class="token function">kmp</span><span class="token punctuation">(</span>string text<span class="token punctuation">,</span> string pattern<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> n <span class="token operator">=</span> text<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 计算文本串的长度</span>
+    <span class="token keyword">int</span> m <span class="token operator">=</span> pattern<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 计算模式串的长度</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>m <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 特判，模式串为空串</span>
+        <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">// 在文本串的位置 0 处匹配</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>n <span class="token operator">&lt;</span> m<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 特判，文本串比模式串短</span>
+        <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">// 没有匹配的位置，返回 -1</span>
+    <span class="token punctuation">&#125;</span>
+    vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> next <span class="token operator">=</span> <span class="token function">getNext</span><span class="token punctuation">(</span>pattern<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 计算模式串的 next 数组</span>
+    <span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">// j 表示当前在模式串中比较的位置</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// i 表示当前在文本串中比较的位置</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>j <span class="token operator">></span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> text<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">!=</span> pattern<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 如果当前字符不匹配，则向前跳</span>
+            j <span class="token operator">=</span> next<span class="token punctuation">[</span>j <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// next[j-1] 表示当前字符之前的字符串的最长公共前缀和后缀的长度</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>text<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> pattern<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 如果当前字符匹配，则继续向后比较</span>
+            j<span class="token operator">++</span><span class="token punctuation">;</span> <span class="token comment">// 比较下一个字符</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>j <span class="token operator">==</span> m<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 如果 j 等于 m，表示模式串已经完全匹配</span>
+            <span class="token keyword">return</span> i <span class="token operator">-</span> m <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">// 返回匹配的位置，即文本串中的起始位置</span>
         <span class="token punctuation">&#125;</span>
     <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">// 没有匹配的位置，返回 -1</span>
+<span class="token punctuation">&#125;</span>
 
-    <span class="token keyword">return</span> next<span class="token punctuation">;</span>                     <span class="token comment">// 返回 next 数组</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    string text <span class="token operator">=</span> <span class="token string">"hello world"</span><span class="token punctuation">;</span><span class="token comment">// 定义文本串</span>
+    string pattern <span class="token operator">=</span> <span class="token string">"world"</span><span class="token punctuation">;</span><span class="token comment">// 定义模式串</span>
+    <span class="token keyword">int</span> index <span class="token operator">=</span> <span class="token function">kmp</span><span class="token punctuation">(</span>text<span class="token punctuation">,</span> pattern<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 在文本串中查找</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>index <span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        cout <span class="token operator">&lt;&lt;</span> <span class="token string">"pattern not found"</span> <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+        cout <span class="token operator">&lt;&lt;</span> <span class="token string">"pattern found at index "</span> <span class="token operator">&lt;&lt;</span> index <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h3><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">get_next</span><span class="token punctuation">(</span>pattern<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> List<span class="token punctuation">[</span><span class="token builtin">int</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""计算模式串 pattern 的 next 数组"""</span>
+    m <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>pattern<span class="token punctuation">)</span>
+    <span class="token builtin">next</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*</span> m  <span class="token comment"># 初始化 next 数组，全部赋值为 0</span>
+    j <span class="token operator">=</span> <span class="token number">0</span>  <span class="token comment"># j 表示当前比较的位置</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> m<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token keyword">while</span> j <span class="token operator">></span> <span class="token number">0</span> <span class="token keyword">and</span> pattern<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">!=</span> pattern<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">:</span>  <span class="token comment"># 如果当前字符不匹配，则向前跳</span>
+            j <span class="token operator">=</span> <span class="token builtin">next</span><span class="token punctuation">[</span>j<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>  <span class="token comment"># next[j-1] 表示当前字符之前的字符串的最长公共前缀和后缀的长度</span>
+        <span class="token keyword">if</span> pattern<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> pattern<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">:</span>  <span class="token comment"># 如果当前字符匹配，则继续向后比较</span>
+            j <span class="token operator">+=</span> <span class="token number">1</span>  <span class="token comment"># 比较下一个字符</span>
+        <span class="token builtin">next</span><span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> j  <span class="token comment"># 更新 next 数组</span>
+    <span class="token keyword">return</span> <span class="token builtin">next</span>  <span class="token comment"># 返回计算好的 next 数组</span>
+
+
+<span class="token keyword">def</span> <span class="token function">kmp</span><span class="token punctuation">(</span>text<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">,</span> pattern<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">int</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""在文本串 text 中查找模式串 pattern"""</span>
+    n<span class="token punctuation">,</span> m <span class="token operator">=</span> <span class="token builtin">len</span><span class="token punctuation">(</span>text<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>pattern<span class="token punctuation">)</span>
+    <span class="token keyword">if</span> m <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">:</span>  <span class="token comment"># 特判，模式串为空串</span>
+        <span class="token keyword">return</span> <span class="token number">0</span>  <span class="token comment"># 在文本串的位置 0 处匹配</span>
+    <span class="token keyword">if</span> n <span class="token operator">&lt;</span> m<span class="token punctuation">:</span>  <span class="token comment"># 特判，文本串比模式串短</span>
+        <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span>  <span class="token comment"># 没有匹配的位置，返回 -1</span>
+    <span class="token builtin">next</span> <span class="token operator">=</span> get_next<span class="token punctuation">(</span>pattern<span class="token punctuation">)</span>  <span class="token comment"># 计算模式串的 next 数组</span>
+    j <span class="token operator">=</span> <span class="token number">0</span>  <span class="token comment"># j 表示当前在模式串中比较的位置</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>  <span class="token comment"># i 表示当前在文本串中比较的位置</span>
+        <span class="token keyword">while</span> j <span class="token operator">></span> <span class="token number">0</span> <span class="token keyword">and</span> text<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">!=</span> pattern<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">:</span>  <span class="token comment"># 如果当前字符不匹配，则向前跳</span>
+            j <span class="token operator">=</span> <span class="token builtin">next</span><span class="token punctuation">[</span>j<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>  <span class="token comment"># next[j-1] 表示当前字符之前的字符串的最长公共前缀和后缀的长度</span>
+        <span class="token keyword">if</span> text<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> pattern<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">:</span>  <span class="token comment"># 如果当前字符匹配，则继续向后比较</span>
+            j <span class="token operator">+=</span> <span class="token number">1</span>  <span class="token comment"># 比较下一个字符</span>
+        <span class="token keyword">if</span> j <span class="token operator">==</span> m<span class="token punctuation">:</span>  <span class="token comment"># 如果 j 等于 m，表示模式串已经完全匹配</span>
+            <span class="token keyword">return</span> i <span class="token operator">-</span> m <span class="token operator">+</span> <span class="token number">1</span>  <span class="token comment"># 返回匹配的位置，即文本串中的起始位置</span>
+    <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span>  <span class="token comment"># 没有匹配的位置，返回 -1</span>
+
+
+<span class="token comment"># 测试</span>
+text <span class="token operator">=</span> <span class="token string">"hello world"</span>  <span class="token comment"># 定义文本串</span>
+pattern <span class="token operator">=</span> <span class="token string">"world"</span>  <span class="token comment"># 定义模式串</span>
+pos <span class="token operator">=</span> kmp<span class="token punctuation">(</span>text<span class="token punctuation">,</span> pattern<span class="token punctuation">)</span>  <span class="token comment"># 在文本串中查找模式串</span>
+<span class="token keyword">if</span> pos <span class="token operator">==</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"在文本串中未找到模式串"</span><span class="token punctuation">)</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"在文本串的第 </span><span class="token interpolation"><span class="token punctuation">&#123;</span>pos<span class="token punctuation">&#125;</span></span><span class="token string"> 个位置找到了模式串"</span></span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
                 
@@ -1267,7 +1342,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">49.7k</span>
+                        class="white-color">53k</span>
             
             
             
