@@ -513,14 +513,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-03-04
+                    2023-03-09
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    874
+                    875
                 </div>
                 
 
@@ -600,7 +600,7 @@
         <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token operator">!</span>q<span class="token punctuation">.</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span> <span class="token comment">// 接下来就要判断这两个树是否相互翻转</span>
             TreeNode<span class="token operator">*</span> lNode <span class="token operator">=</span> q<span class="token punctuation">.</span><span class="token function">front</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> q<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
             TreeNode<span class="token operator">*</span> rNode <span class="token operator">=</span> q<span class="token punctuation">.</span><span class="token function">front</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> q<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>lNode <span class="token operator">&amp;</span> <span class="token operator">!</span>rNode<span class="token punctuation">)</span> <span class="token comment">// 左节点为空、右节点为空，此时说明是对称的</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>lNode <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>rNode<span class="token punctuation">)</span> <span class="token comment">// 左节点为空、右节点为空，此时说明是对称的</span>
                 <span class="token keyword">continue</span><span class="token punctuation">;</span>
             <span class="token comment">// 左右一个节点不为空，或者都不为空但数值不相同，返回false</span>
             <span class="token keyword">if</span><span class="token punctuation">(</span>lNode <span class="token operator">&amp;&amp;</span> <span class="token operator">!</span>rNode <span class="token operator">||</span> <span class="token operator">!</span>lNode <span class="token operator">&amp;&amp;</span> rNode <span class="token operator">||</span> lNode<span class="token operator">-></span>val <span class="token operator">!=</span> rNode<span class="token operator">-></span>val<span class="token punctuation">)</span>
@@ -1332,7 +1332,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">72.7k</span>
+                        class="white-color">80.5k</span>
             
             
             
