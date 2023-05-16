@@ -477,8 +477,16 @@
                     
                     <div class="article-tag">
                         
+                            <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">
+                                <span class="chip bg-color">双指针</span>
+                            </a>
+                        
                             <a href="/tags/%E9%93%BE%E8%A1%A8/">
                                 <span class="chip bg-color">链表</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/">
+                                <span class="chip bg-color">哈希表</span>
                             </a>
                         
                     </div>
@@ -509,14 +517,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-02-26
+                    2023-05-16
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    247
+                    434
                 </div>
                 
 
@@ -545,7 +553,10 @@
 <p>为了表示给定链表中的环，使用整数 pos 来表示链表尾连接到链表中的位置（索引从 0 开始）。 如果 pos 是 -1，则在该链表中没有环。</p>
 <p><strong>说明</strong>：不允许修改给定的链表。</p>
 <p><img src="https://raw.githubusercontent.com/ynbstyj/picb/main/img/20230224235001.png"></p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">/**
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>这个问题的解决方法是使用 “快慢指针”（也称为 “龟兔赛跑算法”）。我们使用两个指针，一个指针每次移动一个节点，另一个指针每次移动两个节点。如果链表中有环，那么这两个指针最终一定会相遇。</p>
+<p>当两个指针相遇时，我们可以确定链表中有环。接下来，我们需要找到环的起点。我们可以使用两个指针，一个指针从链表头开始，另一个指针从相遇点开始。这两个指针每次都只移动一个节点，当它们相遇时，就是环的起点。</p>
+<p>如果链表中没有环，那么快指针最终会到达链表的末尾，此时我们可以直接返回 nullptr。</p>
+<h2 id="C-代码"><a href="#C-代码" class="headerlink" title="C++代码"></a>C++代码</h2><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">/**
  * Definition for singly-linked list.
  * struct ListNode &#123;
  *     int val;
@@ -556,28 +567,29 @@
 <span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">&#123;</span>
 <span class="token keyword">public</span><span class="token operator">:</span>
     ListNode <span class="token operator">*</span><span class="token function">detectCycle</span><span class="token punctuation">(</span>ListNode <span class="token operator">*</span>head<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token comment">// 快慢指针初始化指向 head</span>
-        ListNode <span class="token operator">*</span>slow<span class="token operator">=</span>head<span class="token punctuation">,</span> <span class="token operator">*</span>fast<span class="token operator">=</span>head<span class="token punctuation">;</span>
-        <span class="token comment">// 快指针走到末尾时停止</span>
-        <span class="token keyword">while</span><span class="token punctuation">(</span>fast<span class="token operator">!=</span><span class="token constant">NULL</span> <span class="token operator">&amp;&amp;</span> fast<span class="token operator">-></span>next<span class="token operator">!=</span><span class="token constant">NULL</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-            <span class="token comment">// 慢指针走一步，快指针走两步</span>
+        ListNode <span class="token operator">*</span>slow <span class="token operator">=</span> head<span class="token punctuation">,</span> <span class="token operator">*</span>fast <span class="token operator">=</span> head<span class="token punctuation">;</span>
+        <span class="token comment">// 首先使用快慢指针找到链表中的环</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>fast <span class="token operator">!=</span> <span class="token keyword">nullptr</span> <span class="token operator">&amp;&amp;</span> fast<span class="token operator">-></span>next <span class="token operator">!=</span> <span class="token keyword">nullptr</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
             slow <span class="token operator">=</span> slow<span class="token operator">-></span>next<span class="token punctuation">;</span>
             fast <span class="token operator">=</span> fast<span class="token operator">-></span>next<span class="token operator">-></span>next<span class="token punctuation">;</span>
-            <span class="token comment">// 快慢指针相遇，说明含有环</span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span>slow <span class="token operator">==</span> fast<span class="token punctuation">)</span> <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>slow <span class="token operator">==</span> fast<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token punctuation">&#125;</span>
         <span class="token punctuation">&#125;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>fast<span class="token operator">==</span><span class="token constant">NULL</span> <span class="token operator">||</span> fast<span class="token operator">-></span>next<span class="token operator">==</span><span class="token constant">NULL</span><span class="token punctuation">)</span>
-            <span class="token keyword">return</span> <span class="token constant">NULL</span><span class="token punctuation">;</span>
-        <span class="token comment">// 重新指向头结点</span>
+        <span class="token comment">// 如果链表中没有环，则直接返回 nullptr</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>fast <span class="token operator">==</span> <span class="token keyword">nullptr</span> <span class="token operator">||</span> fast<span class="token operator">-></span>next <span class="token operator">==</span> <span class="token keyword">nullptr</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token keyword">nullptr</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token comment">// 如果链表中有环，则找到环的起点</span>
         slow <span class="token operator">=</span> head<span class="token punctuation">;</span>
-        <span class="token comment">// 快慢指针同步前进，相交点就是环起点</span>
         <span class="token keyword">while</span> <span class="token punctuation">(</span>slow <span class="token operator">!=</span> fast<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            fast <span class="token operator">=</span> fast<span class="token operator">-></span>next<span class="token punctuation">;</span>
             slow <span class="token operator">=</span> slow<span class="token operator">-></span>next<span class="token punctuation">;</span>
+            fast <span class="token operator">=</span> fast<span class="token operator">-></span>next<span class="token punctuation">;</span>
         <span class="token punctuation">&#125;</span>
         <span class="token keyword">return</span> slow<span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
                 
@@ -643,8 +655,16 @@
                     
                         <div class="article-tag">
                             
+                                <a href="/tags/%E5%8F%8C%E6%8C%87%E9%92%88/">
+                                    <span class="chip bg-color">双指针</span>
+                                </a>
+                            
                                 <a href="/tags/%E9%93%BE%E8%A1%A8/">
                                     <span class="chip bg-color">链表</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%93%88%E5%B8%8C%E8%A1%A8/">
+                                    <span class="chip bg-color">哈希表</span>
                                 </a>
                             
                         </div>
@@ -1206,7 +1226,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">124.6k</span>
+                        class="white-color">125.6k</span>
             
             
             
