@@ -2288,10 +2288,13 @@ map1<span class="token punctuation">.</span><span class="token function">clear</
 
 ]]></content>
       <categories>
-        <category>Leetcode</category>
+        <category>Leetcode热题100</category>
       </categories>
       <tags>
+        <tag>链表</tag>
         <tag>二叉树</tag>
+        <tag>栈</tag>
+        <tag>DFS</tag>
       </tags>
   </entry>
   <entry>
