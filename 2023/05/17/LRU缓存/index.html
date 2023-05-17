@@ -522,7 +522,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.1k
+                    1k
                 </div>
                 
 
@@ -555,58 +555,60 @@
 <p>1 &lt;&#x3D; capacity &lt;&#x3D; 3000<br>0 &lt;&#x3D; key &lt;&#x3D; 10000<br>0 &lt;&#x3D; value &lt;&#x3D; 105<br>最多调用 2 * 105 次 get 和 put</p>
 <p>来源：力扣（LeetCode）<br>链接：<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/lru-cache">https://leetcode.cn/problems/lru-cache</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>LRU Cache问题的解决方案通常使用哈希表和双向链表来实现。哈希表用于快速查找元素，而双向链表用于存储元素的顺序，并且可以在O(1)时间内将元素放到队列头部。</p>
-<p>在上面的代码中，<code>cache</code>是哈希表，用于存储元素。每个元素都是一个<code>PII</code>类型的pair，其中<code>PII</code>类型是一个pair，第一个元素是元素的值，第二个元素是元素在队列中的位置。<code>used</code>是双向链表，用于存储元素的顺序。<code>touch</code>函数将元素放到队列头部。</p>
-<p><code>get</code>函数首先查找缓存中是否有key。如果没有，返回-1。如果有，将其放到队列头部，并返回值。</p>
-<p><code>put</code>函数首先查找缓存中是否有key。如果有，将其放到队列头部，并更新值。如果没有，将新元素添加到队列头部。如果缓存已满，删除队列尾部的元素，并将其从队列中删除。然后在缓存中添加新元素，其中第一个元素是value，第二个元素是新元素在队列中的位置。如果缓存已满，需要删除队列尾部的元素，因为这些元素是最近最少使用的元素。然后将新元素添加到队列头部，并在缓存中添加新元素。</p>
-<h3 id="C-代码"><a href="#C-代码" class="headerlink" title="C++代码"></a>C++代码</h3><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span>
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;unordered_map></span></span>
-<span class="token keyword">using</span> <span class="token keyword">namespace</span> std<span class="token punctuation">;</span>
+<h3 id="C-代码"><a href="#C-代码" class="headerlink" title="C++代码"></a>C++代码</h3><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;unordered_map></span></span>
 
 <span class="token keyword">class</span> <span class="token class-name">LRUCache</span> <span class="token punctuation">&#123;</span>
 <span class="token keyword">public</span><span class="token operator">:</span>
     <span class="token function">LRUCache</span><span class="token punctuation">(</span><span class="token keyword">int</span> capacity<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
         size <span class="token operator">=</span> capacity<span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
-    
+
     <span class="token keyword">int</span> <span class="token function">get</span><span class="token punctuation">(</span><span class="token keyword">int</span> key<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">auto</span> it <span class="token operator">=</span> cache<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 查找缓存中是否有key</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>it <span class="token operator">==</span> cache<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">// 如果没有，返回-1</span>
-        <span class="token function">touch</span><span class="token punctuation">(</span>it<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 如果有，将其放到队列头部</span>
-        <span class="token keyword">return</span> it<span class="token operator">-></span>second<span class="token punctuation">.</span>first<span class="token punctuation">;</span> <span class="token comment">// 返回值</span>
+        <span class="token comment">// 如果哈希表中不存在该键，则返回 -1</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>cache<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span> <span class="token operator">==</span> cache<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token comment">// 移动到链表的开头</span>
+        <span class="token keyword">auto</span> it <span class="token operator">=</span> cache<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> val <span class="token operator">=</span> it<span class="token operator">-></span>second<span class="token punctuation">;</span>
+        cacheList<span class="token punctuation">.</span><span class="token function">erase</span><span class="token punctuation">(</span>it<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        cacheList<span class="token punctuation">.</span><span class="token function">push_front</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>key<span class="token punctuation">,</span> val<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        cache<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> cacheList<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> val<span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
-    
+
     <span class="token keyword">void</span> <span class="token function">put</span><span class="token punctuation">(</span><span class="token keyword">int</span> key<span class="token punctuation">,</span> <span class="token keyword">int</span> value<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token keyword">auto</span> it <span class="token operator">=</span> cache<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 查找缓存中是否有key</span>
-        <span class="token keyword">if</span> <span class="token punctuation">(</span>it <span class="token operator">!=</span> cache<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 如果有</span>
-            <span class="token function">touch</span><span class="token punctuation">(</span>it<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 将其放到队列头部</span>
-            it<span class="token operator">-></span>second<span class="token punctuation">.</span>first <span class="token operator">=</span> value<span class="token punctuation">;</span> <span class="token comment">// 更新值</span>
-        <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 如果没有</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>cache<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> size<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 如果缓存已满</span>
-                cache<span class="token punctuation">.</span><span class="token function">erase</span><span class="token punctuation">(</span>used<span class="token punctuation">.</span><span class="token function">back</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 删除队列尾部的元素</span>
-                used<span class="token punctuation">.</span><span class="token function">pop_back</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 并将其从队列中删除</span>
+        <span class="token comment">// 如果键已经存在，则更新其值并移动到链表的开头</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>cache<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span> <span class="token operator">!=</span> cache<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">auto</span> it <span class="token operator">=</span> cache<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            cacheList<span class="token punctuation">.</span><span class="token function">erase</span><span class="token punctuation">(</span>it<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            cacheList<span class="token punctuation">.</span><span class="token function">push_front</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>key<span class="token punctuation">,</span> value<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            cache<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> cacheList<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token comment">// 如果键不存在，则插入该键值对</span>
+        <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+            <span class="token comment">// 如果缓存已满，则删除链表末尾的节点</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>cache<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> size<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token keyword">auto</span> last <span class="token operator">=</span> cacheList<span class="token punctuation">.</span><span class="token function">back</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                cacheList<span class="token punctuation">.</span><span class="token function">pop_back</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                cache<span class="token punctuation">.</span><span class="token function">erase</span><span class="token punctuation">(</span>last<span class="token punctuation">.</span>first<span class="token punctuation">)</span><span class="token punctuation">;</span>
             <span class="token punctuation">&#125;</span>
-            used<span class="token punctuation">.</span><span class="token function">push_front</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 将新元素添加到队列头部</span>
-            cache<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">&#123;</span>value<span class="token punctuation">,</span> used<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span> <span class="token comment">// 在缓存中添加新元素</span>
+            cacheList<span class="token punctuation">.</span><span class="token function">push_front</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>key<span class="token punctuation">,</span> value<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            cache<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> cacheList<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">&#125;</span>
     <span class="token punctuation">&#125;</span>
+
 <span class="token keyword">private</span><span class="token operator">:</span>
-    <span class="token keyword">typedef</span> list<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> LI<span class="token punctuation">;</span> <span class="token comment">// 定义一个list类型</span>
-    <span class="token keyword">typedef</span> pair<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span> LI<span class="token double-colon punctuation">::</span>iterator<span class="token operator">></span> PII<span class="token punctuation">;</span> <span class="token comment">// 定义一个pair类型</span>
-    unordered_map<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span> PII<span class="token operator">></span> cache<span class="token punctuation">;</span> <span class="token comment">// 缓存，用于存储元素</span>
-    LI used<span class="token punctuation">;</span> <span class="token comment">// 队列，用于存储元素的顺序</span>
-    <span class="token keyword">int</span> size<span class="token punctuation">;</span> <span class="token comment">// 缓存的大小</span>
-    
-    <span class="token keyword">void</span> <span class="token function">touch</span><span class="token punctuation">(</span>unordered_map<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span> PII<span class="token operator">></span><span class="token double-colon punctuation">::</span>iterator it<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 将元素放到队列头部</span>
-        <span class="token keyword">int</span> key <span class="token operator">=</span> it<span class="token operator">-></span>first<span class="token punctuation">;</span>
-        used<span class="token punctuation">.</span><span class="token function">erase</span><span class="token punctuation">(</span>it<span class="token operator">-></span>second<span class="token punctuation">.</span>second<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 将元素从队列中删除</span>
-        used<span class="token punctuation">.</span><span class="token function">push_front</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 将元素添加到队列头部</span>
-        it<span class="token operator">-></span>second<span class="token punctuation">.</span>second <span class="token operator">=</span> used<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 更新元素在队列中的位置</span>
-    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">int</span> size<span class="token punctuation">;</span>
+    std<span class="token double-colon punctuation">::</span>list<span class="token operator">&lt;</span>std<span class="token double-colon punctuation">::</span>pair<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">>></span> cacheList<span class="token punctuation">;</span>
+    std<span class="token double-colon punctuation">::</span>unordered_map<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span> std<span class="token double-colon punctuation">::</span>list<span class="token operator">&lt;</span>std<span class="token double-colon punctuation">::</span>pair<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">int</span><span class="token operator">>></span><span class="token double-colon punctuation">::</span>iterator<span class="token operator">></span> cache<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-
-
+<p>这是一个使用哈希表和双向链表实现的 LRU Cache 数据结构。哈希表用于快速查找键值对，双向链表用于维护节点的顺序，从而实现 LRU 缓存淘汰策略。</p>
+<p>具体来说，我们使用 <code>std::list</code> 来实现双向链表，该链表中的每个节点都是一个键值对。我们还使用 <code>std::unordered_map</code> 来实现哈希表，该哈希表中的每个键都对应着链表中的一个节点。</p>
+<p>在 <code>get</code> 操作中，我们首先在哈希表中查找键，如果键不存在，则返回 -1。如果键存在，则将对应的节点移动到链表的开头，并返回节点的值。</p>
+<p>在 <code>put</code> 操作中，我们首先在哈希表中查找键，如果键已经存在，则更新其值并将对应的节点移动到链表的开头。如果键不存在，则插入该键值对。如果缓存已满，则删除链表末尾的节点，并从哈希表中删除对应的键值对。无论何种情况，我们都需要将新的节点插入到链表的开头，并在哈希表中更新对应的键值对。</p>
 
                 
             </div>
@@ -1260,7 +1262,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">130.9k</span>
+                        class="white-color">130.8k</span>
             
             
             
@@ -1572,10 +1574,10 @@ $(function () {
       hover: "enabled",
       container: "tp-weather-widget"
     })
-  </script>
+  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"rect":"opacity:0.7","log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script><!-- hexo-inject:begin --><!-- hexo-inject:end --></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"left","width":150,"height":300},"mobile":{"show":false},"rect":"opacity:0.7","log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 
 </html>
