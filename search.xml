@@ -20167,10 +20167,10 @@ int main() &#123;
 <span class="token keyword">public</span><span class="token operator">:</span>
     <span class="token keyword">bool</span> <span class="token function">canFinish</span><span class="token punctuation">(</span><span class="token keyword">int</span> numCourses<span class="token punctuation">,</span> vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span><span class="token operator">&amp;</span> prerequisites<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
         <span class="token comment">// 建立图</span>
-        vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span> <span class="token function">graph</span><span class="token punctuation">(</span>numCourses<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span> <span class="token function">graph</span><span class="token punctuation">(</span>numCourses<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 用于保存后继课程</span>
         <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">auto</span> pre <span class="token operator">:</span> prerequisites<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
             graph<span class="token punctuation">[</span>pre<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>pre<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span> <span class="token comment">// pre[1]是先修课程, prep[0]是后继课程</span>
         
         <span class="token comment">// visited数组表示节点的状态，0表示未访问，1表示正在访问，2表示已访问</span>
         vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> <span class="token function">visited</span><span class="token punctuation">(</span>numCourses<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -20220,6 +20220,98 @@ int main() &#123;
       <tags>
         <tag>DFS</tag>
         <tag>BFS</tag>
+        <tag>图论</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>实现Trie前缀树</title>
+    <url>/2023/05/24/%E5%AE%9E%E7%8E%B0Trie%E5%89%8D%E7%BC%80%E6%A0%91/</url>
+    <content><![CDATA[<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>Trie（发音类似 “try”）或者说 前缀树 是一种树形数据结构，用于高效地存储和检索字符串数据集中的键。这一数据结构有相当多的应用情景，例如自动补完和拼写检查。</p>
+<p>请你实现 Trie 类：</p>
+<p>Trie() 初始化前缀树对象。<br>void insert(String word) 向前缀树中插入字符串 word 。<br>boolean search(String word) 如果字符串 word 在前缀树中，返回 true（即，在检索之前已经插入）；否则，返回 false 。<br>boolean startsWith(String prefix) 如果之前已经插入的字符串 word 的前缀之一为 prefix ，返回 true ；否则，返回 false 。</p>
+<p>示例：</p>
+<p>输入<br>[“Trie”, “insert”, “search”, “search”, “startsWith”, “insert”, “search”]<br>[[], [“apple”], [“apple”], [“app”], [“app”], [“app”], [“app”]]<br>输出<br>[null, null, true, false, true, null, true]</p>
+<p>解释<br>Trie trie &#x3D; new Trie();<br>trie.insert(“apple”);<br>trie.search(“apple”);   &#x2F;&#x2F; 返回 True<br>trie.search(“app”);     &#x2F;&#x2F; 返回 False<br>trie.startsWith(“app”); &#x2F;&#x2F; 返回 True<br>trie.insert(“app”);<br>trie.search(“app”);     &#x2F;&#x2F; 返回 True</p>
+<p>提示：</p>
+<p>1 &lt;&#x3D; word.length, prefix.length &lt;&#x3D; 2000<br>word 和 prefix 仅由小写英文字母组成<br>insert、search 和 startsWith 调用次数 总计 不超过 3 * 104 次</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode.cn/problems/implement-trie-prefix-tree">https://leetcode.cn/problems/implement-trie-prefix-tree</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>这道题让我们实现一个重要但又有些复杂的数据结构-<a href="http://zh.wikipedia.org/wiki/Trie">字典树</a>， 又称前缀树或单词查找树，例如，一个保存了8个键的trie结构，”A”, “to”, “tea”, “ted”, “ten”, “i”, “in”, and “inn”，如下图所示：</p>
+<p><img src="https://raw.githubusercontent.com/grandyang/leetcode/master/img/208_trie.png" alt="img"></p>
+<p>字典树主要有如下三点性质：</p>
+<ol>
+<li><p>根节点不包含字符，除根节点意外每个节点只包含一个字符。</p>
+</li>
+<li><p>从根节点到某一个节点，路径上经过的字符连接起来，为该节点对应的字符串。</p>
+</li>
+<li><p>每个节点的所有子节点包含的字符串不相同。</p>
+</li>
+</ol>
+<h3 id="C-代码"><a href="#C-代码" class="headerlink" title="C++代码"></a>C++代码</h3><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Trie</span> <span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token comment">/** Initialize your data structure here. */</span>
+    <span class="token function">Trie</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        root <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TrieNode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 初始化root节点</span>
+    <span class="token punctuation">&#125;</span>
+    
+    <span class="token comment">/** Inserts a word into the trie. */</span>
+    <span class="token keyword">void</span> <span class="token function">insert</span><span class="token punctuation">(</span>string word<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        TrieNode<span class="token operator">*</span> node <span class="token operator">=</span> root<span class="token punctuation">;</span> <span class="token comment">// 从根节点开始</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">char</span> c <span class="token operator">:</span> word<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 遍历单词的每个字符</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>node<span class="token operator">-></span>children<span class="token punctuation">[</span>c <span class="token operator">-</span> <span class="token char">'a'</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 如果当前节点没有对应字符的子节点</span>
+                node<span class="token operator">-></span>children<span class="token punctuation">[</span>c <span class="token operator">-</span> <span class="token char">'a'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">TrieNode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 新建一个子节点</span>
+            <span class="token punctuation">&#125;</span>
+            node <span class="token operator">=</span> node<span class="token operator">-></span>children<span class="token punctuation">[</span>c <span class="token operator">-</span> <span class="token char">'a'</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// 移动到下一个节点</span>
+        <span class="token punctuation">&#125;</span>
+        node<span class="token operator">-></span>is_end <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token comment">// 单词结束标记</span>
+    <span class="token punctuation">&#125;</span>
+    
+    <span class="token comment">/** Returns if the word is in the trie. */</span>
+    <span class="token keyword">bool</span> <span class="token function">search</span><span class="token punctuation">(</span>string word<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        TrieNode<span class="token operator">*</span> node <span class="token operator">=</span> root<span class="token punctuation">;</span> <span class="token comment">// 从根节点开始</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">char</span> c <span class="token operator">:</span> word<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 遍历单词的每个字符</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>node<span class="token operator">-></span>children<span class="token punctuation">[</span>c <span class="token operator">-</span> <span class="token char">'a'</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 如果当前节点没有对应字符的子节点</span>
+                <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span> <span class="token comment">// 说明单词不存在</span>
+            <span class="token punctuation">&#125;</span>
+            node <span class="token operator">=</span> node<span class="token operator">-></span>children<span class="token punctuation">[</span>c <span class="token operator">-</span> <span class="token char">'a'</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// 移动到下一个节点</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> node<span class="token operator">-></span>is_end<span class="token punctuation">;</span> <span class="token comment">// 判断单词是否结束</span>
+    <span class="token punctuation">&#125;</span>
+    
+    <span class="token comment">/** Returns if there is any word in the trie that starts with the given prefix. */</span>
+    <span class="token keyword">bool</span> <span class="token function">startsWith</span><span class="token punctuation">(</span>string prefix<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        TrieNode<span class="token operator">*</span> node <span class="token operator">=</span> root<span class="token punctuation">;</span> <span class="token comment">// 从根节点开始</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">char</span> c <span class="token operator">:</span> prefix<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 遍历前缀的每个字符</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>node<span class="token operator">-></span>children<span class="token punctuation">[</span>c <span class="token operator">-</span> <span class="token char">'a'</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 如果当前节点没有对应字符的子节点</span>
+                <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span> <span class="token comment">// 说明前缀不存在</span>
+            <span class="token punctuation">&#125;</span>
+            node <span class="token operator">=</span> node<span class="token operator">-></span>children<span class="token punctuation">[</span>c <span class="token operator">-</span> <span class="token char">'a'</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// 移动到下一个节点</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span> <span class="token comment">// 前缀存在</span>
+    <span class="token punctuation">&#125;</span>
+
+<span class="token keyword">private</span><span class="token operator">:</span>
+    <span class="token keyword">class</span> <span class="token class-name">TrieNode</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span><span class="token operator">:</span>
+        <span class="token keyword">bool</span> is_end<span class="token punctuation">;</span> <span class="token comment">// 是否为单词结尾</span>
+        TrieNode<span class="token operator">*</span> children<span class="token punctuation">[</span><span class="token number">26</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment">// 子节点数组，存储a-z的字符</span>
+        <span class="token function">TrieNode</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            is_end <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+            <span class="token function">memset</span><span class="token punctuation">(</span>children<span class="token punctuation">,</span> <span class="token constant">NULL</span><span class="token punctuation">,</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>children<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 初始化子节点数组为空</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+    TrieNode<span class="token operator">*</span> root<span class="token punctuation">;</span> <span class="token comment">// 根节点</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+]]></content>
+      <categories>
+        <category>Leetcode热题100</category>
+      </categories>
+      <tags>
+        <tag>哈希表</tag>
+        <tag>设计</tag>
         <tag>图论</tag>
       </tags>
   </entry>
