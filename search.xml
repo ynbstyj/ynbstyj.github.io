@@ -21071,4 +21071,54 @@ public:
         <tag>背包问题</tag>
       </tags>
   </entry>
+  <entry>
+    <title>最长有效括号</title>
+    <url>/2023/06/03/%E6%9C%80%E9%95%BF%E6%9C%89%E6%95%88%E6%8B%AC%E5%8F%B7/</url>
+    <content><![CDATA[<h2 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h2><p>给你一个只包含 ‘(‘ 和 ‘)’ 的字符串，找出最长有效（格式正确且连续）括号子串的长度。</p>
+<p>示例 1：</p>
+<p>输入：s &#x3D; “(()”<br>输出：2<br>解释：最长有效括号子串是 “()”<br>示例 2：</p>
+<p>输入：s &#x3D; “)()())”<br>输出：4<br>解释：最长有效括号子串是 “()()”<br>示例 3：</p>
+<p>输入：s &#x3D; “”<br>输出：0</p>
+<p>提示：</p>
+<p>0 &lt;&#x3D; s.length &lt;&#x3D; 3 * 104<br>s[i] 为 ‘(‘ 或 ‘)’</p>
+<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode.cn/problems/longest-valid-parentheses">https://leetcode.cn/problems/longest-valid-parentheses</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>解题思路:</p>
+<ol>
+<li>定义结果res记录最长有效括号长度为0</li>
+<li>使用栈模拟括号匹配过程</li>
+<li>遇到’(‘直接入栈</li>
+<li>遇到’)’时:<ul>
+<li>弹出一个’(‘</li>
+<li>如果栈为空,说明之前的’(‘与当前’)’不匹配,新的左括号索引为i,将i加入栈</li>
+<li>否则,计算有效括号长度res &#x3D; max(res, i - 栈顶索引) ,更新结果res</li>
+</ul>
+</li>
+<li>返回结果res</li>
+</ol>
+<h3 id="C-代码"><a href="#C-代码" class="headerlink" title="C++代码"></a>C++代码</h3><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">int</span> <span class="token function">longestValidParentheses</span><span class="token punctuation">(</span>string s<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> res <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    stack<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> stk<span class="token punctuation">;</span>
+    stk<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 哨兵节点</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> s<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>s<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token char">'('</span><span class="token punctuation">)</span> stk<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
+            stk<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>stk<span class="token punctuation">.</span><span class="token function">empty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> stk<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>  
+            <span class="token keyword">else</span> res <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>res<span class="token punctuation">,</span> i <span class="token operator">-</span> stk<span class="token punctuation">.</span><span class="token function">top</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> res<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>时间复杂度:O(n) ,只需要遍历一遍字符串<br>空间复杂度:O(n) ,使用了栈来模拟匹配过程</p>
+]]></content>
+      <categories>
+        <category>Leetcode热题100</category>
+      </categories>
+      <tags>
+        <tag>字符串</tag>
+        <tag>栈</tag>
+        <tag>动态规划</tag>
+      </tags>
+  </entry>
 </search>
