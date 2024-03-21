@@ -21177,4 +21177,1221 @@ public:
         <tag>贪心算法</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Qt多线程学习</title>
+    <url>/2024/03/21/Qt%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<h1 id="探索Qt线程编程的奥秘：多角度深入剖析"><a href="#探索Qt线程编程的奥秘：多角度深入剖析" class="headerlink" title="探索Qt线程编程的奥秘：多角度深入剖析"></a>探索Qt线程编程的奥秘：多角度深入剖析</h1><h3 id="探索Qt线程编程的奥秘：多角度深入剖析-1"><a href="#探索Qt线程编程的奥秘：多角度深入剖析-1" class="headerlink" title="探索Qt线程编程的奥秘：多角度深入剖析"></a>探索<a href="https://so.csdn.net/so/search?q=Qt%E7%BA%BF%E7%A8%8B&spm=1001.2101.3001.7020">Qt线程</a>编程的奥秘：多角度深入剖析</h3><ul>
+<li><p><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#QtQt_Threading_Basics_1">一、Qt线程编程基础（Qt Threading Basics）</a></p>
+</li>
+<li><ul>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#QMutex_43">互斥锁（QMutex）</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#QReadWriteLock_47">读写锁（QReadWriteLock）</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#QSemaphore_51">信号量（QSemaphore）</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#QWaitCondition_55">条件变量（QWaitCondition）</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#QAtomic__59">原子操作（QAtomic *）</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#QThread_21">QThread的主要成员函数</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#QThread_29">QThread的信号</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#QThread_34">QThread的使用方法</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#11_Thread_Concepts_and_Fundamentals_3">1.1 线程概念与基本概念（Thread Concepts and Fundamentals）</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#12_QtQThreadIntroduction_to_Qt_Thread_Class_QThread_17">1.2 Qt线程类简介：QThread（Introduction to Qt Thread Class: QThread）</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#13_QtQt_Thread_Safety_and_Synchronization_Mechanisms_39">1.3 Qt线程安全与同步机制（Qt Thread Safety and Synchronization Mechanisms）</a></li>
+</ul>
+</li>
+<li><p><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#QtQThreadSubclassing_QThread_63">二、Qt线程编程方法一：子类化QThread（Subclassing QThread）</a></p>
+</li>
+<li><ul>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#_181">终止线程</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#_226">处理线程完成</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#_112">实现线程处理逻辑</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#_128">处理事件和信号</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#21_Creating_Custom_Thread_Class_65">2.1 创建自定义线程类（Creating Custom Thread Class）</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#22_Implementing_Thread_Processing_Function_108">2.2 实现线程处理函数（Implementing Thread Processing Function）</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#23_Terminating_Threads_and_Handling_Thread_Completion_177">2.3 线程的终止与结束处理（Terminating Threads and Handling Thread Completion）</a></li>
+</ul>
+</li>
+<li><p><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#QtworkermoveToThreadUsing_Worker_Objects_and_moveToThread_248">三、Qt线程编程方法二：使用worker对象和moveToThread（Using Worker Objects and moveToThread）</a></p>
+</li>
+<li><ul>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#_324">终止线程</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#_383">处理线程完成</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#31_workerCreating_Worker_Objects_250">3.1 创建worker对象（Creating Worker Objects）</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#32_moveToThreadworkerMoving_Worker_Objects_to_New_Thread_using_moveToThread_287">3.2 使用moveToThread将worker对象移入新线程（Moving Worker Objects to New Thread using moveToThread）</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#33_workerTerminating_Worker_Objects_and_Handling_Completion_320">3.3 worker对象的终止与结束处理（Terminating Worker Objects and Handling Completion）</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#34_Cleaning_Up_Thread_Resources_441">3.4 清理线程资源（Cleaning Up Thread Resources）</a></li>
+</ul>
+</li>
+<li><p><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#QtThread_Safety_and_Synchronization_in_Qt_462">四、Qt线程安全与同步机制（Thread Safety and Synchronization in Qt）</a></p>
+</li>
+<li><ul>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#41_QMutex_468">4.1 QMutex（互斥锁）</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#42_QMutexLocker_506">4.2 QMutexLocker（互斥锁管理器）</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#43_QSemaphore_543">4.3 QSemaphore（信号量）</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#44_QReadWriteLock_577">4.4 QReadWriteLock（读写锁）</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#45_QAtomic__615">4.5 QAtomic 类</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#46_QThreadStorage__654">4.6 QThreadStorage 类</a></li>
+</ul>
+</li>
+<li><p><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#QtQtConcurrentUsing_QtConcurrent_Framework_697">五、Qt线程编程方法三：使用QtConcurrent框架（Using QtConcurrent Framework）</a></p>
+</li>
+<li><ul>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#531_QtConcurrentMD5_867">5.3.1 实例：使用QtConcurrent计算文件的MD5值</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#532__926">5.3.2 分析</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#521_QtConcurrentrun_724">5.2.1 使用QtConcurrent::run启动后台任务</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#522_QtConcurrentmapQtConcurrentmapped_760">5.2.2 使用QtConcurrent::map和QtConcurrent::mapped对容器中的元素应用函数</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#51_QtConcurrentIntroduction_to_QtConcurrent_Framework_701">5.1 QtConcurrent框架简介（Introduction to QtConcurrent Framework）</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#52_QtConcurrentImplementing_Parallel_Tasks_with_QtConcurrent_720">5.2 使用QtConcurrent实现并行任务（Implementing Parallel Tasks with QtConcurrent）</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#53_QtConcurrentExamples_and_Analysis_of_QtConcurrent_829">5.3 QtConcurrent实例与分析（Examples and Analysis of QtConcurrent）</a></li>
+</ul>
+</li>
+<li><p><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#Qt_QThreadPool__QRunnable_936">六、Qt线程编程方法四：使用 QThreadPool 和 QRunnable</a></p>
+</li>
+<li><ul>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#631__1099">6.3.1 设置线程优先级</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#632__1117">6.3.2 限制最大线程数</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#633__1126">6.3.3 自动销毁空闲线程</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#621__QRunnable_980">6.2.1 传递参数给 QRunnable</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#622__1010">6.2.2 使用信号与槽</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#61_QThreadPool_Introduction_to_QThreadPool_942">6.1 QThreadPool 简介（Introduction to QThreadPool）</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#62__QRunnableCreating_Custom_QRunnable_958">6.2 创建自定义 QRunnable（Creating Custom QRunnable）</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#63__QThreadPool_Managing_Threads_with_QThreadPool_1062">6.3 使用 QThreadPool 管理线程（Managing Threads with QThreadPool）</a></li>
+</ul>
+</li>
+<li><p><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#Using_Signals_and_Slots_Mechanism_1137">七、使用信号与槽机制（Using Signals and Slots Mechanism）</a></p>
+</li>
+<li><ul>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#731_Multithreaded_Downloader_1295">7.3.1 示例：多线程下载器（Multithreaded Downloader）</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#732__1347">7.3.2 优化策略</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#711__1156">7.1.1 声明信号与槽</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#712__1190">7.1.2 连接信号与槽</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#713__1211">7.1.3 发出信号</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#714__1228">7.1.4 断开信号与槽的连接</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#71_Introduction_to_Signals_and_Slots_Mechanism_1141">7.1 信号与槽机制简介（Introduction to Signals and Slots Mechanism）</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#72_Using_Signals_and_Slots_in_Multithreading_1238">7.2 在多线程中使用信号与槽（Using Signals and Slots in Multithreading）</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#73_Examples_and_Optimization_Strategies_of_Signals_and_Slots_1291">7.3 信号与槽实例与优化策略（Examples and Optimization Strategies of Signals and Slots）</a></li>
+</ul>
+</li>
+<li><p><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#QtQt_Threading_Optimization_and_Performance_Tuning_1359">八、Qt线程编程优化与性能调优（Qt Threading Optimization and Performance Tuning）</a></p>
+</li>
+<li><ul>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#861_Properly_Divide_Tasks_1478">8.6.1 合理划分任务（Properly Divide Tasks）</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#862_Using_Thread_Pools_1485">8.6.2 使用线程池（Using Thread Pools）</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#863_Using_Parallel_Algorithm_Libraries_1492">8.6.3 使用并行算法库（Using Parallel Algorithm Libraries）</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#851_Using_Debugger_1452">8.5.1 使用调试器（Using Debugger）</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#852_Using_Profiling_Tools_1460">8.5.2 使用分析工具（Using Profiling Tools）</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#853_Using_Logging_and_Diagnostic_Output_1468">8.5.3 使用日志和诊断输出（Using Logging and Diagnostic Output）</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#841_Understanding_and_Avoiding_Race_Conditions_1429">8.4.1 理解并避免竞争条件（Understanding and Avoiding Race Conditions）</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#842_Understanding_and_Avoiding_Deadlocks_1437">8.4.2 理解并避免死锁（Understanding and Avoiding Deadlocks）</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#831_LockFree_Programming_1405">8.3.1 无锁编程（Lock-Free Programming）</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#832_Bounded_Buffer_and_ProducerConsumer_Pattern_1411">8.3.2 有界缓冲区和生产者-消费者模式（Bounded Buffer and Producer-Consumer Pattern）</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#833_Parallel_Computing_and_Partitioning_1417">8.3.3 并行计算和分区（Parallel Computing and Partitioning）</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#821__Qt__QThreadPool_1380">8.2.1 使用 Qt 的 QThreadPool</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#822__1389">8.2.2 线程池的优势</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#81_Performance_Analysis_and_Bottleneck_Identification_1361">8.1 性能分析与瓶颈定位（Performance Analysis and Bottleneck Identification）</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#82_Using_Thread_Pools_and_Their_Advantages_1376">8.2 线程池的使用与优势（Using Thread Pools and Their Advantages）</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#83_Advanced_Synchronization_Techniques_and_Practices_1401">8.3 高级同步技术与实践（Advanced Synchronization Techniques and Practices）</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#84_Avoiding_Race_Conditions_and_Deadlocks_1425">8.4 避免竞争条件和死锁（Avoiding Race Conditions and Deadlocks）</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#85_Analyzing_and_Debugging_Multithreading_Issues_1448">8.5 分析和调试多线程问题（Analyzing and Debugging Multithreading Issues）</a></li>
+<li><a href="https://qt.video/index.php?m=home&c=View&a=index&aid=287#86_Taking_Advantage_of_Multicore_Processors_1474">8.6 利用多核处理器优势（Taking Advantage of Multi-core Processors）</a></li>
+</ul>
+</li>
+</ul>
+<h1 id="一、Qt线程编程基础（Qt-Threading-Basics）"><a href="#一、Qt线程编程基础（Qt-Threading-Basics）" class="headerlink" title="一、Qt线程编程基础（Qt Threading Basics）"></a>一、Qt线程编程基础（Qt Threading Basics）</h1><h2 id="1-1-线程概念与基本概念（Thread-Concepts-and-Fundamentals）"><a href="#1-1-线程概念与基本概念（Thread-Concepts-and-Fundamentals）" class="headerlink" title="1.1 线程概念与基本概念（Thread Concepts and Fundamentals）"></a>1.1 线程概念与基本概念（Thread Concepts and Fundamentals）</h2><p>线程是操作系统调度执行的最小单元。它们在一个进程中运行，共享相同的内存空间。每个线程都有自己的独立执行路径和独立的栈，但它们可以访问相同的全局变量和其他资源。这使得线程之间的通信和数据共享变得相对容易，但也带来了同步和数据一致性方面的挑战。</p>
+<p>在Qt中，主线程负责处理用户界面和<a href="https://so.csdn.net/so/search?q=%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF&spm=1001.2101.3001.7020">事件循环</a>，而子线程可以执行后台任务，如文件读写、网络请求和数据处理等。Qt提供了一套用于创建和管理线程的API，使得在Qt应用程序中使用多线程变得简单和直观。</p>
+<p>以下是与线程编程相关的一些基本概念：</p>
+<ul>
+<li><strong>并发</strong>（Concurrency）：多个任务在同一时间段内交替执行，但不一定同时执行。例如，在单核处理器上运行的多线程应用程序。</li>
+<li><strong>并行</strong>（Parallelism）：多个任务同时执行。例如，在多核处理器上运行的多线程应用程序。</li>
+<li><strong>互斥锁</strong>（Mutex）：用于保护共享资源，防止多个线程同时访问。当一个线程获得互斥锁时，其他线程必须等待该线程释放锁。</li>
+<li><strong>信号量</strong>（Semaphore）：用于控制对共享资源的访问次数。信号量维护一个计数器，当计数器大于零时，线程可以访问资源；否则，线程必须等待。</li>
+<li><strong>条件变量</strong>（Condition Variable）：用于在线程之间同步特定条件的变化。当一个线程等待特定条件时，它会阻塞，直到另一个线程满足该条件并发出通知。</li>
+</ul>
+<h2 id="1-2-Qt线程类简介：QThread（Introduction-to-Qt-Thread-Class-QThread）"><a href="#1-2-Qt线程类简介：QThread（Introduction-to-Qt-Thread-Class-QThread）" class="headerlink" title="1.2 Qt线程类简介：QThread（Introduction to Qt Thread Class: QThread）"></a>1.2 Qt线程类简介：QThread（Introduction to Qt Thread Class: QThread）</h2><p>QThread是Qt线程编程中的核心类，它提供了创建和管理线程的功能。QThread类继承自QObject，这意味着它可以使用信号与槽机制进行线程间通信。在使用QThread时，通常有两种方法来实现线程编程：子类化QThread和使用worker对象。</p>
+<h3 id="QThread的主要成员函数"><a href="#QThread的主要成员函数" class="headerlink" title="QThread的主要成员函数"></a>QThread的主要成员函数</h3><ul>
+<li><code>void start(QThread::Priority priority = QThread::InheritPriority)</code>：启动线程，并指定线程优先级。默认情况下，线程的优先级与创建它的线程相同。</li>
+<li><code>void run()</code>：线程的入口函数。当使用子类化QThread方法时，需要重写此函数以实现线程的逻辑。</li>
+<li><code>void quit()</code>：请求线程退出。这将导致事件循环结束，但不会等待线程真正结束。要等待线程结束，需要调用<code>wait()</code>函数。</li>
+<li><code>void terminate()</code>：强制结束线程。此方法极不推荐使用，因为它可能导致资源泄漏和数据不一致。</li>
+<li><code>bool wait(unsigned long time = ULONG_MAX)</code>：阻塞调用线程，直到QThread结束或指定的时间（毫秒）超时。返回值表示线程是否已经结束。</li>
+</ul>
+<h3 id="QThread的信号"><a href="#QThread的信号" class="headerlink" title="QThread的信号"></a>QThread的信号</h3><ul>
+<li><code>void started()</code>：线程启动时发出的信号。</li>
+<li><code>void finished()</code>：线程结束时发出的信号。</li>
+</ul>
+<h3 id="QThread的使用方法"><a href="#QThread的使用方法" class="headerlink" title="QThread的使用方法"></a>QThread的使用方法</h3><ol>
+<li><strong>子类化QThread</strong>：创建一个QThread的子类，并重写<code>run()</code>函数。这种方法适用于线程处理逻辑较为复杂的情况，或者需要更多控制权的情况。</li>
+<li><strong>使用worker对象</strong>：将线程处理逻辑封装到一个worker对象（通常是QObject的子类），并将其移动到QThread实例中。这种方法充分利用了Qt的信号与槽机制，更符合Qt的编程风格，同时在某些情况下也更容易实现。</li>
+</ol>
+<h2 id="1-3-Qt线程安全与同步机制（Qt-Thread-Safety-and-Synchronization-Mechanisms）"><a href="#1-3-Qt线程安全与同步机制（Qt-Thread-Safety-and-Synchronization-Mechanisms）" class="headerlink" title="1.3 Qt线程安全与同步机制（Qt Thread Safety and Synchronization Mechanisms）"></a>1.3 Qt线程安全与同步机制（Qt Thread Safety and Synchronization Mechanisms）</h2><p>在多线程编程中，线程安全和同步是至关重要的。当多个线程访问共享资源时，必须确保在同一时刻只有一个线程能够对资源进行修改，以防止数据不一致和竞争条件。Qt提供了一些同步机制，以帮助开发者实现线程安全。</p>
+<h3 id="互斥锁（QMutex）"><a href="#互斥锁（QMutex）" class="headerlink" title="互斥锁（QMutex）"></a>互斥锁（QMutex）</h3><p>QMutex是Qt提供的互斥锁实现，用于保护共享资源。使用QMutex时，需要在访问共享资源前锁定互斥锁，并在访问结束后解锁。QMutex有两种锁定模式：非递归和递归。在非递归模式下，同一个线程多次锁定互斥锁会导致死锁；而在递归模式下，同一个线程可以多次锁定互斥锁，但必须对应解锁相同次数。</p>
+<h3 id="读写锁（QReadWriteLock）"><a href="#读写锁（QReadWriteLock）" class="headerlink" title="读写锁（QReadWriteLock）"></a>读写锁（QReadWriteLock）</h3><p>QReadWriteLock是Qt提供的读写锁实现。与QMutex相比，读写锁允许多个线程同时进行读取操作，而对写入操作进行排他控制。这可以提高多线程应用程序的性能，特别是在读操作较多的场景中。使用QReadWriteLock时，需要区分锁定读锁和写锁，并在访问结束后分别解锁。</p>
+<h3 id="信号量（QSemaphore）"><a href="#信号量（QSemaphore）" class="headerlink" title="信号量（QSemaphore）"></a>信号量（QSemaphore）</h3><p>QSemaphore是Qt提供的信号量实现。信号量用于限制对共享资源的访问次数，以实现并发控制。信号量维护一个计数器，当计数器大于0时，线程可以访问资源。当一个线程成功访问资源后，信号量计数器减1；当线程释放资源后，信号量计数器加1。如果计数器为0，线程必须等待其他线程释放资源。</p>
+<h3 id="条件变量（QWaitCondition）"><a href="#条件变量（QWaitCondition）" class="headerlink" title="条件变量（QWaitCondition）"></a>条件变量（QWaitCondition）</h3><p>QWaitCondition是Qt提供的条件变量实现。条件变量用于在线程间同步特定条件的变化。当一个线程等待特定条件时，它会阻塞并释放锁，直到另一个线程满足条件并唤醒等待线程。QWaitCondition通常与QMutex或QReadWriteLock配合使用。</p>
+<h3 id="原子操作（QAtomic-）"><a href="#原子操作（QAtomic-）" class="headerlink" title="原子操作（QAtomic *）"></a>原子操作（QAtomic *）</h3><p>Qt提供了一组原子操作类（如QAtomicInt、QAtomicPointer等），用于实现对整数和指针的原子操作。原子操作是线程安全的，不需要额外的同步机制。原子操作适用于对单个数据进行简单的修改操作，如计数器、标志等。</p>
+<h1 id="二、Qt线程编程方法一：子类化QThread（Subclassing-QThread）"><a href="#二、Qt线程编程方法一：子类化QThread（Subclassing-QThread）" class="headerlink" title="二、Qt线程编程方法一：子类化QThread（Subclassing QThread）"></a>二、Qt线程编程方法一：子类化QThread（Subclassing QThread）</h1><h2 id="2-1-创建自定义线程类（Creating-Custom-Thread-Class）"><a href="#2-1-创建自定义线程类（Creating-Custom-Thread-Class）" class="headerlink" title="2.1 创建自定义线程类（Creating Custom Thread Class）"></a>2.1 创建自定义线程类（Creating Custom Thread Class）</h2><p>子类化QThread是实现Qt线程编程的一种方法。在这种方法中，我们需要创建一个QThread的子类，并重写<code>run()</code>函数。<code>run()</code>函数是线程的入口点，线程处理逻辑应该在这个函数中实现。以下是创建自定义线程类的步骤：</p>
+<ol>
+<li><p><strong>创建自定义线程类</strong></p>
+<p>首先，创建一个QThread的子类。例如，创建一个名为<code>MyThread</code>的自定义线程类：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;QThread></span></span>
+
+<span class="token keyword">class</span> <span class="token class-name">MyThread</span> <span class="token operator">:</span> <span class="token base-clause"><span class="token keyword">public</span> <span class="token class-name">QThread</span></span>
+<span class="token punctuation">&#123;</span>
+    Q_OBJECT
+
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">explicit</span> <span class="token function">MyThread</span><span class="token punctuation">(</span>QObject <span class="token operator">*</span>parent <span class="token operator">=</span> <span class="token keyword">nullptr</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">protected</span><span class="token operator">:</span>
+    <span class="token keyword">void</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">override</span><span class="token punctuation">;</span> <span class="token comment">// 重写run()函数</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+</li>
+<li><p><strong>重写</strong>**<code>run()</code>**<strong>函数</strong></p>
+<p>在<code>MyThread</code>类中，重写<code>run()</code>函数以实现线程的处理逻辑。例如：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token class-name">MyThread</span><span class="token double-colon punctuation">::</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token comment">// 线程处理逻辑，例如执行耗时操作、文件读写等</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">100</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// 执行操作...</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+</li>
+<li><p><strong>实例化自定义线程类并启动线程</strong></p>
+<p>在应用程序中，可以通过实例化自定义线程类并调用<code>start()</code>函数来启动线程。例如：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">MyThread <span class="token operator">*</span>myThread <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">MyThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+myThread<span class="token operator">-></span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 启动线程</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+</ol>
+<p>在子类化QThread的方法中，线程处理逻辑与QThread类紧密耦合。这种方法适用于线程处理逻辑较为复杂的情况，或者需要更多控制权的情况。然而，这种方法可能不太符合Qt的信号与槽编程风格。在下一节中，我们将介绍另一种实现Qt线程编程的方法：使用worker对象。</p>
+<h2 id="2-2-实现线程处理函数（Implementing-Thread-Processing-Function）"><a href="#2-2-实现线程处理函数（Implementing-Thread-Processing-Function）" class="headerlink" title="2.2 实现线程处理函数（Implementing Thread Processing Function）"></a>2.2 实现线程处理函数（Implementing Thread Processing Function）</h2><p>在子类化QThread的方法中，我们需要在自定义线程类中重写<code>run()</code>函数来实现线程的处理逻辑。下面我们将详细讨论如何实现线程处理函数，以及如何在处理函数中处理事件和信号。</p>
+<h3 id="实现线程处理逻辑"><a href="#实现线程处理逻辑" class="headerlink" title="实现线程处理逻辑"></a>实现线程处理逻辑</h3><p>在重写的<code>run()</code>函数中，可以执行需要在新线程中运行的任务，例如耗时操作、<a href="https://so.csdn.net/so/search?q=%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99&spm=1001.2101.3001.7020">文件读写</a>、数据处理等。请注意，<code>run()</code>函数中的代码应该遵循线程安全规则，尤其是在访问共享资源时。可以使用Qt提供的同步机制，如QMutex、QReadWriteLock等，来确保线程安全。</p>
+<p>以下是一个简单的示例，展示了在<code>run()</code>函数中实现线程处理逻辑：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token class-name">MyThread</span><span class="token double-colon punctuation">::</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">100</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// 执行耗时操作，例如计算或文件读写</span>
+        <span class="token class-name">QThread</span><span class="token double-colon punctuation">::</span><span class="token function">msleep</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 模拟耗时操作，暂停10毫秒</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="处理事件和信号"><a href="#处理事件和信号" class="headerlink" title="处理事件和信号"></a>处理事件和信号</h3><p>在自定义线程类中，可以使用信号与槽机制进行线程间通信。但是，请注意不要在<code>run()</code>函数中执行事件循环（<code>exec()</code>），因为这可能导致线程阻塞。相反，可以在<code>run()</code>函数中发射信号，以通知其他线程处理结果或状态变化。</p>
+<p>例如，可以在<code>MyThread</code>类中定义一个名为<code>progressChanged</code>的信号：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">MyThread</span> <span class="token operator">:</span> <span class="token base-clause"><span class="token keyword">public</span> <span class="token class-name">QThread</span></span>
+<span class="token punctuation">&#123;</span>
+    Q_OBJECT
+
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">explicit</span> <span class="token function">MyThread</span><span class="token punctuation">(</span>QObject <span class="token operator">*</span>parent <span class="token operator">=</span> <span class="token keyword">nullptr</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">protected</span><span class="token operator">:</span>
+    <span class="token keyword">void</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">override</span><span class="token punctuation">;</span>
+
+signals<span class="token operator">:</span>
+    <span class="token keyword">void</span> <span class="token function">progressChanged</span><span class="token punctuation">(</span><span class="token keyword">int</span> progress<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 定义一个信号</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>然后，在<code>run()</code>函数中适当的地方发射<code>progressChanged</code>信号：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token class-name">MyThread</span><span class="token double-colon punctuation">::</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">100</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// 执行耗时操作，例如计算或文件读写</span>
+        <span class="token class-name">QThread</span><span class="token double-colon punctuation">::</span><span class="token function">msleep</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 模拟耗时操作，暂停10毫秒</span>
+
+        <span class="token comment">// 发射信号，通知其他线程处理进度已更改</span>
+        emit <span class="token function">progressChanged</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>在应用程序中，可以将<code>progressChanged</code>信号连接到槽函数，以更新界面或执行其他操作。例如：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">MyThread <span class="token operator">*</span>myThread <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">MyThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">connect</span><span class="token punctuation">(</span>myThread<span class="token punctuation">,</span> <span class="token operator">&amp;</span>MyThread<span class="token double-colon punctuation">::</span>progressChanged<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>MainWindow<span class="token double-colon punctuation">::</span>updateProgress<span class="token punctuation">)</span><span class="token punctuation">;</span>
+myThread<span class="token operator">-></span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 启动线程</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>在这个示例中，假设<code>MainWindow</code>类中有一个名为<code>updateProgress</code>的槽函数，用于更新进度条或其他界面元素。</p>
+<p>请注意，Qt的信号与槽机制已经处理了线程安全问题，因此在槽函数中访问共享资源通常是安全的.</p>
+<h2 id="2-3-线程的终止与结束处理（Terminating-Threads-and-Handling-Thread-Completion）"><a href="#2-3-线程的终止与结束处理（Terminating-Threads-and-Handling-Thread-Completion）" class="headerlink" title="2.3 线程的终止与结束处理（Terminating Threads and Handling Thread Completion）"></a>2.3 线程的终止与结束处理（Terminating Threads and Handling Thread Completion）</h2><p>在子类化QThread的方法中，需要注意线程的终止和结束处理。以下是如何正确终止线程以及处理线程完成的一些建议。</p>
+<h3 id="终止线程"><a href="#终止线程" class="headerlink" title="终止线程"></a>终止线程</h3><p>在某些情况下，可能需要提前终止线程。不推荐使用<code>terminate()</code>函数强制终止线程，因为这可能导致资源泄漏和数据不一致。相反，应该使用某种机制通知线程自然退出。</p>
+<p>一种常用的方法是使用一个原子标志或条件变量，通知线程在完成当前任务后立即退出。例如，在自定义线程类中定义一个<code>QAtomicInt</code>变量作为停止标志：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">MyThread</span> <span class="token operator">:</span> <span class="token base-clause"><span class="token keyword">public</span> <span class="token class-name">QThread</span></span>
+<span class="token punctuation">&#123;</span>
+    Q_OBJECT
+
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">explicit</span> <span class="token function">MyThread</span><span class="token punctuation">(</span>QObject <span class="token operator">*</span>parent <span class="token operator">=</span> <span class="token keyword">nullptr</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">void</span> <span class="token function">stop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 添加一个停止函数</span>
+
+<span class="token keyword">protected</span><span class="token operator">:</span>
+    <span class="token keyword">void</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">override</span><span class="token punctuation">;</span>
+
+<span class="token keyword">private</span><span class="token operator">:</span>
+    QAtomicInt m_stopFlag<span class="token punctuation">;</span> <span class="token comment">// 停止标志</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>在<code>stop()</code>函数中设置停止标志，并在<code>run()</code>函数中检查停止标志：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token class-name">MyThread</span><span class="token double-colon punctuation">::</span><span class="token function">stop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    m_stopFlag<span class="token punctuation">.</span><span class="token function">store</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 设置停止标志</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">void</span> <span class="token class-name">MyThread</span><span class="token double-colon punctuation">::</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">100</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// 检查停止标志，如果设置，则退出循环</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>m_stopFlag<span class="token punctuation">.</span><span class="token function">load</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+
+        <span class="token comment">// 执行耗时操作，例如计算或文件读写</span>
+        <span class="token class-name">QThread</span><span class="token double-colon punctuation">::</span><span class="token function">msleep</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 模拟耗时操作，暂停10毫秒</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="处理线程完成"><a href="#处理线程完成" class="headerlink" title="处理线程完成"></a>处理线程完成</h3><p>当线程完成任务并自然退出时，可以使用<code>finished()</code>信号来通知其他线程。例如，在应用程序中，可以将<code>finished()</code>信号连接到槽函数，以进行清理操作或通知用户：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">MyThread <span class="token operator">*</span>myThread <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">MyThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">connect</span><span class="token punctuation">(</span>myThread<span class="token punctuation">,</span> <span class="token operator">&amp;</span>MyThread<span class="token double-colon punctuation">::</span>finished<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>MainWindow<span class="token double-colon punctuation">::</span>handleThreadFinished<span class="token punctuation">)</span><span class="token punctuation">;</span>
+myThread<span class="token operator">-></span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 启动线程</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>在这个示例中，假设<code>MainWindow</code>类中有一个名为<code>handleThreadFinished</code>的槽函数，用于处理线程完成事件。</p>
+<p>另外，也可以使用<code>wait()</code>函数等待线程结束。<code>wait()</code>函数阻塞调用线程，直到线程完成或超时。例如，在应用程序中，可以在线程结束前等待线程完成任务：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">MyThread <span class="token operator">*</span>myThread <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">MyThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+myThread<span class="token operator">-></span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 启动线程</span>
+myThread<span class="token operator">-></span><span class="token function">wait</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 等待线程结束</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>请注意，<code>wait()</code>函数可能导致界面冻结，因此不推荐在主线程中使用。如果需要在主线程中等待线程结束，请考虑使用信号与槽机制。</p>
+<h1 id="三、Qt线程编程方法二：使用worker对象和moveToThread（Using-Worker-Objects-and-moveToThread）"><a href="#三、Qt线程编程方法二：使用worker对象和moveToThread（Using-Worker-Objects-and-moveToThread）" class="headerlink" title="三、Qt线程编程方法二：使用worker对象和moveToThread（Using Worker Objects and moveToThread）"></a>三、Qt线程编程方法二：使用worker对象和moveToThread（Using Worker Objects and moveToThread）</h1><h2 id="3-1-创建worker对象（Creating-Worker-Objects）"><a href="#3-1-创建worker对象（Creating-Worker-Objects）" class="headerlink" title="3.1 创建worker对象（Creating Worker Objects）"></a>3.1 创建worker对象（Creating Worker Objects）</h2><p>在这种方法中，需要创建一个继承自QObject的worker类，并在其中实现线程处理逻辑。worker类应该包含线程处理函数和信号槽。例如，创建一个名为<code>MyWorker</code>的worker类：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;QObject></span></span>
+
+<span class="token keyword">class</span> <span class="token class-name">MyWorker</span> <span class="token operator">:</span> <span class="token base-clause"><span class="token keyword">public</span> <span class="token class-name">QObject</span></span>
+<span class="token punctuation">&#123;</span>
+    Q_OBJECT
+
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">explicit</span> <span class="token function">MyWorker</span><span class="token punctuation">(</span>QObject <span class="token operator">*</span>parent <span class="token operator">=</span> <span class="token keyword">nullptr</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> slots<span class="token operator">:</span>
+    <span class="token keyword">void</span> <span class="token function">process</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 线程处理函数</span>
+
+signals<span class="token operator">:</span>
+    <span class="token keyword">void</span> <span class="token function">progressChanged</span><span class="token punctuation">(</span><span class="token keyword">int</span> progress<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 用于通知其他线程的信号</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>然后，实现<code>process()</code>函数以实现线程处理逻辑：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token class-name">MyWorker</span><span class="token double-colon punctuation">::</span><span class="token function">process</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">100</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// 执行耗时操作，例如计算或文件读写</span>
+        <span class="token class-name">QThread</span><span class="token double-colon punctuation">::</span><span class="token function">msleep</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 模拟耗时操作，暂停10毫秒</span>
+
+        <span class="token comment">// 发射信号，通知其他线程处理进度已更改</span>
+        emit <span class="token function">progressChanged</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="3-2-使用moveToThread将worker对象移入新线程（Moving-Worker-Objects-to-New-Thread-using-moveToThread）"><a href="#3-2-使用moveToThread将worker对象移入新线程（Moving-Worker-Objects-to-New-Thread-using-moveToThread）" class="headerlink" title="3.2 使用moveToThread将worker对象移入新线程（Moving Worker Objects to New Thread using moveToThread）"></a>3.2 使用moveToThread将worker对象移入新线程（Moving Worker Objects to New Thread using moveToThread）</h2><p>创建worker对象后，可以使用<code>moveToThread()</code>函数将其移动到一个新线程。以下是如何将worker对象移动到新线程的步骤：</p>
+<ol>
+<li><p><strong>实例化QThread和worker对象</strong></p>
+<p>在应用程序中，实例化一个QThread对象和一个worker对象：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">QThread <span class="token operator">*</span>thread <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">QThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+MyWorker <span class="token operator">*</span>worker <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">MyWorker</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+
+</li>
+<li><p><strong>将worker对象移动到新线程</strong></p>
+<p>使用<code>moveToThread()</code>函数将worker对象移动到新线程：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">worker<span class="token operator">-></span><span class="token function">moveToThread</span><span class="token punctuation">(</span>thread<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+</li>
+<li><p><strong>连接信号与槽</strong></p>
+<p>使用信号与槽连接线程和worker对象。例如，当线程启动时，调用worker对象的<code>process()</code>函数：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token function">connect</span><span class="token punctuation">(</span>thread<span class="token punctuation">,</span> <span class="token operator">&amp;</span>QThread<span class="token double-colon punctuation">::</span>started<span class="token punctuation">,</span> worker<span class="token punctuation">,</span> <span class="token operator">&amp;</span>MyWorker<span class="token double-colon punctuation">::</span>process<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>也可以连接其他信号，如<code>finished()</code>信号和<code>progressChanged</code>信号。</p>
+</li>
+<li><p><strong>启动线程</strong></p>
+<p>调用QThread对象的<code>start()</code>函数启动线程：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">thread<span class="token operator">-></span><span class="token function">start</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+</ol>
+<p>使用worker对象和<code>moveToThread()</code>函数的方法允许将线程处理逻辑与QThread类解耦，使代码更易于维护和扩展。此外，这种方法更符合Qt的信号与槽编程风格。</p>
+<h2 id="3-3-worker对象的终止与结束处理（Terminating-Worker-Objects-and-Handling-Completion）"><a href="#3-3-worker对象的终止与结束处理（Terminating-Worker-Objects-and-Handling-Completion）" class="headerlink" title="3.3 worker对象的终止与结束处理（Terminating Worker Objects and Handling Completion）"></a>3.3 worker对象的终止与结束处理（Terminating Worker Objects and Handling Completion）</h2><p>在使用worker对象和<code>moveToThread()</code>方法时，我们同样需要注意线程的终止和结束处理。以下是如何正确终止线程以及处理线程完成的一些建议。</p>
+<h3 id="终止线程-1"><a href="#终止线程-1" class="headerlink" title="终止线程"></a>终止线程</h3><p>与子类化QThread的方法类似，我们不推荐使用<code>terminate()</code>函数强制终止线程。相反，应该使用某种机制通知worker对象自然退出。</p>
+<p>在worker类中，可以定义一个槽函数来设置停止标志。例如，在<code>MyWorker</code>类中定义一个<code>stop()</code>槽函数：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">MyWorker</span> <span class="token operator">:</span> <span class="token base-clause"><span class="token keyword">public</span> <span class="token class-name">QObject</span></span>
+<span class="token punctuation">&#123;</span>
+    Q_OBJECT
+
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">explicit</span> <span class="token function">MyWorker</span><span class="token punctuation">(</span>QObject <span class="token operator">*</span>parent <span class="token operator">=</span> <span class="token keyword">nullptr</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> slots<span class="token operator">:</span>
+    <span class="token keyword">void</span> <span class="token function">process</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 线程处理函数</span>
+    <span class="token keyword">void</span> <span class="token function">stop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 添加一个停止函数</span>
+
+signals<span class="token operator">:</span>
+    <span class="token keyword">void</span> <span class="token function">progressChanged</span><span class="token punctuation">(</span><span class="token keyword">int</span> progress<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 用于通知其他线程的信号</span>
+
+<span class="token keyword">private</span><span class="token operator">:</span>
+    QAtomicInt m_stopFlag<span class="token punctuation">;</span> <span class="token comment">// 停止标志</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>然后，在<code>stop()</code>函数中设置停止标志，并在<code>process()</code>函数中检查停止标志：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token class-name">MyWorker</span><span class="token double-colon punctuation">::</span><span class="token function">stop</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    m_stopFlag<span class="token punctuation">.</span><span class="token function">store</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 设置停止标志</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">void</span> <span class="token class-name">MyWorker</span><span class="token double-colon punctuation">::</span><span class="token function">process</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">100</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// 检查停止标志，如果设置，则退出循环</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>m_stopFlag<span class="token punctuation">.</span><span class="token function">load</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+
+        <span class="token comment">// 执行耗时操作，例如计算或文件读写</span>
+        <span class="token class-name">QThread</span><span class="token double-colon punctuation">::</span><span class="token function">msleep</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 模拟耗时操作，暂停10毫秒</span>
+
+        <span class="token comment">// 发射信号，通知其他线程处理进度已更改</span>
+        emit <span class="token function">progressChanged</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>在应用程序中，可以使用信号与槽连接来请求worker对象停止：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token function">connect</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>MainWindow<span class="token double-colon punctuation">::</span>stopRequested<span class="token punctuation">,</span> worker<span class="token punctuation">,</span> <span class="token operator">&amp;</span>MyWorker<span class="token double-colon punctuation">::</span>stop<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>在这个示例中，假设<code>MainWindow</code>类中有一个名为<code>stopRequested</code>的信号，用于通知worker对象停止处理。</p>
+<h3 id="处理线程完成-1"><a href="#处理线程完成-1" class="headerlink" title="处理线程完成"></a>处理线程完成</h3><p>当worker对象完成任务并自然退出时，可以使用信号与槽机制来通知其他线程。例如，可以在<code>MyWorker</code>类中定义一个名为<code>finished</code>的信号：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">MyWorker</span> <span class="token operator">:</span> <span class="token base-clause"><span class="token keyword">public</span> <span class="token class-name">QObject</span></span>
+<span class="token punctuation">&#123;</span>
+    Q_OBJECT
+
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">explicit</span> <span class="token function">MyWorker</span><span class="token punctuation">(</span>QObject <span class="token operator">*</span>parent <span class="token operator">=</span> <span class="token keyword">nullptr</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> slots<span class="token operator">:</span>
+    <span class="token keyword">void</span> <span class="token function">process</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 线程处理函数</span>
+    <span class="token keyword">void</span> <span class="token function">stop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 停止函数</span>
+
+signals<span class="token operator">:</span>
+    <span class="token keyword">void</span> <span class="token function">progressChanged</span><span class="token punctuation">(</span><span class="token keyword">int</span> progress<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 用于通知其他线程的信号</span>
+    <span class="token keyword">void</span> <span class="token function">finished</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 处理完成信号</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>然后，在<code>process()</code>函数中适当的地方发射<code>finished</code>信号：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token class-name">MyWorker</span><span class="token double-colon punctuation">::</span><span class="token function">process</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">100</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// 检查停止标志，如果设置，则退出循环</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>m_stopFlag<span class="token punctuation">.</span><span class="token function">load</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token comment">// 执行耗时操作，例如计算或文件读写</span>
+
+  <span class="token class-name">QThread</span><span class="token double-colon punctuation">::</span><span class="token function">msleep</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 模拟耗时操作，暂停10毫秒</span>
+
+  <span class="token comment">// 发射信号，通知其他线程处理进度已更改</span>
+
+  emit <span class="token function">progressChanged</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token punctuation">&#125;</span>
+
+  <span class="token comment">// 在循环结束后发射完成信号</span>
+
+  emit <span class="token function">finished</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>在应用程序中，可以将<code>finished</code>信号连接到槽函数，以进行清理操作或通知用户：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token function">connect</span><span class="token punctuation">(</span>worker<span class="token punctuation">,</span> <span class="token operator">&amp;</span>MyWorker<span class="token double-colon punctuation">::</span>finished<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>MainWindow<span class="token double-colon punctuation">::</span>handleWorkerFinished<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>在这个示例中，假设<code>MainWindow</code>类中有一个名为<code>handleWorkerFinished</code>的槽函数，用于处理线程完成事件。</p>
+<h2 id="3-4-清理线程资源（Cleaning-Up-Thread-Resources）"><a href="#3-4-清理线程资源（Cleaning-Up-Thread-Resources）" class="headerlink" title="3.4 清理线程资源（Cleaning Up Thread Resources）"></a>3.4 清理线程资源（Cleaning Up Thread Resources）</h2><p>当worker对象和线程不再需要时，应该正确地清理资源。可以在worker对象的<code>finished</code>信号和线程的<code>finished</code>信号中处理资源清理。</p>
+<p>例如，在应用程序中，可以将worker对象的<code>finished</code>信号连接到线程的<code>quit()</code>槽，以便在worker对象完成任务时停止线程：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token function">connect</span><span class="token punctuation">(</span>worker<span class="token punctuation">,</span> <span class="token operator">&amp;</span>MyWorker<span class="token double-colon punctuation">::</span>finished<span class="token punctuation">,</span> thread<span class="token punctuation">,</span> <span class="token operator">&amp;</span>QThread<span class="token double-colon punctuation">::</span>quit<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>然后，可以将线程的<code>finished</code>信号连接到worker对象和线程的<code>deleteLater</code>槽，以便在线程停止后删除对象：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token function">connect</span><span class="token punctuation">(</span>thread<span class="token punctuation">,</span> <span class="token operator">&amp;</span>QThread<span class="token double-colon punctuation">::</span>finished<span class="token punctuation">,</span> worker<span class="token punctuation">,</span> <span class="token operator">&amp;</span>MyWorker<span class="token double-colon punctuation">::</span>deleteLater<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">connect</span><span class="token punctuation">(</span>thread<span class="token punctuation">,</span> <span class="token operator">&amp;</span>QThread<span class="token double-colon punctuation">::</span>finished<span class="token punctuation">,</span> thread<span class="token punctuation">,</span> <span class="token operator">&amp;</span>QThread<span class="token double-colon punctuation">::</span>deleteLater<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>使用这种连接方式，可以确保在worker对象和线程不再需要时，资源得到正确的清理。</p>
+<p>总之，使用worker对象和<code>moveToThread()</code>方法是一种更符合Qt信号与槽编程风格的线程处理方法。通过将线程处理逻辑与QThread类解耦，这种方法可以使代码更易于维护和扩展。</p>
+<h1 id="四、Qt线程安全与同步机制（Thread-Safety-and-Synchronization-in-Qt）"><a href="#四、Qt线程安全与同步机制（Thread-Safety-and-Synchronization-in-Qt）" class="headerlink" title="四、Qt线程安全与同步机制（Thread Safety and Synchronization in Qt）"></a>四、Qt线程安全与同步机制（Thread Safety and Synchronization in Qt）</h1><p>在多线程编程中，线程安全和同步是非常重要的概念。当多个线程同时访问共享资源时，可能会引发竞争条件（race conditions），导致程序行为不确定或出现错误。为了确保线程安全，需要使用同步机制来保护共享资源。</p>
+<p>Qt提供了多种线程安全与同步机制，可以在多线程编程中使用。</p>
+<h2 id="4-1-QMutex（互斥锁）"><a href="#4-1-QMutex（互斥锁）" class="headerlink" title="4.1 QMutex（互斥锁）"></a>4.1 QMutex（互斥锁）</h2><p>互斥锁（mutex）是一种同步原语，用于保护对共享资源的访问。QMutex类提供了一个互斥锁，可以在Qt应用程序中使用。</p>
+<p>以下是使用QMutex保护共享资源的一个示例：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;QMutex></span></span>
+
+<span class="token keyword">class</span> <span class="token class-name">SharedData</span>
+<span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">void</span> <span class="token function">setData</span><span class="token punctuation">(</span><span class="token keyword">int</span> data<span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        m_mutex<span class="token punctuation">.</span><span class="token function">lock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 加锁</span>
+        m_data <span class="token operator">=</span> data<span class="token punctuation">;</span>
+        m_mutex<span class="token punctuation">.</span><span class="token function">unlock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 解锁</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">int</span> <span class="token function">getData</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token keyword">int</span> result<span class="token punctuation">;</span>
+        m_mutex<span class="token punctuation">.</span><span class="token function">lock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 加锁</span>
+        result <span class="token operator">=</span> m_data<span class="token punctuation">;</span>
+        m_mutex<span class="token punctuation">.</span><span class="token function">unlock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 解锁</span>
+        <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+<span class="token keyword">private</span><span class="token operator">:</span>
+    QMutex m_mutex<span class="token punctuation">;</span> <span class="token comment">// 互斥锁</span>
+    <span class="token keyword">int</span> m_data<span class="token punctuation">;</span> <span class="token comment">// 共享数据</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>在这个示例中，<code>SharedData</code>类包含一个共享的整数数据和一个互斥锁。<code>setData()</code>和<code>getData()</code>函数在访问共享数据时使用互斥锁来保护共享资源。</p>
+<p>在实际应用中，可以使用QMutex的<code>lock()</code>和<code>unlock()</code>函数保护对共享资源的访问。当一个线程锁定互斥锁时，其他试图锁定该互斥锁的线程将被阻塞，直到互斥锁被解锁。这可以防止多个线程同时访问共享资源，从而确保线程安全。</p>
+<h2 id="4-2-QMutexLocker（互斥锁管理器）"><a href="#4-2-QMutexLocker（互斥锁管理器）" class="headerlink" title="4.2 QMutexLocker（互斥锁管理器）"></a>4.2 QMutexLocker（互斥锁管理器）</h2><p>为了简化互斥锁的使用和防止死锁，Qt提供了QMutexLocker类，它是一个方便的RAII（Resource Acquisition Is Initialization）风格的互斥锁管理器。当创建一个QMutexLocker对象时，它会自动锁定给定的互斥锁。当QMutexLocker对象超出其作用域或被删除时，它会自动解锁互斥锁。</p>
+<p>以下是使用QMutexLocker保护共享资源的一个示例：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;QMutex></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;QMutexLocker></span></span>
+
+<span class="token keyword">class</span> <span class="token class-name">SharedData</span>
+<span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">void</span> <span class="token function">setData</span><span class="token punctuation">(</span><span class="token keyword">int</span> data<span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        QMutexLocker <span class="token function">locker</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>m_mutex<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 加锁</span>
+        m_data <span class="token operator">=</span> data<span class="token punctuation">;</span>
+        <span class="token comment">// locker对象超出作用域时自动解锁</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">int</span> <span class="token function">getData</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token keyword">int</span> result<span class="token punctuation">;</span>
+        QMutexLocker <span class="token function">locker</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>m_mutex<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 加锁</span>
+        result <span class="token operator">=</span> m_data<span class="token punctuation">;</span>
+        <span class="token comment">// locker对象超出作用域时自动解锁</span>
+        <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+<span class="token keyword">private</span><span class="token operator">:</span>
+    QMutex m_mutex<span class="token punctuation">;</span> <span class="token comment">// 互斥锁</span>
+    <span class="token keyword">int</span> m_data<span class="token punctuation">;</span> <span class="token comment">// 共享数据</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>在这个示例中，<code>SharedData</code>类的实现与前一个示例相似，但使用了QMutexLocker来简化互斥锁的使用。QMutexLocker可以确保在函数返回或异常抛出时互斥锁始终被解锁，从而避免死锁。</p>
+<h2 id="4-3-QSemaphore（信号量）"><a href="#4-3-QSemaphore（信号量）" class="headerlink" title="4.3 QSemaphore（信号量）"></a>4.3 QSemaphore（信号量）</h2><p>信号量是另一种同步原语，用于控制对共享资源的并发访问。QSemaphore类提供了一个信号量，可以在Qt应用程序中使用。信号量管理一个资源计数器，当线程请求资源时，计数器减1；当线程释放资源时，计数器加1。如果计数器为0，请求资源的线程将阻塞，直到有其他线程释放资源。</p>
+<p>以下是使用QSemaphore保护有限数量的共享资源的一个示例：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;QSemaphore></span></span>
+
+<span class="token keyword">class</span> <span class="token class-name">SharedResources</span>
+<span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token function">SharedResources</span><span class="token punctuation">(</span><span class="token keyword">int</span> resourcesCount<span class="token punctuation">)</span>
+        <span class="token operator">:</span> <span class="token function">m_semaphore</span><span class="token punctuation">(</span>resourcesCount<span class="token punctuation">)</span> <span class="token comment">// 初始化信号量</span>
+    <span class="token punctuation">&#123;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">void</span> <span class="token function">acquireResource</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        m_semaphore<span class="token punctuation">.</span><span class="token function">acquire</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 请求资源</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">void</span> <span class="token function">releaseResource</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        m_semaphore<span class="token punctuation">.</span><span class="token function">release</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 释放资源</span>
+    <span class="token punctuation">&#125;</span>
+
+<span class="token keyword">private</span><span class="token operator">:</span>
+    QSemaphore m_semaphore<span class="token punctuation">;</span> <span class="token comment">// 信号量</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>在这个示例中，<code>SharedResources</code>类包含一个信号量，用于保护有限数量的共享资源。线程可以通过调用<code>acquireResource()</code>和<code>releaseResource()</code>函数来请求和释放资源。如果所有资源都被占用，请求资源的线程将阻塞，直到有其他线程释放资源。</p>
+<h2 id="4-4-QReadWriteLock（读写锁）"><a href="#4-4-QReadWriteLock（读写锁）" class="headerlink" title="4.4 QReadWriteLock（读写锁）"></a>4.4 QReadWriteLock（读写锁）</h2><p>读写锁是一种特殊类型的锁，允许多个线程同时读共享资源，但只允许一个线程在任何时候写共享资源。QReadWriteLock类提供了一个读写锁，可以在Qt应用程序中使用。读写锁的使用可以提高程序的性能，特别是在读操作远多于写操作的情况下。</p>
+<p>以下是使用QReadWriteLock保护共享资源的一个示例：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;QReadWriteLock></span></span>
+
+<span class="token keyword">class</span> <span class="token class-name">SharedData</span>
+<span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">void</span> <span class="token function">setData</span><span class="token punctuation">(</span><span class="token keyword">int</span> data<span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        m_lock<span class="token punctuation">.</span><span class="token function">lockForWrite</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 获取写锁</span>
+        m_data <span class="token operator">=</span> data<span class="token punctuation">;</span>
+        m_lock<span class="token punctuation">.</span><span class="token function">unlock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 释放锁</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">int</span> <span class="token function">getData</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token keyword">int</span> result<span class="token punctuation">;</span>
+        m_lock<span class="token punctuation">.</span><span class="token function">lockForRead</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 获取读锁</span>
+        result <span class="token operator">=</span> m_data<span class="token punctuation">;</span>
+        m_lock<span class="token punctuation">.</span><span class="token function">unlock</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 释放锁</span>
+        <span class="token keyword">return</span> result<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+<span class="token keyword">private</span><span class="token operator">:</span>
+    QReadWriteLock m_lock<span class="token punctuation">;</span> <span class="token comment">// 读写锁</span>
+    <span class="token keyword">int</span> m_data<span class="token punctuation">;</span> <span class="token comment">// 共享数据</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>在这个示例中，<code>SharedData</code>类包含一个共享的整数数据和一个读写锁。<code>setData()</code>函数在访问共享数据时获取写锁，而<code>getData()</code>函数在访问共享数据时获取读锁。这可以确保在写入数据时不会有其他线程读取或写入数据，同时允许多个线程同时读取数据。</p>
+<p>与QMutex类似，Qt还提供了一个RAII风格的读写锁管理器QReadLocker和QWriteLocker，用于简化读写锁的使用。当创建一个QReadLocker或QWriteLocker对象时，它会自动锁定给定的读写锁以进行读或写操作。当QReadLocker或QWriteLocker对象超出其作用域或被删除时，它会自动解锁读写锁。</p>
+<h2 id="4-5-QAtomic-类"><a href="#4-5-QAtomic-类" class="headerlink" title="4.5 QAtomic 类"></a>4.5 QAtomic 类</h2><p>QAtomic 类是 Qt 提供的用于原子操作的线程安全类。原子操作是一种不需要加锁的操作，因此可以提高性能。QAtomic 类包括：</p>
+<ul>
+<li><strong>QAtomicInt</strong>：用于原子整数操作的类。</li>
+<li><strong>QAtomicPointer</strong>：用于原子指针操作的类。</li>
+</ul>
+<p>以下是使用 QAtomicInt 的一个示例：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;QAtomicInt></span></span>
+
+<span class="token keyword">class</span> <span class="token class-name">Counter</span>
+<span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">void</span> <span class="token function">increment</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        m_count<span class="token punctuation">.</span><span class="token function">ref</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 原子地递增计数器</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">void</span> <span class="token function">decrement</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        m_count<span class="token punctuation">.</span><span class="token function">deref</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 原子地递减计数器</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">int</span> <span class="token function">getCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> m_count<span class="token punctuation">.</span><span class="token function">load</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 原子地加载计数器值</span>
+    <span class="token punctuation">&#125;</span>
+
+<span class="token keyword">private</span><span class="token operator">:</span>
+    QAtomicInt m_count<span class="token punctuation">;</span> <span class="token comment">// 原子整数</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>在这个示例中，<code>Counter</code> 类包含一个原子整数 <code>m_count</code>。<code>increment()</code> 和 <code>decrement()</code> 函数分别使用 <code>ref()</code> 和 <code>deref()</code> 方法原子地递增和递减计数器。<code>getCount()</code> 函数使用 <code>load()</code> 方法原子地加载计数器的值。</p>
+<p>使用 QAtomic 类可以避免互斥锁带来的性能开销，但请注意，原子操作并不能解决所有线程安全问题。在使用 QAtomic 类时，仍然需要关注线程安全和同步问题，确保程序正确运行。</p>
+<h2 id="4-6-QThreadStorage-类"><a href="#4-6-QThreadStorage-类" class="headerlink" title="4.6 QThreadStorage 类"></a>4.6 QThreadStorage 类</h2><p>QThreadStorage 类是 Qt 提供的线程局部存储（Thread Local Storage, TLS）工具。线程局部存储是一种特殊的存储机制，每个线程拥有自己的存储空间，线程之间的数据是隔离的。使用 QThreadStorage 可以避免共享资源的竞争问题，提高线程安全性和性能。</p>
+<p>以下是使用 QThreadStorage 的一个示例：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;QThread></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;QThreadStorage></span></span>
+
+<span class="token keyword">class</span> <span class="token class-name">MyThread</span> <span class="token operator">:</span> <span class="token base-clause"><span class="token keyword">public</span> <span class="token class-name">QThread</span></span>
+<span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">void</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">override</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>m_localData<span class="token punctuation">.</span><span class="token function">hasLocalData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">// 检查当前线程是否有局部数据</span>
+        <span class="token punctuation">&#123;</span>
+            m_localData<span class="token punctuation">.</span><span class="token function">setLocalData</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 为当前线程分配局部数据</span>
+        <span class="token punctuation">&#125;</span>
+
+        <span class="token keyword">int</span> <span class="token operator">*</span>localValue <span class="token operator">=</span> m_localData<span class="token punctuation">.</span><span class="token function">localData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 获取当前线程的局部数据</span>
+
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">10</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+        <span class="token punctuation">&#123;</span>
+            <span class="token operator">++</span><span class="token punctuation">(</span><span class="token operator">*</span>localValue<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token function">qDebug</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token string">"Thread"</span> <span class="token operator">&lt;&lt;</span> <span class="token function">currentThreadId</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token string">"local value:"</span> <span class="token operator">&lt;&lt;</span> <span class="token operator">*</span>localValue<span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+
+        <span class="token keyword">delete</span> localValue<span class="token punctuation">;</span> <span class="token comment">// 清理局部数据</span>
+        m_localData<span class="token punctuation">.</span><span class="token function">setLocalData</span><span class="token punctuation">(</span><span class="token keyword">nullptr</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+<span class="token keyword">private</span><span class="token operator">:</span>
+    <span class="token keyword">static</span> QThreadStorage<span class="token operator">&lt;</span><span class="token keyword">int</span> <span class="token operator">*</span><span class="token operator">></span> m_localData<span class="token punctuation">;</span> <span class="token comment">// 线程局部存储</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+
+QThreadStorage<span class="token operator">&lt;</span><span class="token keyword">int</span> <span class="token operator">*</span><span class="token operator">></span> MyThread<span class="token double-colon punctuation">::</span>m_localData<span class="token punctuation">;</span> <span class="token comment">// 初始化静态成员变量</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>在这个示例中，<code>MyThread</code> 类继承自 <code>QThread</code> 类。每个 <code>MyThread</code> 实例代表一个独立的线程。<code>run()</code> 函数是线程的主要执行方法。在 <code>run()</code> 函数中，我们使用 <code>QThreadStorage</code> 类的 <code>hasLocalData()</code>、<code>setLocalData()</code> 和 <code>localData()</code> 方法来管理线程的局部数据。这些方法操作的数据仅在当前线程内可见，线程之间的数据是隔离的。</p>
+<p>使用 QThreadStorage 可以简化多线程编程，提高线程安全性和性能。但请注意，线程局部存储不适用于所有场景，特别是当需要在线程之间共享数据时。在使用 QThreadStorage 时，请确保线程安全和同步问题得到妥善处理。</p>
+<h1 id="五、Qt线程编程方法三：使用QtConcurrent框架（Using-QtConcurrent-Framework）"><a href="#五、Qt线程编程方法三：使用QtConcurrent框架（Using-QtConcurrent-Framework）" class="headerlink" title="五、Qt线程编程方法三：使用QtConcurrent框架（Using QtConcurrent Framework）"></a>五、Qt线程编程方法三：使用QtConcurrent框架（Using QtConcurrent Framework）</h1><p>QtConcurrent框架为并发编程提供了一个高级接口，它允许您简化多线程应用程序的开发过程，特别是在执行一些可以并行化的任务时。QtConcurrent框架自动管理线程创建、分配和回收，让您专注于任务逻辑。</p>
+<h2 id="5-1-QtConcurrent框架简介（Introduction-to-QtConcurrent-Framework）"><a href="#5-1-QtConcurrent框架简介（Introduction-to-QtConcurrent-Framework）" class="headerlink" title="5.1 QtConcurrent框架简介（Introduction to QtConcurrent Framework）"></a>5.1 QtConcurrent框架简介（Introduction to QtConcurrent Framework）</h2><p>QtConcurrent框架与QFuture和QFutureWatcher类配合使用，使您能够在主线程中轻松监视任务的进度和结果。</p>
+<p>QtConcurrent框架是Qt库的一部分，为并发编程提供了一个高级抽象。它允许您简化多线程应用程序的开发过程，特别是在执行一些可以并行化的任务时。QtConcurrent框架自动管理线程创建、分配和回收，让您专注于任务逻辑。以下是QtConcurrent框架的主要特点：</p>
+<ol>
+<li><strong>简化线程管理</strong>：QtConcurrent框架通过自动管理线程池来简化线程管理。您无需手动创建和销毁线程，而只需关注任务的逻辑。这减轻了开发人员的负担，降低了出错的可能性。</li>
+<li><strong>函数式编程风格</strong>：QtConcurrent框架采用函数式编程风格，使得代码更简洁、易于理解。您可以将任务表示为纯函数，然后将其传递给QtConcurrent来执行。</li>
+<li><strong>支持容器操作</strong>：QtConcurrent框架提供了一系列并行容器操作，如map、mapped和filtered等。这些操作可以在多个线程上同时执行，以提高处理速度。这些操作也支持自定义的谓词和转换函数，使得代码具有更好的灵活性。</li>
+<li><strong>与QFuture和QFutureWatcher配合使用</strong>：QtConcurrent框架与QFuture和QFutureWatcher类配合使用，使您能够在主线程中轻松监视任务的进度和结果。QFuture封装了任务的结果，而QFutureWatcher用于监视任务的状态变化，并发出相应的信号。</li>
+<li><strong>可扩展性</strong>：QtConcurrent框架的设计具有很好的可扩展性。随着硬件资源的增加，例如更多的处理器核心，QtConcurrent框架可以自动利用这些资源来提高程序的性能。</li>
+</ol>
+<p>QtConcurrent框架主要包括以下几个部分：</p>
+<ul>
+<li>QtConcurrent::run：用于启动一个可以在后台线程中运行的函数。</li>
+<li>QtConcurrent::map：用于对一个容器中的所有元素应用一个函数。</li>
+<li>QtConcurrent::mapped：用于创建一个新的容器，其中包含将一个函数应用于原始容器中的所有元素所得到的结果。</li>
+<li>QtConcurrent::filtered：用于创建一个新的容器，其中包含满足给定谓词的原始容器中的元素。</li>
+</ul>
+<h2 id="5-2-使用QtConcurrent实现并行任务（Implementing-Parallel-Tasks-with-QtConcurrent）"><a href="#5-2-使用QtConcurrent实现并行任务（Implementing-Parallel-Tasks-with-QtConcurrent）" class="headerlink" title="5.2 使用QtConcurrent实现并行任务（Implementing Parallel Tasks with QtConcurrent）"></a>5.2 使用QtConcurrent实现并行任务（Implementing Parallel Tasks with QtConcurrent）</h2><p>在这一节中，我们将介绍如何使用QtConcurrent实现并行任务。</p>
+<h3 id="5-2-1-使用QtConcurrent-run启动后台任务"><a href="#5-2-1-使用QtConcurrent-run启动后台任务" class="headerlink" title="5.2.1 使用QtConcurrent::run启动后台任务"></a>5.2.1 使用QtConcurrent::run启动后台任务</h3><p>QtConcurrent::run用于启动一个可以在后台线程中运行的函数。以下是一个简单的使用QtConcurrent::run启动后台任务的示例：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;QCoreApplication></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;QDebug></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;QtConcurrent/QtConcurrent></span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    QCoreApplication <span class="token function">a</span><span class="token punctuation">(</span>argc<span class="token punctuation">,</span> argv<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 定义一个简单的任务</span>
+    <span class="token keyword">auto</span> task <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token function">qDebug</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token string">"Task started in thread"</span> <span class="token operator">&lt;&lt;</span> <span class="token class-name">QThread</span><span class="token double-colon punctuation">::</span><span class="token function">currentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">QThread</span><span class="token double-colon punctuation">::</span><span class="token function">sleep</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">qDebug</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token string">"Task finished in thread"</span> <span class="token operator">&lt;&lt;</span> <span class="token class-name">QThread</span><span class="token double-colon punctuation">::</span><span class="token function">currentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 使用QtConcurrent::run启动任务</span>
+    QFuture<span class="token operator">&lt;</span><span class="token keyword">void</span><span class="token operator">></span> future <span class="token operator">=</span> <span class="token class-name">QtConcurrent</span><span class="token double-colon punctuation">::</span><span class="token function">run</span><span class="token punctuation">(</span>task<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">qDebug</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token string">"Task started in main thread"</span> <span class="token operator">&lt;&lt;</span> <span class="token class-name">QThread</span><span class="token double-colon punctuation">::</span><span class="token function">currentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 等待任务完成</span>
+    future<span class="token punctuation">.</span><span class="token function">waitForFinished</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">qDebug</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token string">"Task finished in main thread"</span> <span class="token operator">&lt;&lt;</span> <span class="token class-name">QThread</span><span class="token double-colon punctuation">::</span><span class="token function">currentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> a<span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>在这个示例中，我们定义了一个简单的任务，然后使用QtConcurrent::run在后台线程中启动它。QFuture对象用于表示任务的结果，可以用来检查任务是否完成，或等待任务完成。</p>
+<h3 id="5-2-2-使用QtConcurrent-map和QtConcurrent-mapped对容器中的元素应用函数"><a href="#5-2-2-使用QtConcurrent-map和QtConcurrent-mapped对容器中的元素应用函数" class="headerlink" title="5.2.2 使用QtConcurrent::map和QtConcurrent::mapped对容器中的元素应用函数"></a>5.2.2 使用QtConcurrent::map和QtConcurrent::mapped对容器中的元素应用函数</h3><p>QtConcurrent::map用于对一个容器中的所有元素应用一个函数。这个操作将在多个线程中并行执行，以提高处理速度。以下是一个使用QtConcurrent::map的示例：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;QCoreApplication></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;QDebug></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;QVector></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;QtConcurrent/QtConcurrent></span></span>
+
+<span class="token keyword">void</span> <span class="token function">multiplyByTwo</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">&amp;</span>value<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    value <span class="token operator">*=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    QCoreApplication <span class="token function">a</span><span class="token punctuation">(</span>argc<span class="token punctuation">,</span> argv<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    QVector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> vector <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 使用QtConcurrent::map对容器中的所有元素应用函数multiplyByTwo</span>
+    QFuture<span class="token operator">&lt;</span><span class="token keyword">void</span><span class="token operator">></span> future <span class="token operator">=</span> <span class="token class-name">QtConcurrent</span><span class="token double-colon punctuation">::</span><span class="token function">map</span><span class="token punctuation">(</span>vector<span class="token punctuation">,</span> multiplyByTwo<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 等待任务完成</span>
+    future<span class="token punctuation">.</span><span class="token function">waitForFinished</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">qDebug</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token string">"Result:"</span> <span class="token operator">&lt;&lt;</span> vector<span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> a<span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>QtConcurrent::mapped用于创建一个新的容器，其中包含将一个函数应用于原始容器中的所有元素所得到的结果。以下是一个使用QtConcurrent::mapped的示例：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;QCoreApplication></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;QDebug></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;QVector></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;QtConcurrent/QtConcurrent></span></span>
+
+<span class="token keyword">int</span> <span class="token function">multiplyByTwo</span><span class="token punctuation">(</span><span class="token keyword">int</span> value<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> value <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    QCoreApplication <span class="token function">a</span><span class="token punctuation">(</span>argc<span class="token punctuation">,</span> argv<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    QVector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> vector <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+    
+      <span class="token comment">// 使用QtConcurrent::mapped创建一个新的容器，其中包含将函数multiplyByTwo应用于原始容器中的所有元素所得到的结果</span>
+       QFuture<span class="token operator">&lt;</span>QVector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">>></span> future <span class="token operator">=</span> <span class="token class-name">QtConcurrent</span><span class="token double-colon punctuation">::</span><span class="token function">mapped</span><span class="token punctuation">(</span>vector<span class="token punctuation">,</span> multiplyByTwo<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 等待任务完成</span>
+future<span class="token punctuation">.</span><span class="token function">waitForFinished</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+QVector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> result <span class="token operator">=</span> future<span class="token punctuation">.</span><span class="token function">result</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">qDebug</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token string">"Result:"</span> <span class="token operator">&lt;&lt;</span> result<span class="token punctuation">;</span>
+
+<span class="token keyword">return</span> a<span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>在这个示例中，我们使用QtConcurrent::mapped将multiplyByTwo函数应用于原始容器中的所有元素，然后创建了一个新的容器来存储结果。QFuture对象用于表示任务的结果，可以用来检查任务是否完成，或等待任务完成。</p>
+<h2 id="5-3-QtConcurrent实例与分析（Examples-and-Analysis-of-QtConcurrent）"><a href="#5-3-QtConcurrent实例与分析（Examples-and-Analysis-of-QtConcurrent）" class="headerlink" title="5.3 QtConcurrent实例与分析（Examples and Analysis of QtConcurrent）"></a>5.3 QtConcurrent实例与分析（Examples and Analysis of QtConcurrent）</h2><p>以下是使用QtConcurrent::map对一个容器中的所有元素应用一个函数的示例：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;QCoreApplication></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;QDebug></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;QVector></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;QtConcurrent/QtConcurrent></span></span>
+
+<span class="token keyword">void</span> <span class="token function">multiplyByTwo</span><span class="token punctuation">(</span><span class="token keyword">int</span> <span class="token operator">&amp;</span>value<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    value <span class="token operator">*=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    QCoreApplication <span class="token function">a</span><span class="token punctuation">(</span>argc<span class="token punctuation">,</span> argv<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    QVector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">></span> vector <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// 使用QtConcurrent::map对容器中的所有元素应用函数multiplyByTwo</span>
+
+  QFuture<span class="token operator">&lt;</span><span class="token keyword">void</span><span class="token operator">></span> future <span class="token operator">=</span> <span class="token class-name">QtConcurrent</span><span class="token double-colon punctuation">::</span><span class="token function">map</span><span class="token punctuation">(</span>vector<span class="token punctuation">,</span> multiplyByTwo<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// 等待任务完成</span>
+
+  future<span class="token punctuation">.</span><span class="token function">waitForFinished</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token function">qDebug</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token string">"Result:"</span> <span class="token operator">&lt;&lt;</span> vector<span class="token punctuation">;</span>
+
+  <span class="token keyword">return</span> a<span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>在这个示例中，我们使用QtConcurrent::map将multiplyByTwo函数应用于一个整数向量中的所有元素。这个操作将在多个线程中并行执行，以提高处理速度。当任务完成后，我们输出结果向量。</p>
+<h3 id="5-3-1-实例：使用QtConcurrent计算文件的MD5值"><a href="#5-3-1-实例：使用QtConcurrent计算文件的MD5值" class="headerlink" title="5.3.1 实例：使用QtConcurrent计算文件的MD5值"></a>5.3.1 实例：使用QtConcurrent计算文件的MD5值</h3><p>在这个示例中，我们将使用QtConcurrent计算多个文件的MD5值。我们将使用QtConcurrent::mapped和QtConcurrent::run来完成这个任务。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;QCoreApplication></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;QDebug></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;QDir></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;QCryptographicHash></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;QFile></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;QtConcurrent/QtConcurrent></span></span>
+
+<span class="token comment">// 定义一个函数来计算文件的MD5值</span>
+QByteArray <span class="token function">fileMd5</span><span class="token punctuation">(</span><span class="token keyword">const</span> QString <span class="token operator">&amp;</span>filePath<span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    QFile <span class="token function">file</span><span class="token punctuation">(</span>filePath<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>file<span class="token punctuation">.</span><span class="token function">open</span><span class="token punctuation">(</span>QIODevice<span class="token double-colon punctuation">::</span>ReadOnly<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token function">qWarning</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token string">"Failed to open file"</span> <span class="token operator">&lt;&lt;</span> filePath<span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token function">QByteArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    QCryptographicHash <span class="token function">hash</span><span class="token punctuation">(</span>QCryptographicHash<span class="token double-colon punctuation">::</span>Md5<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>hash<span class="token punctuation">.</span><span class="token function">addData</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>file<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> hash<span class="token punctuation">.</span><span class="token function">result</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toHex</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">else</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token function">qWarning</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token string">"Failed to compute MD5 for file"</span> <span class="token operator">&lt;&lt;</span> filePath<span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token function">QByteArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    QCoreApplication <span class="token function">a</span><span class="token punctuation">(</span>argc<span class="token punctuation">,</span> argv<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 获取要计算MD5值的文件列表</span>
+    QStringList fileList <span class="token operator">=</span> <span class="token function">QDir</span><span class="token punctuation">(</span><span class="token string">"/path/to/your/files"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">entryList</span><span class="token punctuation">(</span>QDir<span class="token double-colon punctuation">::</span>Files<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 使用QtConcurrent::mapped并行计算文件的MD5值</span>
+    QFuture<span class="token operator">&lt;</span>QByteArray<span class="token operator">></span> future <span class="token operator">=</span> <span class="token class-name">QtConcurrent</span><span class="token double-colon punctuation">::</span><span class="token function">mapped</span><span class="token punctuation">(</span>fileList<span class="token punctuation">,</span> fileMd5<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 等待任务完成</span>
+    future<span class="token punctuation">.</span><span class="token function">waitForFinished</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 输出计算结果</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> fileList<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token function">qDebug</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token string">"File:"</span> <span class="token operator">&lt;&lt;</span> fileList<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;&lt;</span> <span class="token string">"MD5:"</span> <span class="token operator">&lt;&lt;</span> future<span class="token punctuation">.</span><span class="token function">resultAt</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">return</span> a<span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>在这个示例中，我们首先获取要计算MD5值的文件列表，然后使用QtConcurrent::mapped并行计算文件的MD5值。最后，我们输出计算结果。</p>
+<h3 id="5-3-2-分析"><a href="#5-3-2-分析" class="headerlink" title="5.3.2 分析"></a>5.3.2 分析</h3><p>通过使用QtConcurrent框架，我们可以简化并行任务的实现。在这个示例中，我们无需手动管理线程池，而只需关注任务本身。QtConcurrent自动管理线程创建、分配和回收，减轻了开发人员的负担。</p>
+<p>此外，QtConcurrent::mapped函数可以将任务拆分为多个子任务，并在多个线程上并行执行。这样可以充分利用多核处理器的性能，提高计算速度。</p>
+<p>然而，QtConcurrent框架并不适用于所有场景。在某些情况下，如任务之间有复杂的依赖关系，或需要精确控制线程的执行顺序时，使用QThread类和信号槽机制可能更合适。</p>
+<p>在实际开发中，您需要根据具体需求选择合适的线程编程方法。在适用的场景下，QtConcurrent框架可以大大简化多</p>
+<h1 id="六、Qt线程编程方法四：使用-QThreadPool-和-QRunnable"><a href="#六、Qt线程编程方法四：使用-QThreadPool-和-QRunnable" class="headerlink" title="六、Qt线程编程方法四：使用 QThreadPool 和 QRunnable"></a>六、Qt线程编程方法四：使用 QThreadPool 和 QRunnable</h1><p>QThreadPool 是 Qt 提供的一个线程池类，可以用来管理和回收线程资源。与创建和销毁 QThread 实例相比，使用 QThreadPool 可以减少线程创建和销毁的开销，提高程序性能。</p>
+<p>QRunnable 是一个抽象类，用于封装可以在线程池中执行的任务。通过继承 QRunnable 并实现其 run() 函数，您可以定义自己的任务类。</p>
+<h2 id="6-1-QThreadPool-简介（Introduction-to-QThreadPool）"><a href="#6-1-QThreadPool-简介（Introduction-to-QThreadPool）" class="headerlink" title="6.1 QThreadPool 简介（Introduction to QThreadPool）"></a>6.1 QThreadPool 简介（Introduction to QThreadPool）</h2><p>QThreadPool 类可以创建和管理一组线程，以并发执行任务。线程池可以自动管理线程的创建和销毁，以及任务的分配。当任务完成时，线程会返回到线程池，等待下一个任务。这可以减少线程创建和销毁的开销，提高程序性能。</p>
+<p>QThreadPool 提供了一些实用的功能，如设置线程池的最大线程数、等待所有任务完成以及取消所有未执行的任务等。</p>
+<p>QThreadPool 类是一个线程池类，用于管理并发执行的任务。线程池在内部维护一组工作线程，这些线程可重复利用以减少线程创建和销毁的开销。QThreadPool 提供以下功能：</p>
+<ul>
+<li>自动创建和销毁线程：线程池会根据任务的数量和负载自动创建新的线程，当线程空闲一段时间后，线程池会自动销毁线程，释放资源。</li>
+<li>限制最大线程数：线程池可以设置最大线程数，以防止线程数量过多导致系统资源耗尽。当线程池中的线程达到最大值时，新提交的任务将等待，直到有空闲线程可用。</li>
+<li>线程优先级：QThreadPool 允许为任务设置优先级，优先级较高的任务会优先分配给空闲线程执行。</li>
+<li>任务排队策略：线程池可以设置任务排队策略，例如先进先出（FIFO）或后进先出（LIFO）等。这可以根据任务特性和应用需求进行调整，以实现更好的性能。</li>
+<li>全局线程池实例：QThreadPool 提供一个全局线程池实例，可以通过 QThreadPool::globalInstance() 函数获取。全局线程池实例适用于大多数场景，简化了线程池的使用。</li>
+</ul>
+<p>通过使用 QThreadPool，您可以更有效地管理线程资源，提高多线程程序的性能。同时，它还简化了多线程编程，让您能够专注于任务逻辑，而无需关注线程的创建、销毁和调度。</p>
+<h2 id="6-2-创建自定义-QRunnable（Creating-Custom-QRunnable）"><a href="#6-2-创建自定义-QRunnable（Creating-Custom-QRunnable）" class="headerlink" title="6.2 创建自定义 QRunnable（Creating Custom QRunnable）"></a>6.2 创建自定义 QRunnable（Creating Custom QRunnable）</h2><p>要在线程池中执行任务，需要创建一个继承自 QRunnable 的自定义类，并重写其 run() 函数。以下是一个简单的自定义 QRunnable 类示例：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;QRunnable></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;QDebug></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;QThread></span></span>
+
+<span class="token keyword">class</span> <span class="token class-name">MyRunnable</span> <span class="token operator">:</span> <span class="token base-clause"><span class="token keyword">public</span> <span class="token class-name">QRunnable</span></span>
+<span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">void</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">override</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token function">qDebug</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token string">"Running task in thread"</span> <span class="token operator">&lt;&lt;</span> <span class="token class-name">QThread</span><span class="token double-colon punctuation">::</span><span class="token function">currentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 在这里执行任务逻辑</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>在这个示例中，我们创建了一个名为 MyRunnable 的自定义任务类，并在 run() 函数中输出了当前线程信息。您可以在 run() 函数中添加您需要执行的任务逻辑。</p>
+<h3 id="6-2-1-传递参数给-QRunnable"><a href="#6-2-1-传递参数给-QRunnable" class="headerlink" title="6.2.1 传递参数给 QRunnable"></a>6.2.1 传递参数给 QRunnable</h3><p>要将参数传递给自定义 QRunnable 类，您可以在类中添加成员变量和构造函数。以下是一个传递参数给 QRunnable 的示例：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;QRunnable></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;QDebug></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;QThread></span></span>
+
+<span class="token keyword">class</span> <span class="token class-name">MyRunnable</span> <span class="token operator">:</span> <span class="token base-clause"><span class="token keyword">public</span> <span class="token class-name">QRunnable</span></span>
+<span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">explicit</span> <span class="token function">MyRunnable</span><span class="token punctuation">(</span><span class="token keyword">int</span> value<span class="token punctuation">)</span>
+        <span class="token operator">:</span> <span class="token function">m_value</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">void</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">override</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token function">qDebug</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token string">"Running task with value"</span> <span class="token operator">&lt;&lt;</span> m_value <span class="token operator">&lt;&lt;</span> <span class="token string">"in thread"</span> <span class="token operator">&lt;&lt;</span> <span class="token class-name">QThread</span><span class="token double-colon punctuation">::</span><span class="token function">currentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 在这里执行任务逻辑</span>
+    <span class="token punctuation">&#125;</span>
+
+<span class="token keyword">private</span><span class="token operator">:</span>
+    <span class="token keyword">int</span> m_value<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>在这个示例中，我们在 MyRunnable 类中添加了一个整数成员变量 m_value，并通过构造函数将其初始化。这样，我们就可以在创建 MyRunnable 实例时传递参数。</p>
+<h3 id="6-2-2-使用信号与槽"><a href="#6-2-2-使用信号与槽" class="headerlink" title="6.2.2 使用信号与槽"></a>6.2.2 使用信号与槽</h3><p>尽管 QRunnable 不是 QObject 的子类，但您仍然可以在自定义 QRunnable 类中使用信号与槽。您可以将 QRunnable 类中的信号与槽与其他 QObject 子类的对象连接，以实现线程间的通信。</p>
+<p>要在 QRunnable 类中使用信号与槽，您需要将 QRunnable 与 QObject 组合，而不是将 QRunnable 作为 QObject 的子类。以下是一个在 QRunnable 类中使用信号与槽的示例：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;QObject></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;QRunnable></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;QDebug></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;QThread></span></span>
+
+<span class="token keyword">class</span> <span class="token class-name">MyWorker</span> <span class="token operator">:</span> <span class="token base-clause"><span class="token keyword">public</span> <span class="token class-name">QObject</span></span>
+<span class="token punctuation">&#123;</span>
+    Q_OBJECT
+
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">void</span> <span class="token function">process</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token function">qDebug</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> <span class="token string">"Processing in thread"</span> <span class="token operator">&lt;&lt;</span> <span class="token class-name">QThread</span><span class="token double-colon punctuation">::</span><span class="token function">currentThread</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        emit <span class="token function">finished</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+signals<span class="token operator">:</span>
+    <span class="token keyword">void</span> <span class="token function">finished</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">MyRunnable</span> <span class="token operator">:</span> <span class="token base-clause"><span class="token keyword">public</span> <span class="token class-name">QRunnable</span></span>
+<span class="token punctuation">&#123;</span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token function">MyRunnable</span><span class="token punctuation">(</span>MyWorker <span class="token operator">*</span>worker<span class="token punctuation">)</span>
+        <span class="token operator">:</span> <span class="token function">m_worker</span><span class="token punctuation">(</span>worker<span class="token punctuation">)</span>
+    <span class="token punctuation">&#123;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">void</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">override</span>
+    <span class="token punctuation">&#123;</span>
+        <span class="token function">connect</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>MyRunnable<span class="token double-colon punctuation">::</span>finished<span class="token punctuation">,</span> m_worker<span class="token punctuation">,</span> <span class="token operator">&amp;</span>MyWorker<span class="token double-colon punctuation">::</span>deleteLater<span class="token punctuation">,</span> Qt<span class="token double-colon punctuation">::</span>DirectConnection<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        m_worker<span class="token operator">-></span><span class="token function">process</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        emit <span class="token function">finished</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+signals<span class="token operator">:</span>
+    <span class="token keyword">void</span> <span class="token function">finished</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">private</span><span class="token operator">:</span>
+    MyWorker <span class="token operator">*</span>m_worker<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>在这个示例中，我们创建了一个名为 MyWorker 的 QObject 子类，并在其中定义了一个名为 process() 的槽。然后，我们在 MyRunnable 类中添加了一个 MyWorker 指针，并在 run() 函数中连接信号与槽。这样，我们就可以在不同线程中使用信号与槽进行通信。</p>
+<h2 id="6-3-使用-QThreadPool-管理线程（Managing-Threads-with-QThreadPool）"><a href="#6-3-使用-QThreadPool-管理线程（Managing-Threads-with-QThreadPool）" class="headerlink" title="6.3 使用 QThreadPool 管理线程（Managing Threads with QThreadPool）"></a>6.3 使用 QThreadPool 管理线程（Managing Threads with QThreadPool）</h2><p>要使用 QThreadPool 管理线程并执行任务，可以按照以下步骤操作：</p>
+<ol>
+<li>创建一个 QThreadPool 实例。通常情况下，可以使用 QThreadPool 的全局实例，通过 QThreadPool::globalInstance() 函数获取。</li>
+<li>创建一个自定义 QRunnable 实例。</li>
+<li>将 QRunnable 实例提交给线程池，线程池会自动选择一个空闲线程来执行任务。</li>
+</ol>
+<p>以下是一个使用 QThreadPool 的示例：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;QCoreApplication></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;QThreadPool></span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">"MyRunnable.h"</span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">char</span> <span class="token operator">*</span>argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    QCoreApplication <span class="token function">a</span><span class="token punctuation">(</span>argc<span class="token punctuation">,</span> argv<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 获取 QThreadPool 的全局实例</span>
+    QThreadPool <span class="token operator">*</span>pool <span class="token operator">=</span> <span class="token class-name">QThreadPool</span><span class="token double-colon punctuation">::</span><span class="token function">globalInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 创建一个自定义 QRunnable 实例</span>
+    MyRunnable <span class="token operator">*</span>task <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">MyRunnable</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 将任务提交给线程池</span>
+    pool<span class="token operator">-></span><span class="token function">start</span><span class="token punctuation">(</span>task<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 等待所有任务完成</span>
+    pool<span class="token operator">-></span><span class="token function">waitForDone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> a<span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>QThreadPool 提供了一些高级功能，如设置线程优先级、限制最大线程数以及在超时后自动销毁空闲线程等。在这里，我们将介绍这些高级功能的使用方法。</p>
+<h3 id="6-3-1-设置线程优先级"><a href="#6-3-1-设置线程优先级" class="headerlink" title="6.3.1 设置线程优先级"></a>6.3.1 设置线程优先级</h3><p>当将任务提交给线程池时，可以为其分配一个优先级。优先级可以是 QThread::Priority 枚举值。线程池会根据任务的优先级来决定任务的执行顺序。任务优先级高的会优先执行。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">// 创建一个自定义 QRunnable 实例</span>
+MyRunnable <span class="token operator">*</span>highPriorityTask <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">MyRunnable</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 将任务提交给线程池，设置优先级为 QThread::HighPriority</span>
+pool<span class="token operator">-></span><span class="token function">start</span><span class="token punctuation">(</span>highPriorityTask<span class="token punctuation">,</span> QThread<span class="token double-colon punctuation">::</span>HighPriority<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 创建另一个自定义 QRunnable 实例</span>
+MyRunnable <span class="token operator">*</span>lowPriorityTask <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">MyRunnable</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 将任务提交给线程池，设置优先级为 QThread::LowPriority</span>
+pool<span class="token operator">-></span><span class="token function">start</span><span class="token punctuation">(</span>lowPriorityTask<span class="token punctuation">,</span> QThread<span class="token double-colon punctuation">::</span>LowPriority<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="6-3-2-限制最大线程数"><a href="#6-3-2-限制最大线程数" class="headerlink" title="6.3.2 限制最大线程数"></a>6.3.2 限制最大线程数</h3><p>您可以通过 QThreadPool::setMaxThreadCount() 函数限制线程池的最大线程数。这对于避免创建过多线程导致系统资源耗尽非常有用。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">// 将线程池的最大线程数设置为 4</span>
+pool<span class="token operator">-></span><span class="token function">setMaxThreadCount</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="6-3-3-自动销毁空闲线程"><a href="#6-3-3-自动销毁空闲线程" class="headerlink" title="6.3.3 自动销毁空闲线程"></a>6.3.3 自动销毁空闲线程</h3><p>线程池可以在一段时间后自动销毁空闲线程。要启用此功能，可以使用 QThreadPool::setExpiryTimeout() 函数设置超时时间（以毫秒为单位）。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token comment">// 将空闲线程的超时时间设置为 30000 毫秒（30 秒）</span>
+pool<span class="token operator">-></span><span class="token function">setExpiryTimeout</span><span class="token punctuation">(</span><span class="token number">30000</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>这样，当线程在 30 秒内没有执行任务时，线程池会自动销毁这个线程，以释放系统资源。</p>
+<h1 id="七、使用信号与槽机制（Using-Signals-and-Slots-Mechanism）"><a href="#七、使用信号与槽机制（Using-Signals-and-Slots-Mechanism）" class="headerlink" title="七、使用信号与槽机制（Using Signals and Slots Mechanism）"></a>七、使用信号与槽机制（Using Signals and Slots Mechanism）</h1><p>信号与槽机制是 Qt 提供的一种用于对象间通信的方法。使用信号与槽，可以在多线程环境中实现线程间通信和同步，避免使用底层同步原语，如互斥锁或条件变量。</p>
+<h2 id="7-1-信号与槽机制简介（Introduction-to-Signals-and-Slots-Mechanism）"><a href="#7-1-信号与槽机制简介（Introduction-to-Signals-and-Slots-Mechanism）" class="headerlink" title="7.1 信号与槽机制简介（Introduction to Signals and Slots Mechanism）"></a>7.1 信号与槽机制简介（Introduction to Signals and Slots Mechanism）</h2><p>信号与槽机制基于以下两个概念：</p>
+<ol>
+<li><strong>信号（Signals）</strong>：当某个对象的状态发生变化时，它会发出一个信号。信号可以绑定到一个或多个槽函数，当信号发出时，与之绑定的槽函数将被调用。</li>
+<li><strong>槽（Slots）</strong>：槽是一种特殊类型的函数，可以与信号绑定。当信号发出时，与之绑定的槽函数将被调用。</li>
+</ol>
+<p>信号与槽的工作原理如下：</p>
+<ul>
+<li>某个对象（发送者）发出信号，信号携带着特定的参数（例如，表示状态变化的值）。</li>
+<li>信号传递给与其绑定的槽函数，这些槽函数可能属于同一个或不同的对象（接收者）。</li>
+<li>槽函数在接收到信号后执行相应的操作。</li>
+</ul>
+<p>Qt 提供了一个元对象系统（Meta-Object System），用于在运行时处理信号与槽的连接。为了使用信号与槽机制，需要继承自 QObject 类，并使用 Q_OBJECT 宏声明类。这将为类生成元对象代码，用于处理信号与槽的连接以及运行时类型信息等。</p>
+<h3 id="7-1-1-声明信号与槽"><a href="#7-1-1-声明信号与槽" class="headerlink" title="7.1.1 声明信号与槽"></a>7.1.1 声明信号与槽</h3><p>要声明信号，需要在类的私有部分使用 <code>signals</code> 关键字，然后声明信号函数原型。信号函数只需要声明，不需要实现。例如：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">MyClass</span> <span class="token operator">:</span> <span class="token base-clause"><span class="token keyword">public</span> <span class="token class-name">QObject</span></span>
+<span class="token punctuation">&#123;</span>
+  Q_OBJECT
+<span class="token keyword">public</span><span class="token operator">:</span>    
+    <span class="token comment">// ...</span>
+signals<span class="token operator">:</span>    
+  <span class="token keyword">void</span> <span class="token function">mySignal</span><span class="token punctuation">(</span><span class="token keyword">int</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>要声明槽，需要在类的公共或保护部分使用 <code>public slots</code> 或 <code>protected slots</code> 关键字，然后声明槽函数原型。槽函数需要在类的实现文件中提供实现。例如：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">MyClass</span> <span class="token operator">:</span> <span class="token base-clause"><span class="token keyword">public</span> <span class="token class-name">QObject</span></span>
+<span class="token punctuation">&#123;</span>
+  Q_OBJECT
+<span class="token keyword">public</span><span class="token operator">:</span>    
+<span class="token comment">// ...</span>
+<span class="token keyword">public</span> slots<span class="token operator">:</span>    
+    <span class="token keyword">void</span> <span class="token function">mySlot</span><span class="token punctuation">(</span><span class="token keyword">int</span> value<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>在槽函数的实现中，您可以执行接收到信号后需要执行的操作。例如，您可以更新对象的状态，或将接收到的数据显示在用户界面上。</p>
+<h3 id="7-1-2-连接信号与槽"><a href="#7-1-2-连接信号与槽" class="headerlink" title="7.1.2 连接信号与槽"></a>7.1.2 连接信号与槽</h3><p>要将信号与槽连接起来，需要使用 QObject::connect 函数。connect 函数接受以下参数：</p>
+<ul>
+<li>发送者对象的指针</li>
+<li>发送者对象的信号</li>
+<li>接收者对象的指针</li>
+<li>接收者对象的槽函数</li>
+<li>连接类型（可选）</li>
+</ul>
+<p>以下是一个将信号与槽连接起来的示例：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp">MyClass sender<span class="token punctuation">;</span>MyClass receiver<span class="token punctuation">;</span><span class="token class-name">QObject</span><span class="token double-colon punctuation">::</span><span class="token function">connect</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>sender<span class="token punctuation">,</span> <span class="token operator">&amp;</span>MyClass<span class="token double-colon punctuation">::</span>mySignal<span class="token punctuation">,</span> <span class="token operator">&amp;</span>receiver<span class="token punctuation">,</span> <span class="token operator">&amp;</span>MyClass<span class="token double-colon punctuation">::</span>mySlot<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token number">1234</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>在这个示例中，我们将 sender 对象的 mySignal 信号与 receiver 对象的 mySlot 槽连接起来。当 sender 对象发出 mySignal 信号时，receiver 对象的 mySlot 槽函数将被调用。</p>
+<h3 id="7-1-3-发出信号"><a href="#7-1-3-发出信号" class="headerlink" title="7.1.3 发出信号"></a>7.1.3 发出信号</h3><p>要发出信号，需要使用 <code>emit</code> 关键字，然后调用信号函数。例如：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">void</span> <span class="token class-name">MyClass</span><span class="token double-colon punctuation">::</span><span class="token function">someFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#123;</span>
+    <span class="token comment">// ...</span>
+
+    emit <span class="token function">mySignal</span><span class="token punctuation">(</span><span class="token number">42</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// ...</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>在这个示例中，当 someFunction 函数被调用时，mySignal 信号将被发出，并传递参数 42 给绑定的槽函数。</p>
+<h3 id="7-1-4-断开信号与槽的连接"><a href="#7-1-4-断开信号与槽的连接" class="headerlink" title="7.1.4 断开信号与槽的连接"></a>7.1.4 断开信号与槽的连接</h3><p>要断开信号与槽的连接，可以使用 QObject::disconnect 函数。disconnect 函数的参数与 connect 函数相同，但是不需要指定连接类型。例如：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token class-name">QObject</span><span class="token double-colon punctuation">::</span><span class="token function">disconnect</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>sender<span class="token punctuation">,</span> <span class="token operator">&amp;</span>MyClass<span class="token double-colon punctuation">::</span>mySignal<span class="token punctuation">,</span> <span class="token operator">&amp;</span>receiver<span class="token punctuation">,</span> <span class="token operator">&amp;</span>MyClass<span class="token double-colon punctuation">::</span>mySlot<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>在这个示例中，我们断开了 sender 对象的 mySignal 信号与 receiver 对象的 mySlot 槽的连接。当 sender 对象发出 mySignal 信号时，receiver 对象的 mySlot 槽函数将不再被调用。</p>
+<h2 id="7-2-在多线程中使用信号与槽（Using-Signals-and-Slots-in-Multithreading）"><a href="#7-2-在多线程中使用信号与槽（Using-Signals-and-Slots-in-Multithreading）" class="headerlink" title="7.2 在多线程中使用信号与槽（Using Signals and Slots in Multithreading）"></a>7.2 在多线程中使用信号与槽（Using Signals and Slots in Multithreading）</h2><p>信号与槽机制在多线程环境中非常有用，因为它们可以自动处理线程间通信和同步。当一个信号连接到一个槽时，Qt 会自动将信号的发送者与接收者之间的数据传输排队，并在接收者的线程上下文中调用槽函数。这意味着您不需要显式使用互斥锁或条件变量来保护共享数据。</p>
+<p>为了在多线程环境中使用信号与槽，请遵循以下步骤：</p>
+<ol>
+<li>在发送者和接收者对象中声明信号与槽函数。这两个对象都需要继承自 QObject，并使用 Q_OBJECT 宏声明类。</li>
+<li>将发送者对象的信号与接收者对象的槽函数连接起来。使用 QObject::connect 函数进行连接，可以指定连接类型（例如，Qt::AutoConnection 或 Qt::QueuedConnection）。</li>
+<li>当发送者对象的状态发生变化时，发出信号。使用 emit 关键字发出信号。</li>
+<li>当信号发出时，接收者对象的槽函数将在其所属线程上下文中被调用。</li>
+</ol>
+<p>以下是一个简单的信号与槽在多线程环境中使用的示例：</p>
+<p>假设我们有一个生产者线程和一个消费者线程。生产者线程负责生成数据，消费者线程负责处理数据。我们可以使用信号与槽来在这两个线程之间传递数据。</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Producer</span> <span class="token operator">:</span> <span class="token base-clause"><span class="token keyword">public</span> <span class="token class-name">QObject</span></span>
+<span class="token punctuation">&#123;</span>
+    Q_OBJECT
+
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">void</span> <span class="token function">produceData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+signals<span class="token operator">:</span>
+    <span class="token keyword">void</span> <span class="token function">dataReady</span><span class="token punctuation">(</span><span class="token keyword">const</span> QString <span class="token operator">&amp;</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Consumer</span> <span class="token operator">:</span> <span class="token base-clause"><span class="token keyword">public</span> <span class="token class-name">QObject</span></span>
+<span class="token punctuation">&#123;</span>
+    Q_OBJECT
+
+<span class="token keyword">public</span> slots<span class="token operator">:</span>
+    <span class="token keyword">void</span> <span class="token function">processData</span><span class="token punctuation">(</span><span class="token keyword">const</span> QString <span class="token operator">&amp;</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>在这个示例中，Producer 类有一个 dataReady 信号，当有新数据生成时，该信号将被发出。Consumer 类有一个 processData 槽函数，当接收到 dataReady 信号时，该槽函数将被调用以处理数据。</p>
+<p>为了在多线程环境中使用这两个类，我们需要执行以下操作：</p>
+<ol>
+<li>创建 Producer 和 Consumer 对象。</li>
+<li>使用 QObject::connect 函数将 Producer 对象的 dataReady 信号与 Consumer 对象的 processData 槽连接起来。</li>
+<li>将 Producer 对象移动到一个新的线程（例如，使用 QThread::moveToThread 函数）。</li>
+<li>启动生产者线程，开始生成数据。</li>
+</ol>
+<p>当生产者线程生成新数据时，它将发出 dataReady 信号。信号将被传递给消费者线程，消费者线程将在其上下文中调用 processData 槽函数。由于信号与槽的排队机制，我们无需担心数据在两个线程之间传递时的同步问题。</p>
+<p>这个简单示例展示了如何在多线程环境中使用信号与槽。在实际项目中，您可能会遇到更复杂的场景，例如多个生产者和消费者线程，或者需要在多个线程之间传递复杂的数据结构。在这些情况下，信号与槽机制仍然可以为您提供简洁且易于维护的解决方案。</p>
+<p>请注意，信号与槽机制在多线程中的一个重要优势是避免了使用底层同步原语，如互斥锁或条件变量。然而，在某些情况下，信号与槽可能会导致性能开销。例如，当频繁地在多个线程之间传递大量数据时，排队信号可能会导致延迟。在这些情况下，您可能需要考虑其他同步方法，或者优化信号与槽的使用。</p>
+<p>总之，在多线程环境中使用信号与槽可以简化线程间通信和同步的实现。它们提供了一种自动处理线程间数据传输的方法，避免了使用底层同步原语。在实际项目中，信号与槽机制可以帮助您编写简洁、高效且易于维护的多线程代码。</p>
+<h2 id="7-3-信号与槽实例与优化策略（Examples-and-Optimization-Strategies-of-Signals-and-Slots）"><a href="#7-3-信号与槽实例与优化策略（Examples-and-Optimization-Strategies-of-Signals-and-Slots）" class="headerlink" title="7.3 信号与槽实例与优化策略（Examples and Optimization Strategies of Signals and Slots）"></a>7.3 信号与槽实例与优化策略（Examples and Optimization Strategies of Signals and Slots）</h2><p>在本节中，我们将介绍一个信号与槽的实例，以及一些优化策略，以帮助您在多线程环境中更有效地使用信号与槽。</p>
+<h3 id="7-3-1-示例：多线程下载器（Multithreaded-Downloader）"><a href="#7-3-1-示例：多线程下载器（Multithreaded-Downloader）" class="headerlink" title="7.3.1 示例：多线程下载器（Multithreaded Downloader）"></a>7.3.1 示例：多线程下载器（Multithreaded Downloader）</h3><p>假设我们要创建一个多线程下载器，它可以同时下载多个文件。我们可以使用信号与槽在下载线程和主线程之间传递数据和状态信息。以下是一个简化的实现示例：</p>
+<pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token keyword">class</span> <span class="token class-name">Downloader</span> <span class="token operator">:</span> <span class="token base-clause"><span class="token keyword">public</span> <span class="token class-name">QObject</span></span>
+<span class="token punctuation">&#123;</span>
+    Q_OBJECT
+
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token function">Downloader</span><span class="token punctuation">(</span><span class="token keyword">const</span> QUrl <span class="token operator">&amp;</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> slots<span class="token operator">:</span>
+    <span class="token keyword">void</span> <span class="token function">startDownload</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+signals<span class="token operator">:</span>
+    <span class="token keyword">void</span> <span class="token function">downloadProgress</span><span class="token punctuation">(</span>qint64 bytesRead<span class="token punctuation">,</span> qint64 totalBytes<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">void</span> <span class="token function">downloadFinished</span><span class="token punctuation">(</span><span class="token keyword">const</span> QByteArray <span class="token operator">&amp;</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">void</span> <span class="token function">downloadError</span><span class="token punctuation">(</span><span class="token keyword">const</span> QString <span class="token operator">&amp;</span>errorString<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">private</span><span class="token operator">:</span>
+    QUrl m_url<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">MainWindow</span> <span class="token operator">:</span> <span class="token base-clause"><span class="token keyword">public</span> <span class="token class-name">QMainWindow</span></span>
+<span class="token punctuation">&#123;</span>
+    Q_OBJECT
+
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token function">MainWindow</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">private</span> slots<span class="token operator">:</span>
+    <span class="token keyword">void</span> <span class="token function">onDownloadProgress</span><span class="token punctuation">(</span>qint64 bytesRead<span class="token punctuation">,</span> qint64 totalBytes<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">void</span> <span class="token function">onDownloadFinished</span><span class="token punctuation">(</span><span class="token keyword">const</span> QByteArray <span class="token operator">&amp;</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">void</span> <span class="token function">onDownloadError</span><span class="token punctuation">(</span><span class="token keyword">const</span> QString <span class="token operator">&amp;</span>errorString<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">private</span><span class="token operator">:</span>
+    Downloader <span class="token operator">*</span>m_downloader<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>在这个示例中，Downloader 类负责下载文件，它有一个 startDownload 槽函数，以及 downloadProgress、downloadFinished 和 downloadError 信号。当下载过程中的状态发生变化时，这些信号将被发出。</p>
+<p>MainWindow 类负责显示下载进度和处理下载完成或错误事件。它有三个槽函数，分别用于处理 Downloader 类发出的信号。</p>
+<p>要在多线程环境中使用这两个类，我们需要执行以下操作：</p>
+<ol>
+<li>创建 Downloader 和 MainWindow 对象。</li>
+<li>使用 QObject::connect 函数将 Downloader 对象的信号与 MainWindow 对象的槽连接起来。</li>
+<li>将 Downloader 对象移动到一个新的线程（例如，使用 QThread::moveToThread 函数）。</li>
+<li>启动下载线程，开始下载文件。</li>
+</ol>
+<h3 id="7-3-2-优化策略"><a href="#7-3-2-优化策略" class="headerlink" title="7.3.2 优化策略"></a>7.3.2 优化策略</h3><p>信号与槽机制提供了一种简便的方式来实现多线程编程。然而，在某些情况下，它们可能会导致性能问题。以下是一些优化策略，以帮助您更有效地使用信号与槽：</p>
+<ol>
+<li><strong>减少信号的发出频率</strong>：如果一个信号被频繁发出，它可能会导致性能问题。例如，在下载器示例中，如果 downloadProgress 信号每次读取一个字节就发出，它可能会产生大量的信号。为了减少信号的发出频率，您可以在发送者端缓冲数据，或者使用定时器来周期性地发出信号。</li>
+<li><strong>使用 DirectConnection</strong>：默认情况下，信号与槽使用 AutoConnection 类型进行连接，这意味着如果发送者和接收者位于同一线程，槽函数将直接被调用，否则槽函数将在接收者所在线程的事件循环中被调用。在某些情况下，您可能希望使用 DirectConnection 类型，以便在发送者线程上下文中立即调用槽函数。这可能会提高性能，但请注意，您需要确保槽函数是线程安全的，因为它可能同时被多个线程调用。</li>
+<li><strong>避免在信号与槽中传递大型数据</strong>：当信号与槽在不同线程之间连接时，传递的数据将被复制。为了避免性能问题，您应该尽量减少在信号与槽中传递的数据量。例如，您可以传递数据的指针或引用，而不是整个数据。请注意，在这种情况下，您需要确保数据在线程之间共享时是线程安全的。</li>
+<li><strong>合理使用线程</strong>：过多的线程可能会导致线程竞争和上下文切换，从而降低性能。在使用信号与槽进行多线程编程时，请确保您的线程数量是合理的。您可以使用线程池（如 QThreadPool）来限制并发线程的数量，或者根据系统的核心数量动态调整线程数量。</li>
+<li><strong>分析性能瓶颈</strong>：如果您的多线程应用程序在使用信号与槽时遇到性能问题，请使用性能分析工具（如 Qt Creator 的性能分析器）来分析瓶颈。这将帮助您找到问题所在，并针对性地进行优化。</li>
+</ol>
+<p>通过遵循这些优化策略，您可以在多线程环境中更高效地使用信号与槽。信号与槽机制提供了一种简单且强大的方式来实现线程间通信和同步，通过对其进行适当的优化，您可以编写出高性能且易于维护的多线程应用程序。</p>
+<h1 id="八、Qt线程编程优化与性能调优（Qt-Threading-Optimization-and-Performance-Tuning）"><a href="#八、Qt线程编程优化与性能调优（Qt-Threading-Optimization-and-Performance-Tuning）" class="headerlink" title="八、Qt线程编程优化与性能调优（Qt Threading Optimization and Performance Tuning）"></a>八、Qt线程编程优化与性能调优（Qt Threading Optimization and Performance Tuning）</h1><h2 id="8-1-性能分析与瓶颈定位（Performance-Analysis-and-Bottleneck-Identification）"><a href="#8-1-性能分析与瓶颈定位（Performance-Analysis-and-Bottleneck-Identification）" class="headerlink" title="8.1 性能分析与瓶颈定位（Performance Analysis and Bottleneck Identification）"></a>8.1 性能分析与瓶颈定位（Performance Analysis and Bottleneck Identification）</h2><p>在进行多线程编程时，为了提高应用程序的性能，了解如何分析性能瓶颈至关重要。性能瓶颈是指限制系统性能的部分，可能导致整体性能下降。以下是一些建议，用于确定性能瓶颈并进行优化：</p>
+<ol>
+<li><strong>使用性能分析工具</strong>：Qt Creator 和其他第三方工具提供了性能分析功能，可以用于分析应用程序的运行时性能。这些工具可以帮助您找到导致性能下降的代码部分，以便进行优化。例如，您可以使用 Qt Creator 的性能分析器来分析 CPU 使用情况、内存使用情况以及函数调用的时间分布。</li>
+<li><strong>分析多线程同步瓶颈</strong>：在多线程环境中，同步原语（如互斥锁、信号量等）可能会导致性能瓶颈。为了解决这个问题，您需要分析代码，找出可能导致争用和死锁的地方。一种有效的方法是使用静态分析工具，例如，Clang-Tidy 提供了一些与线程安全相关的检查。此外，使用动态分析工具（如 ThreadSanitizer）可以帮助您找到运行时的竞争条件。</li>
+<li><strong>针对特定硬件优化</strong>：在进行多线程编程时，考虑针对您的目标硬件进行优化。例如，针对多核处理器、GPU 或其他硬件加速器进行优化，以提高应用程序性能。了解目标硬件的特性和限制，可以帮助您编写出更好地利用硬件资源的代码。</li>
+<li><strong>IO性能瓶颈</strong>：在多线程应用程序中，输入&#x2F;输出（IO）操作可能会导致性能瓶颈。例如，磁盘读写速度可能会限制程序的执行速度。在这种情况下，使用异步IO操作、缓存和预读技术可以减少IO瓶颈，提高整体性能。</li>
+<li><strong>内存分配与访问优化</strong>：内存分配和访问也可能成为性能瓶颈。在多线程环境中，为了避免竞争条件和死锁，可能需要使用锁来保护共享数据。然而，过度使用锁可能导致性能下降。为了解决这个问题，可以考虑使用无锁数据结构、原子操作和其他高效的同步技术。此外，合理地组织数据结构可以减少内存访问的开销，例如使用局部性原理，将相关的数据存储在一起，以减少缓存未命中的次数。</li>
+<li><strong>优化计算密集型任务</strong>：在多线程应用程序中，计算密集型任务可能会导致性能瓶颈。为了提高计算密集型任务的性能，可以尝试以下策略：使用更高效的算法和数据结构；在可能的情况下，采用 SIMD 指令集来加速向量和矩阵计算；使用 GPU 加速计算，例如通过 OpenCL、CUDA 或其他硬件加速库。</li>
+<li><strong>负载均衡</strong>：在多线程应用中，确保所有线程的负载均衡至关重要。负载不均衡可能导致某些线程饱和，而其他线程处于空闲状态。您可以通过动态调整任务分配，或者使用工作窃取算法来提高负载均衡。此外，使用线程池可以有效地管理线程生命周期，减少线程创建和销毁的开销。</li>
+<li><strong>代码剖析与性能测试</strong>：代码剖析是评估代码性能的重要方法，通过对比不同版本的代码性能，可以找出哪些优化措施有效，哪些无效。性能测试可以帮助您了解应用程序在不同条件下的性能表现，例如在不同硬件、操作系统或编译器选项下的性能。</li>
+</ol>
+<p>通过上述建议，您可以更好地定位并解决性能瓶颈，从而优化多线程应用程序的性能。请记住，在进行性能优化时，首先要确定瓶颈所在，然后采取针对性的优化措施。</p>
+<h2 id="8-2-线程池的使用与优势（Using-Thread-Pools-and-Their-Advantages）"><a href="#8-2-线程池的使用与优势（Using-Thread-Pools-and-Their-Advantages）" class="headerlink" title="8.2 线程池的使用与优势（Using Thread Pools and Their Advantages）"></a>8.2 线程池的使用与优势（Using Thread Pools and Their Advantages）</h2><p>线程池是一种管理线程的技术，它维护一组线程，用于执行多个任务。线程池的主要优势在于减少了线程创建和销毁的开销，并可以实现更高效的资源利用。在本节中，我们将探讨线程池的使用方法和优势。</p>
+<h3 id="8-2-1-使用-Qt-的-QThreadPool"><a href="#8-2-1-使用-Qt-的-QThreadPool" class="headerlink" title="8.2.1 使用 Qt 的 QThreadPool"></a>8.2.1 使用 Qt 的 QThreadPool</h3><p>Qt 提供了一个名为 QThreadPool 的类，它可以帮助您轻松地创建和管理线程池。以下是使用 QThreadPool 的基本步骤：</p>
+<ol>
+<li><strong>创建 QThreadPool 实例</strong>：您可以创建一个 QThreadPool 实例，并使用 setMaxThreadCount() 方法设置最大线程数。</li>
+<li><strong>创建 QRunnable 子类</strong>：创建一个 QRunnable 子类，并在 run() 方法中实现要在线程池中执行的任务。</li>
+<li><strong>将任务添加到线程池</strong>：使用 QThreadPool 的 start() 方法将 QRunnable 子类的实例添加到线程池中。</li>
+<li><strong>等待任务完成</strong>：使用 QThreadPool 的 waitForDone() 方法等待线程池中的所有任务完成。</li>
+</ol>
+<h3 id="8-2-2-线程池的优势"><a href="#8-2-2-线程池的优势" class="headerlink" title="8.2.2 线程池的优势"></a>8.2.2 线程池的优势</h3><p>线程池具有以下优势：</p>
+<ol>
+<li><strong>减少线程创建和销毁的开销</strong>：线程池复用已经创建的线程，避免了频繁地创建和销毁线程，从而减少了这一过程的开销。</li>
+<li><strong>提高资源利用率</strong>：线程池可以根据系统负载动态地调整线程数目，避免了过多线程导致的系统资源浪费。</li>
+<li><strong>负载均衡</strong>：线程池可以根据任务的优先级和可用线程数，将任务分配给线程，实现负载均衡。</li>
+<li><strong>简化多线程编程</strong>：使用线程池，开发者无需关注线程的创建、销毁和调度，只需关注任务的实现，简化了多线程编程。</li>
+<li><strong>提高程序的可扩展性</strong>：线程池可以更好地适应不同硬件和操作系统环境，提高了程序的可扩展性。</li>
+</ol>
+<p>总之，线程池是一种高效管理线程的方法，它可以提高多线程应用程序的性能和可扩展性。在 Qt 中，使用 QThreadPool 类可以轻松地实现线程池管理。</p>
+<h2 id="8-3-高级同步技术与实践（Advanced-Synchronization-Techniques-and-Practices）"><a href="#8-3-高级同步技术与实践（Advanced-Synchronization-Techniques-and-Practices）" class="headerlink" title="8.3 高级同步技术与实践（Advanced Synchronization Techniques and Practices）"></a>8.3 高级同步技术与实践（Advanced Synchronization Techniques and Practices）</h2><p>在多线程编程中，同步是非常重要的概念，它可以确保线程之间的数据一致性和正确的执行顺序。本节将介绍一些高级的同步技术和实践，以便在 Qt 线程编程中实现更高效的同步。</p>
+<h3 id="8-3-1-无锁编程（Lock-Free-Programming）"><a href="#8-3-1-无锁编程（Lock-Free-Programming）" class="headerlink" title="8.3.1 无锁编程（Lock-Free Programming）"></a>8.3.1 无锁编程（Lock-Free Programming）</h3><p>无锁编程是一种避免使用互斥锁或其他传统同步原语的编程技术。无锁编程依赖于原子操作和特殊的算法设计，以实现线程之间的同步。无锁编程的优点是它可以减少锁竞争和死锁的风险，从而提高程序的性能。然而，无锁编程通常需要更复杂的设计和调试工作。</p>
+<p>在 Qt 中，有一些无锁数据结构和原子操作类可供使用，例如 QAtomicInt、QAtomicPointer 和 QReadWriteLock 等。</p>
+<h3 id="8-3-2-有界缓冲区和生产者-消费者模式（Bounded-Buffer-and-Producer-Consumer-Pattern）"><a href="#8-3-2-有界缓冲区和生产者-消费者模式（Bounded-Buffer-and-Producer-Consumer-Pattern）" class="headerlink" title="8.3.2 有界缓冲区和生产者-消费者模式（Bounded Buffer and Producer-Consumer Pattern）"></a>8.3.2 有界缓冲区和生产者-消费者模式（Bounded Buffer and Producer-Consumer Pattern）</h3><p>有界缓冲区是一种容量有限的缓冲区，它可以在生产者和消费者之间传递数据。生产者-消费者模式是一种多线程编程模式，其中一个或多个线程生产数据，一个或多个线程消费数据。该模式可以有效地解耦生产者和消费者线程，并实现负载均衡。</p>
+<p>在 Qt 中，您可以使用 QSemaphore 和 QWaitCondition 等同步原语实现有界缓冲区和生产者-消费者模式。</p>
+<h3 id="8-3-3-并行计算和分区（Parallel-Computing-and-Partitioning）"><a href="#8-3-3-并行计算和分区（Parallel-Computing-and-Partitioning）" class="headerlink" title="8.3.3 并行计算和分区（Parallel Computing and Partitioning）"></a>8.3.3 并行计算和分区（Parallel Computing and Partitioning）</h3><p>在多线程应用中，将计算任务划分为多个子任务并行执行，可以显著提高程序的性能。为了实现有效的并行计算，需要考虑任务的划分策略，以确保每个子任务的负载均衡。</p>
+<p>在 Qt 中，您可以使用 QtConcurrent 框架实现并行计算。QtConcurrent 提供了一些高级函数，如 map()、mapped() 和 reduce() 等，用于处理集合和数组上的并行计算任务。</p>
+<p>通过使用这些高级同步技术和实践，您可以在 Qt 线程编程中实现更高效的同步和性能优化。请注意，这些技术通常需要更深入的理解和更复杂的设计，因此在使用它们之前，请确保您充分了解相关概念。</p>
+<h2 id="8-4-避免竞争条件和死锁（Avoiding-Race-Conditions-and-Deadlocks）"><a href="#8-4-避免竞争条件和死锁（Avoiding-Race-Conditions-and-Deadlocks）" class="headerlink" title="8.4 避免竞争条件和死锁（Avoiding Race Conditions and Deadlocks）"></a>8.4 避免竞争条件和死锁（Avoiding Race Conditions and Deadlocks）</h2><p>竞争条件和死锁是多线程编程中常见的问题，它们可能导致程序的不稳定和性能下降。本节将讨论如何在 Qt 线程编程中避免竞争条件和死锁。</p>
+<h3 id="8-4-1-理解并避免竞争条件（Understanding-and-Avoiding-Race-Conditions）"><a href="#8-4-1-理解并避免竞争条件（Understanding-and-Avoiding-Race-Conditions）" class="headerlink" title="8.4.1 理解并避免竞争条件（Understanding and Avoiding Race Conditions）"></a>8.4.1 理解并避免竞争条件（Understanding and Avoiding Race Conditions）</h3><p>竞争条件是指多个线程访问共享资源时，由于执行顺序的不确定性，导致结果不可预测的现象。为避免竞争条件，您可以采取以下方法：</p>
+<ol>
+<li><strong>使用同步原语</strong>：使用互斥锁、读写锁等同步原语来保护共享资源的访问。</li>
+<li><strong>尽量避免使用共享资源</strong>：将数据封装在对象中，并使用信号和槽机制进行通信，以减少共享资源的使用。</li>
+<li><strong>使用无锁数据结构</strong>：使用无锁数据结构（如 QAtomicInt 和 QAtomicPointer）来减少竞争条件的风险。</li>
+</ol>
+<h3 id="8-4-2-理解并避免死锁（Understanding-and-Avoiding-Deadlocks）"><a href="#8-4-2-理解并避免死锁（Understanding-and-Avoiding-Deadlocks）" class="headerlink" title="8.4.2 理解并避免死锁（Understanding and Avoiding Deadlocks）"></a>8.4.2 理解并避免死锁（Understanding and Avoiding Deadlocks）</h3><p>死锁是指多个线程由于资源竞争而陷入相互等待的状态，导致程序无法继续执行的现象。为避免死锁，您可以采取以下方法：</p>
+<ol>
+<li><strong>遵循资源获取顺序</strong>：确保所有线程按照相同的顺序请求和释放资源。</li>
+<li><strong>避免嵌套锁</strong>：尽量避免在一个线程中同时持有多个锁。</li>
+<li><strong>使用锁超时</strong>：在尝试获取锁时使用超时，以防止线程长时间等待。</li>
+<li><strong>使用条件变量</strong>：使用 QWaitCondition 让线程等待特定条件，而不是等待其他线程释放资源。</li>
+</ol>
+<p>通过采用这些策略，您可以在 Qt 线程编程中避免竞争条件和死锁问题，从而提高程序的稳定性和性能。请注意，在实现多线程应用程序时，始终关注线程安全和同步问题，以确保程序正确运行。</p>
+<h2 id="8-5-分析和调试多线程问题（Analyzing-and-Debugging-Multithreading-Issues）"><a href="#8-5-分析和调试多线程问题（Analyzing-and-Debugging-Multithreading-Issues）" class="headerlink" title="8.5 分析和调试多线程问题（Analyzing and Debugging Multithreading Issues）"></a>8.5 分析和调试多线程问题（Analyzing and Debugging Multithreading Issues）</h2><p>在多线程编程中，调试和分析问题可能比较复杂，因为线程之间的交互和执行顺序可能导致不稳定和不可预测的行为。本节将介绍如何在 Qt 线程编程中分析和调试多线程问题。</p>
+<h3 id="8-5-1-使用调试器（Using-Debugger）"><a href="#8-5-1-使用调试器（Using-Debugger）" class="headerlink" title="8.5.1 使用调试器（Using Debugger）"></a>8.5.1 使用调试器（Using Debugger）</h3><p>使用调试器（如 GDB 或 Qt Creator 的集成调试器）可以帮助您跟踪和调试多线程程序。调试器允许您查看和修改变量值、设置断点以及单步执行代码。在调试多线程程序时，请注意以下几点：</p>
+<ol>
+<li><strong>查看线程状态</strong>：调试器通常允许查看各个线程的状态，包括运行状态、堆栈信息等。这有助于识别潜在的问题。</li>
+<li><strong>同步断点</strong>：在多线程环境下，设置同步断点可以确保所有线程在达到某个条件时暂停，以便于分析。</li>
+<li><strong>小心使用条件断点</strong>：在多线程环境下，条件断点可能导致程序运行变慢。确保只在需要时使用它们。</li>
+</ol>
+<h3 id="8-5-2-使用分析工具（Using-Profiling-Tools）"><a href="#8-5-2-使用分析工具（Using-Profiling-Tools）" class="headerlink" title="8.5.2 使用分析工具（Using Profiling Tools）"></a>8.5.2 使用分析工具（Using Profiling Tools）</h3><p>分析工具（如 Valgrind、Intel VTune 或 Perf）可以帮助您评估程序性能、检测内存泄漏以及找到性能瓶颈。在分析多线程程序时，请注意以下几点：</p>
+<ol>
+<li><strong>查看线程利用率</strong>：分析工具通常可以显示线程的 CPU 利用率和等待时间。这有助于发现性能问题和同步问题。</li>
+<li><strong>检测数据竞争</strong>：某些分析工具（如 Valgrind 的 Helgrind 模块）可以检测数据竞争和其他多线程问题。</li>
+<li><strong>分析锁竞争</strong>：分析锁竞争可以帮助您发现线程之间的争用问题，从而优化同步策略。</li>
+</ol>
+<h3 id="8-5-3-使用日志和诊断输出（Using-Logging-and-Diagnostic-Output）"><a href="#8-5-3-使用日志和诊断输出（Using-Logging-and-Diagnostic-Output）" class="headerlink" title="8.5.3 使用日志和诊断输出（Using Logging and Diagnostic Output）"></a>8.5.3 使用日志和诊断输出（Using Logging and Diagnostic Output）</h3><p>在多线程程序中，使用日志和诊断输出可以帮助您跟踪程序的执行顺序和状态。在 Qt 中，您可以使用 qDebug()、qWarning() 等函数输出诊断信息。请注意，在多线程环境下输出日志时要避免竞争条件。</p>
+<p>通过使用调试器、分析工具和日志输出，您可以更有效地分析和调试 Qt 线程编程中的问题。请注意，在处理多线程问题时，确保充分了解线程安全和同步概念，以避免导致程序不稳定和</p>
+<h2 id="8-6-利用多核处理器优势（Taking-Advantage-of-Multi-core-Processors）"><a href="#8-6-利用多核处理器优势（Taking-Advantage-of-Multi-core-Processors）" class="headerlink" title="8.6 利用多核处理器优势（Taking Advantage of Multi-core Processors）"></a>8.6 利用多核处理器优势（Taking Advantage of Multi-core Processors）</h2><p>随着多核处理器的普及，为提高程序性能，充分利用多核处理器的优势变得越来越重要。在 Qt 线程编程中，您可以采用以下策略来充分利用多核处理器：</p>
+<h3 id="8-6-1-合理划分任务（Properly-Divide-Tasks）"><a href="#8-6-1-合理划分任务（Properly-Divide-Tasks）" class="headerlink" title="8.6.1 合理划分任务（Properly Divide Tasks）"></a>8.6.1 合理划分任务（Properly Divide Tasks）</h3><p>将程序划分为多个独立或可并行执行的任务，可以充分利用多核处理器的计算能力。合理划分任务时，请注意以下几点：</p>
+<ol>
+<li><strong>避免太多小任务</strong>：创建和管理过多的小任务会导致线程切换和管理开销过大。尽量将任务划分为适当大小的块，以便并行处理。</li>
+<li><strong>减少任务间依赖</strong>：减少任务间的依赖关系可以提高任务的并行度。尽量使任务独立执行，以便充分利用多核处理器。</li>
+</ol>
+<h3 id="8-6-2-使用线程池（Using-Thread-Pools）"><a href="#8-6-2-使用线程池（Using-Thread-Pools）" class="headerlink" title="8.6.2 使用线程池（Using Thread Pools）"></a>8.6.2 使用线程池（Using Thread Pools）</h3><p>线程池可以有效地管理和复用线程，减少线程创建和销毁的开销。在 Qt 中，您可以使用 QThreadPool 类来管理线程池。线程池的优势包括：</p>
+<ol>
+<li><strong>自动管理线程数量</strong>：QThreadPool 根据系统的核心数和负载自动管理线程数量，以充分利用多核处理器。</li>
+<li><strong>减少线程切换开销</strong>：线程池通过复用线程，减少了线程创建和销毁的开销。</li>
+</ol>
+<h3 id="8-6-3-使用并行算法库（Using-Parallel-Algorithm-Libraries）"><a href="#8-6-3-使用并行算法库（Using-Parallel-Algorithm-Libraries）" class="headerlink" title="8.6.3 使用并行算法库（Using Parallel Algorithm Libraries）"></a>8.6.3 使用并行算法库（Using Parallel Algorithm Libraries）</h3><p>并行算法库（如 Intel TBB、C++17 的 Parallel STL 等）可以帮助您实现高效的并行计算。这些库通常已经针对多核处理器进行了优化，使用它们可以提高程序性能。</p>
+<p>通过采用这些策略，您可以在 Qt 线程编程中充分利用多核处理器的优势，从而提高程序的性能。请注意，始终关注线程安全和同步问题，以确保程序正确运行。</p>
+]]></content>
+      <categories>
+        <category>C++学习笔记</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+        <tag>Qt</tag>
+        <tag>多线程</tag>
+      </tags>
+  </entry>
 </search>
